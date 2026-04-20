@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SmartPark.Data/SmartPark.Data.csproj" />
+  <Project Path="SmartPark.UI/SmartPark.UI.csproj" />
+</Solution>
