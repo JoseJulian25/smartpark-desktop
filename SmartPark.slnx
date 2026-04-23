@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="SmartPark.Data/SmartPark.Data.csproj" />
+  <Project Path="SmartPark.Tests/SmartPark.Tests.csproj" Id="d56e52a3-618b-4819-a317-d8c75072771d" />
   <Project Path="SmartPark.UI/SmartPark.UI.csproj" />
 </Solution>
