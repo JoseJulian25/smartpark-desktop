@@ -133,7 +133,7 @@ namespace SmartPark.UI.EntradasSalidas
             columnTicket.MinimumWidth = 6;
             columnTicket.Name = "columnTicket";
             columnTicket.ReadOnly = true;
-            columnTicket.Width = 80;
+            columnTicket.Width = 200;
             // 
             // columnPlaca
             // 
@@ -141,7 +141,7 @@ namespace SmartPark.UI.EntradasSalidas
             columnPlaca.MinimumWidth = 6;
             columnPlaca.Name = "columnPlaca";
             columnPlaca.ReadOnly = true;
-            columnPlaca.Width = 125;
+            columnPlaca.Width = 150;
             // 
             // columnTipo
             // 
@@ -157,7 +157,7 @@ namespace SmartPark.UI.EntradasSalidas
             columnEspacio.MinimumWidth = 6;
             columnEspacio.Name = "columnEspacio";
             columnEspacio.ReadOnly = true;
-            columnEspacio.Width = 80;
+            columnEspacio.Width = 170;
             // 
             // columnEntrada
             // 
@@ -165,7 +165,7 @@ namespace SmartPark.UI.EntradasSalidas
             columnEntrada.MinimumWidth = 6;
             columnEntrada.Name = "columnEntrada";
             columnEntrada.ReadOnly = true;
-            columnEntrada.Width = 125;
+            columnEntrada.Width = 170;
             // 
             // columnTiempo
             // 
@@ -173,7 +173,7 @@ namespace SmartPark.UI.EntradasSalidas
             columnTiempo.MinimumWidth = 6;
             columnTiempo.Name = "columnTiempo";
             columnTiempo.ReadOnly = true;
-            columnTiempo.Width = 150;
+            columnTiempo.Width = 200;
             // 
             // panelBotonesVehiculos
             // 

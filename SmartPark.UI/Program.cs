@@ -47,6 +47,8 @@ static class Program
         services.AddTransient<TarifaForm>();
         services.AddTransient<Services.EmpresaService>();
         services.AddTransient<Services.TarifaService>();
+        services.AddTransient<Services.TicketService>();
+        services.AddTransient<Services.PagoService>();
         services.AddTransient<EntradasSalidasForm>();
         services.AddTransient<CobrarSalidaForm>();
     }

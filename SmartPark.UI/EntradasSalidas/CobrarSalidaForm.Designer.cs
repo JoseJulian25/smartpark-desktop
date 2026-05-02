@@ -39,14 +39,14 @@ namespace SmartPark.UI.EntradasSalidas
             panelBotones = new Panel();
             buttonRegistrarCobro = new Button();
             buttonCancelar = new Button();
-
             panelMain.SuspendLayout();
             groupBoxDetalles.SuspendLayout();
             tableLayoutPanel.SuspendLayout();
             panelBotones.SuspendLayout();
             SuspendLayout();
-
+            // 
             // panelMain
+            // 
             panelMain.BackColor = Color.FromArgb(244, 247, 252);
             panelMain.Controls.Add(groupBoxDetalles);
             panelMain.Controls.Add(panelBotones);
@@ -56,8 +56,9 @@ namespace SmartPark.UI.EntradasSalidas
             panelMain.Padding = new Padding(16);
             panelMain.Size = new Size(600, 450);
             panelMain.TabIndex = 0;
-
+            // 
             // groupBoxDetalles
+            // 
             groupBoxDetalles.Controls.Add(tableLayoutPanel);
             groupBoxDetalles.Dock = DockStyle.Fill;
             groupBoxDetalles.Font = new Font("Segoe UI", 9F);
@@ -68,8 +69,9 @@ namespace SmartPark.UI.EntradasSalidas
             groupBoxDetalles.TabIndex = 0;
             groupBoxDetalles.TabStop = false;
             groupBoxDetalles.Text = "Detalles del Vehículo";
-
+            // 
             // tableLayoutPanel
+            // 
             tableLayoutPanel.ColumnCount = 2;
             tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 140F));
             tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -90,7 +92,7 @@ namespace SmartPark.UI.EntradasSalidas
             tableLayoutPanel.Controls.Add(labelMontoACobrar, 0, 7);
             tableLayoutPanel.Controls.Add(textBoxMontoACobrar, 1, 7);
             tableLayoutPanel.Dock = DockStyle.Fill;
-            tableLayoutPanel.Location = new Point(12, 32);
+            tableLayoutPanel.Location = new Point(12, 28);
             tableLayoutPanel.Name = "tableLayoutPanel";
             tableLayoutPanel.RowCount = 8;
             tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
@@ -101,146 +103,166 @@ namespace SmartPark.UI.EntradasSalidas
             tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
             tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
             tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            tableLayoutPanel.Size = new Size(544, 336);
+            tableLayoutPanel.Size = new Size(544, 340);
             tableLayoutPanel.TabIndex = 0;
-
+            // 
             // labelTicket
+            // 
             labelTicket.Anchor = AnchorStyles.Left;
             labelTicket.AutoSize = true;
-            labelTicket.Location = new Point(3, 6);
+            labelTicket.Location = new Point(3, 9);
             labelTicket.Name = "labelTicket";
-            labelTicket.Size = new Size(54, 20);
+            labelTicket.Size = new Size(42, 15);
             labelTicket.TabIndex = 0;
             labelTicket.Text = "Ticket:";
-
+            // 
             // textBoxTicket
+            // 
             textBoxTicket.Dock = DockStyle.Fill;
             textBoxTicket.Enabled = false;
             textBoxTicket.Location = new Point(143, 3);
             textBoxTicket.Name = "textBoxTicket";
-            textBoxTicket.Size = new Size(398, 27);
+            textBoxTicket.Size = new Size(398, 23);
             textBoxTicket.TabIndex = 1;
-
+            // 
             // labelPlaca
+            // 
             labelPlaca.Anchor = AnchorStyles.Left;
             labelPlaca.AutoSize = true;
-            labelPlaca.Location = new Point(3, 39);
+            labelPlaca.Location = new Point(3, 42);
             labelPlaca.Name = "labelPlaca";
-            labelPlaca.Size = new Size(47, 20);
+            labelPlaca.Size = new Size(38, 15);
             labelPlaca.TabIndex = 2;
             labelPlaca.Text = "Placa:";
-
+            // 
             // textBoxPlaca
+            // 
             textBoxPlaca.Dock = DockStyle.Fill;
             textBoxPlaca.Enabled = false;
             textBoxPlaca.Location = new Point(143, 36);
             textBoxPlaca.Name = "textBoxPlaca";
-            textBoxPlaca.Size = new Size(398, 27);
+            textBoxPlaca.Size = new Size(398, 23);
             textBoxPlaca.TabIndex = 3;
-
+            // 
             // labelTipo
+            // 
             labelTipo.Anchor = AnchorStyles.Left;
             labelTipo.AutoSize = true;
-            labelTipo.Location = new Point(3, 72);
+            labelTipo.Location = new Point(3, 75);
             labelTipo.Name = "labelTipo";
-            labelTipo.Size = new Size(38, 20);
+            labelTipo.Size = new Size(34, 15);
             labelTipo.TabIndex = 4;
             labelTipo.Text = "Tipo:";
-
+            // 
             // textBoxTipo
+            // 
             textBoxTipo.Dock = DockStyle.Fill;
             textBoxTipo.Enabled = false;
             textBoxTipo.Location = new Point(143, 69);
             textBoxTipo.Name = "textBoxTipo";
-            textBoxTipo.Size = new Size(398, 27);
+            textBoxTipo.Size = new Size(398, 23);
             textBoxTipo.TabIndex = 5;
-
+            // 
             // labelEspacio
+            // 
             labelEspacio.Anchor = AnchorStyles.Left;
             labelEspacio.AutoSize = true;
-            labelEspacio.Location = new Point(3, 105);
+            labelEspacio.Location = new Point(3, 108);
             labelEspacio.Name = "labelEspacio";
-            labelEspacio.Size = new Size(69, 20);
+            labelEspacio.Size = new Size(50, 15);
             labelEspacio.TabIndex = 6;
             labelEspacio.Text = "Espacio:";
-
+            // 
             // textBoxEspacio
+            // 
             textBoxEspacio.Dock = DockStyle.Fill;
             textBoxEspacio.Enabled = false;
             textBoxEspacio.Location = new Point(143, 102);
             textBoxEspacio.Name = "textBoxEspacio";
-            textBoxEspacio.Size = new Size(398, 27);
+            textBoxEspacio.Size = new Size(398, 23);
             textBoxEspacio.TabIndex = 7;
-
+            // 
             // labelHoraEntrada
+            // 
             labelHoraEntrada.Anchor = AnchorStyles.Left;
             labelHoraEntrada.AutoSize = true;
-            labelHoraEntrada.Location = new Point(3, 138);
+            labelHoraEntrada.Location = new Point(3, 141);
             labelHoraEntrada.Name = "labelHoraEntrada";
-            labelHoraEntrada.Size = new Size(103, 20);
+            labelHoraEntrada.Size = new Size(79, 15);
             labelHoraEntrada.TabIndex = 8;
             labelHoraEntrada.Text = "Hora Entrada:";
-
+            // 
             // textBoxHoraEntrada
+            // 
             textBoxHoraEntrada.Dock = DockStyle.Fill;
             textBoxHoraEntrada.Enabled = false;
             textBoxHoraEntrada.Location = new Point(143, 135);
             textBoxHoraEntrada.Name = "textBoxHoraEntrada";
-            textBoxHoraEntrada.Size = new Size(398, 27);
+            textBoxHoraEntrada.Size = new Size(398, 23);
             textBoxHoraEntrada.TabIndex = 9;
-
+            // 
             // labelHoraSalida
+            // 
             labelHoraSalida.Anchor = AnchorStyles.Left;
             labelHoraSalida.AutoSize = true;
-            labelHoraSalida.Location = new Point(3, 171);
+            labelHoraSalida.Location = new Point(3, 174);
             labelHoraSalida.Name = "labelHoraSalida";
-            labelHoraSalida.Size = new Size(90, 20);
+            labelHoraSalida.Size = new Size(70, 15);
             labelHoraSalida.TabIndex = 10;
             labelHoraSalida.Text = "Hora Salida:";
-
+            // 
             // textBoxHoraSalida
+            // 
             textBoxHoraSalida.Dock = DockStyle.Fill;
             textBoxHoraSalida.Enabled = false;
             textBoxHoraSalida.Location = new Point(143, 168);
             textBoxHoraSalida.Name = "textBoxHoraSalida";
-            textBoxHoraSalida.Size = new Size(398, 27);
+            textBoxHoraSalida.Size = new Size(398, 23);
             textBoxHoraSalida.TabIndex = 11;
-
+            // 
             // labelTiempoTranscurrido
+            // 
             labelTiempoTranscurrido.Anchor = AnchorStyles.Left;
             labelTiempoTranscurrido.AutoSize = true;
-            labelTiempoTranscurrido.Location = new Point(3, 204);
+            labelTiempoTranscurrido.Location = new Point(3, 207);
             labelTiempoTranscurrido.Name = "labelTiempoTranscurrido";
-            labelTiempoTranscurrido.Size = new Size(127, 20);
+            labelTiempoTranscurrido.Size = new Size(120, 15);
             labelTiempoTranscurrido.TabIndex = 12;
             labelTiempoTranscurrido.Text = "Tiempo Transcurrido:";
-
+            // 
             // textBoxTiempoTranscurrido
+            // 
             textBoxTiempoTranscurrido.Dock = DockStyle.Fill;
             textBoxTiempoTranscurrido.Enabled = false;
             textBoxTiempoTranscurrido.Location = new Point(143, 201);
             textBoxTiempoTranscurrido.Name = "textBoxTiempoTranscurrido";
-            textBoxTiempoTranscurrido.Size = new Size(398, 27);
+            textBoxTiempoTranscurrido.Size = new Size(398, 23);
             textBoxTiempoTranscurrido.TabIndex = 13;
-
+            // 
             // labelMontoACobrar
+            // 
             labelMontoACobrar.Anchor = AnchorStyles.Left;
             labelMontoACobrar.AutoSize = true;
-            labelMontoACobrar.Location = new Point(3, 237);
+            labelMontoACobrar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelMontoACobrar.Location = new Point(3, 275);
             labelMontoACobrar.Name = "labelMontoACobrar";
-            labelMontoACobrar.Size = new Size(120, 20);
+            labelMontoACobrar.Size = new Size(134, 21);
             labelMontoACobrar.TabIndex = 14;
             labelMontoACobrar.Text = "Monto a Cobrar:";
-
+            // 
             // textBoxMontoACobrar
-            textBoxMontoACobrar.Dock = DockStyle.Fill;
+            // 
+            textBoxMontoACobrar.Anchor = AnchorStyles.None;
             textBoxMontoACobrar.Enabled = false;
-            textBoxMontoACobrar.Location = new Point(143, 234);
+            textBoxMontoACobrar.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBoxMontoACobrar.Location = new Point(143, 272);
             textBoxMontoACobrar.Name = "textBoxMontoACobrar";
+            textBoxMontoACobrar.ReadOnly = true;
             textBoxMontoACobrar.Size = new Size(398, 27);
             textBoxMontoACobrar.TabIndex = 15;
-
+            // 
             // panelBotones
+            // 
             panelBotones.Controls.Add(buttonRegistrarCobro);
             panelBotones.Controls.Add(buttonCancelar);
             panelBotones.Dock = DockStyle.Bottom;
@@ -248,8 +270,9 @@ namespace SmartPark.UI.EntradasSalidas
             panelBotones.Name = "panelBotones";
             panelBotones.Size = new Size(568, 38);
             panelBotones.TabIndex = 1;
-
+            // 
             // buttonRegistrarCobro
+            // 
             buttonRegistrarCobro.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonRegistrarCobro.BackColor = Color.FromArgb(31, 118, 221);
             buttonRegistrarCobro.FlatAppearance.BorderColor = Color.FromArgb(31, 118, 221);
@@ -257,15 +280,16 @@ namespace SmartPark.UI.EntradasSalidas
             buttonRegistrarCobro.FlatAppearance.MouseOverBackColor = Color.FromArgb(45, 131, 232);
             buttonRegistrarCobro.FlatStyle = FlatStyle.Flat;
             buttonRegistrarCobro.ForeColor = Color.White;
-            buttonRegistrarCobro.Location = new Point(388, 4);
+            buttonRegistrarCobro.Location = new Point(322, 4);
             buttonRegistrarCobro.Name = "buttonRegistrarCobro";
             buttonRegistrarCobro.Size = new Size(140, 32);
             buttonRegistrarCobro.TabIndex = 0;
             buttonRegistrarCobro.Text = "Registrar Cobro";
             buttonRegistrarCobro.UseVisualStyleBackColor = false;
             buttonRegistrarCobro.Click += buttonRegistrarCobro_Click;
-
+            // 
             // buttonCancelar
+            // 
             buttonCancelar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonCancelar.BackColor = Color.White;
             buttonCancelar.FlatAppearance.BorderColor = Color.FromArgb(31, 118, 221);
@@ -280,8 +304,10 @@ namespace SmartPark.UI.EntradasSalidas
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = false;
             buttonCancelar.Click += buttonCancelar_Click;
-
+            // 
             // CobrarSalidaForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(244, 247, 252);
             ClientSize = new Size(600, 450);
