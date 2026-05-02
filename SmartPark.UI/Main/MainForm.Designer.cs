@@ -202,6 +202,7 @@ namespace SmartPark.UI.Main
             buttonEspacios.Text = "Espacios";
             buttonEspacios.TextAlign = ContentAlignment.MiddleLeft;
             buttonEspacios.UseVisualStyleBackColor = false;
+            buttonEspacios.Click += buttonEspacios_Click;
             // 
             // buttonReservas
             // 
