@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SmartPark.Data;
+namespace SmartPark.Data.Modelos;
 
 public partial class Empresa
 {

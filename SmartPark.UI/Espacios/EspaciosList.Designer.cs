@@ -27,7 +27,6 @@ namespace SmartPark.UI.Espacios
             columnEstado = new DataGridViewTextBoxColumn();
             columnVehiculo = new DataGridViewTextBoxColumn();
             panelToolbar = new Panel();
-            buttonActualizar = new Button();
             buttonEliminar = new Button();
             buttonEditar = new Button();
             buttonNuevoEspacio = new Button();
@@ -45,9 +44,6 @@ namespace SmartPark.UI.Espacios
             panelResumenReservados = new Panel();
             labelReservadosValue = new Label();
             labelReservadosTitle = new Label();
-            panelResumenMantenimiento = new Panel();
-            labelMantenimientoValue = new Label();
-            labelMantenimientoTitle = new Label();
             statusStripMain = new StatusStrip();
             toolStripStatusUsuario = new ToolStripStatusLabel();
             toolStripStatusSep = new ToolStripStatusLabel();
@@ -62,7 +58,6 @@ namespace SmartPark.UI.Espacios
             panelResumenLibres.SuspendLayout();
             panelResumenOcupados.SuspendLayout();
             panelResumenReservados.SuspendLayout();
-            panelResumenMantenimiento.SuspendLayout();
             statusStripMain.SuspendLayout();
             SuspendLayout();
             // 
@@ -153,7 +148,6 @@ namespace SmartPark.UI.Espacios
             // 
             // panelToolbar
             // 
-            panelToolbar.Controls.Add(buttonActualizar);
             panelToolbar.Controls.Add(buttonEliminar);
             panelToolbar.Controls.Add(buttonEditar);
             panelToolbar.Controls.Add(buttonNuevoEspacio);
@@ -163,21 +157,6 @@ namespace SmartPark.UI.Espacios
             panelToolbar.Padding = new Padding(0, 10, 0, 10);
             panelToolbar.Size = new Size(1332, 66);
             panelToolbar.TabIndex = 1;
-            // 
-            // buttonActualizar
-            // 
-            buttonActualizar.BackColor = Color.White;
-            buttonActualizar.FlatAppearance.BorderColor = Color.FromArgb(31, 118, 221);
-            buttonActualizar.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 237, 255);
-            buttonActualizar.FlatAppearance.MouseOverBackColor = Color.FromArgb(238, 246, 255);
-            buttonActualizar.FlatStyle = FlatStyle.Flat;
-            buttonActualizar.ForeColor = Color.FromArgb(31, 118, 221);
-            buttonActualizar.Location = new Point(330, 10);
-            buttonActualizar.Name = "buttonActualizar";
-            buttonActualizar.Size = new Size(100, 36);
-            buttonActualizar.TabIndex = 3;
-            buttonActualizar.Text = "Actualizar";
-            buttonActualizar.UseVisualStyleBackColor = false;
             // 
             // buttonEliminar
             // 
@@ -208,6 +187,7 @@ namespace SmartPark.UI.Espacios
             buttonEditar.TabIndex = 1;
             buttonEditar.Text = "Editar";
             buttonEditar.UseVisualStyleBackColor = false;
+            buttonEditar.Click += buttonEditar_Click_1;
             // 
             // buttonNuevoEspacio
             // 
@@ -240,7 +220,7 @@ namespace SmartPark.UI.Espacios
             // 
             // tableLayoutPanelResumen
             // 
-            tableLayoutPanelResumen.ColumnCount = 5;
+            tableLayoutPanelResumen.ColumnCount = 4;
             tableLayoutPanelResumen.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanelResumen.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanelResumen.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
@@ -250,7 +230,6 @@ namespace SmartPark.UI.Espacios
             tableLayoutPanelResumen.Controls.Add(panelResumenLibres, 1, 0);
             tableLayoutPanelResumen.Controls.Add(panelResumenOcupados, 2, 0);
             tableLayoutPanelResumen.Controls.Add(panelResumenReservados, 3, 0);
-            tableLayoutPanelResumen.Controls.Add(panelResumenMantenimiento, 4, 0);
             tableLayoutPanelResumen.Dock = DockStyle.Fill;
             tableLayoutPanelResumen.Location = new Point(10, 30);
             tableLayoutPanelResumen.Name = "tableLayoutPanelResumen";
@@ -269,7 +248,7 @@ namespace SmartPark.UI.Espacios
             panelResumenTotal.Location = new Point(3, 3);
             panelResumenTotal.Name = "panelResumenTotal";
             panelResumenTotal.Padding = new Padding(10);
-            panelResumenTotal.Size = new Size(256, 92);
+            panelResumenTotal.Size = new Size(322, 92);
             panelResumenTotal.TabIndex = 0;
             // 
             // labelTotalValue
@@ -298,10 +277,10 @@ namespace SmartPark.UI.Espacios
             panelResumenLibres.Controls.Add(labelLibresValue);
             panelResumenLibres.Controls.Add(labelLibresTitle);
             panelResumenLibres.Dock = DockStyle.Fill;
-            panelResumenLibres.Location = new Point(265, 3);
+            panelResumenLibres.Location = new Point(331, 3);
             panelResumenLibres.Name = "panelResumenLibres";
             panelResumenLibres.Padding = new Padding(10);
-            panelResumenLibres.Size = new Size(256, 92);
+            panelResumenLibres.Size = new Size(322, 92);
             panelResumenLibres.TabIndex = 1;
             // 
             // labelLibresValue
@@ -331,10 +310,10 @@ namespace SmartPark.UI.Espacios
             panelResumenOcupados.Controls.Add(labelOcupadosValue);
             panelResumenOcupados.Controls.Add(labelOcupadosTitle);
             panelResumenOcupados.Dock = DockStyle.Fill;
-            panelResumenOcupados.Location = new Point(527, 3);
+            panelResumenOcupados.Location = new Point(659, 3);
             panelResumenOcupados.Name = "panelResumenOcupados";
             panelResumenOcupados.Padding = new Padding(10);
-            panelResumenOcupados.Size = new Size(256, 92);
+            panelResumenOcupados.Size = new Size(322, 92);
             panelResumenOcupados.TabIndex = 2;
             // 
             // labelOcupadosValue
@@ -364,10 +343,10 @@ namespace SmartPark.UI.Espacios
             panelResumenReservados.Controls.Add(labelReservadosValue);
             panelResumenReservados.Controls.Add(labelReservadosTitle);
             panelResumenReservados.Dock = DockStyle.Fill;
-            panelResumenReservados.Location = new Point(789, 3);
+            panelResumenReservados.Location = new Point(987, 3);
             panelResumenReservados.Name = "panelResumenReservados";
             panelResumenReservados.Padding = new Padding(10);
-            panelResumenReservados.Size = new Size(256, 92);
+            panelResumenReservados.Size = new Size(322, 92);
             panelResumenReservados.TabIndex = 3;
             // 
             // labelReservadosValue
@@ -389,39 +368,6 @@ namespace SmartPark.UI.Espacios
             labelReservadosTitle.Size = new Size(84, 20);
             labelReservadosTitle.TabIndex = 0;
             labelReservadosTitle.Text = "Reservados";
-            // 
-            // panelResumenMantenimiento
-            // 
-            panelResumenMantenimiento.BackColor = Color.White;
-            panelResumenMantenimiento.BorderStyle = BorderStyle.FixedSingle;
-            panelResumenMantenimiento.Controls.Add(labelMantenimientoValue);
-            panelResumenMantenimiento.Controls.Add(labelMantenimientoTitle);
-            panelResumenMantenimiento.Dock = DockStyle.Fill;
-            panelResumenMantenimiento.Location = new Point(1051, 3);
-            panelResumenMantenimiento.Name = "panelResumenMantenimiento";
-            panelResumenMantenimiento.Padding = new Padding(10);
-            panelResumenMantenimiento.Size = new Size(258, 92);
-            panelResumenMantenimiento.TabIndex = 4;
-            // 
-            // labelMantenimientoValue
-            // 
-            labelMantenimientoValue.AutoSize = true;
-            labelMantenimientoValue.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            labelMantenimientoValue.ForeColor = Color.FromArgb(109, 109, 109);
-            labelMantenimientoValue.Location = new Point(12, 36);
-            labelMantenimientoValue.Name = "labelMantenimientoValue";
-            labelMantenimientoValue.Size = new Size(35, 41);
-            labelMantenimientoValue.TabIndex = 1;
-            labelMantenimientoValue.Text = "0";
-            // 
-            // labelMantenimientoTitle
-            // 
-            labelMantenimientoTitle.AutoSize = true;
-            labelMantenimientoTitle.Location = new Point(12, 12);
-            labelMantenimientoTitle.Name = "labelMantenimientoTitle";
-            labelMantenimientoTitle.Size = new Size(110, 20);
-            labelMantenimientoTitle.TabIndex = 0;
-            labelMantenimientoTitle.Text = "Mantenimiento";
             // 
             // statusStripMain
             // 
@@ -465,6 +411,7 @@ namespace SmartPark.UI.Espacios
             Name = "EspaciosList";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SmartPark - Espacios";
+            Load += EspaciosList_Load;
             panelMain.ResumeLayout(false);
             groupBoxListaEspacios.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewEspacios).EndInit();
@@ -479,8 +426,6 @@ namespace SmartPark.UI.Espacios
             panelResumenOcupados.PerformLayout();
             panelResumenReservados.ResumeLayout(false);
             panelResumenReservados.PerformLayout();
-            panelResumenMantenimiento.ResumeLayout(false);
-            panelResumenMantenimiento.PerformLayout();
             statusStripMain.ResumeLayout(false);
             statusStripMain.PerformLayout();
             ResumeLayout(false);
@@ -511,14 +456,10 @@ namespace SmartPark.UI.Espacios
         private Panel panelResumenReservados;
         private Label labelReservadosValue;
         private Label labelReservadosTitle;
-        private Panel panelResumenMantenimiento;
-        private Label labelMantenimientoValue;
-        private Label labelMantenimientoTitle;
         private Panel panelToolbar;
         private Button buttonNuevoEspacio;
         private Button buttonEditar;
         private Button buttonEliminar;
-        private Button buttonActualizar;
         private StatusStrip statusStripMain;
         private ToolStripStatusLabel toolStripStatusUsuario;
         private ToolStripStatusLabel toolStripStatusSep;
