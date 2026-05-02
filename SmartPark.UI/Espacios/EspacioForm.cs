@@ -22,15 +22,11 @@ namespace SmartPark.UI.Espacios
         public async Task Buscar(long? id)
         {
             if (id is null)
-            {
                 return;
-            }
 
             var espacio = await _service.Buscar(id.Value);
             if (espacio is null)
-            {
                 return;
-            }
 
             _entidad = espacio;
             textBoxCodigo.Text = espacio.CodigoEspacio;
