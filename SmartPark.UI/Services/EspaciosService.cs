@@ -35,6 +35,7 @@ namespace SmartPark.UI.Services
             }
             else
             {
+                _context.ChangeTracker.Clear();
                 _context.Espacios.Update(entidad);
             }
 

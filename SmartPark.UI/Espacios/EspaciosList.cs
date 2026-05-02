@@ -1,4 +1,5 @@
 using System.Linq;
+using Microsoft.Extensions.DependencyInjection;
 using SmartPark.UI.Services;
 
 namespace SmartPark.UI.Espacios
@@ -53,8 +54,7 @@ namespace SmartPark.UI.Espacios
             if (!long.TryParse(Convert.ToString(dataGridViewEspacios.CurrentRow.Cells[0].Value), out var id))
                 return;
 
-            using var servicio = new EspaciosService();
-            using var espacioForm = new EspacioForm(servicio);
+            var espacioForm = Program.ServiceProvider.GetRequiredService<EspacioForm>();
             await espacioForm.Buscar(id);
 
             if (espacioForm.ShowDialog() == DialogResult.OK)
@@ -63,8 +63,7 @@ namespace SmartPark.UI.Espacios
 
         private async void buttonNuevoEspacio_Click(object sender, EventArgs e)
         {
-            using var servicio = new EspaciosService();
-            using var espacioForm = new EspacioForm(servicio);
+            var espacioForm = Program.ServiceProvider.GetRequiredService<EspacioForm>();
 
             if (espacioForm.ShowDialog() == DialogResult.OK)
                 await CargarAsync();

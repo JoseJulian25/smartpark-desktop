@@ -14,7 +14,6 @@ namespace SmartPark.UI.Espacios
             InitializeComponent();
             _service = service;
 
-            buttonGuardar.Click += buttonGuardar_Click;
             buttonCancelar.Click += btnCancel_Click;
             comboBoxTipo.SelectedIndex = 0;
         }
