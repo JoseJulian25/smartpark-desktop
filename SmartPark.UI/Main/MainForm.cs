@@ -2,6 +2,7 @@ using SmartPark.UI.Espacios;
 using SmartPark.UI.Configuracion;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
+using SmartPark.UI.EntradasSalidas;
 
 namespace SmartPark.UI.Main
 {
@@ -23,6 +24,12 @@ namespace SmartPark.UI.Main
         {
             var configuracionForm = Program.ServiceProvider.GetRequiredService<ConfiguracionForm>();
             configuracionForm.ShowDialog();
+        }
+
+        private void buttonEntradasSalidas_Click(object sender, EventArgs e)
+        {
+            var entradasSalidasForm = Program.ServiceProvider.GetRequiredService<EntradasSalidasForm>();
+            entradasSalidasForm.ShowDialog();
         }
     }
 }

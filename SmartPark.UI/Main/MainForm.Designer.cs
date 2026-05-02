@@ -245,6 +245,7 @@ namespace SmartPark.UI.Main
             buttonEntradasSalidas.Text = "Entradas y Salidas";
             buttonEntradasSalidas.TextAlign = ContentAlignment.MiddleLeft;
             buttonEntradasSalidas.UseVisualStyleBackColor = false;
+            buttonEntradasSalidas.Click += buttonEntradasSalidas_Click;
             // 
             // buttonInicio
             // 

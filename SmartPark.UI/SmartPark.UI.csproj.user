@@ -7,6 +7,12 @@
     <Compile Update="Configuracion\TarifaForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="EntradasSalidas\CobrarSalidaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EntradasSalidas\EntradasSalidasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Espacios\EspacioForm.cs">
       <SubType>Form</SubType>
     </Compile>

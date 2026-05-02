@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SmartPark.Data;
 using SmartPark.UI.Espacios;
 using SmartPark.UI.Configuracion;
+using SmartPark.UI.EntradasSalidas;
 using SmartPark.UI.Main;
 
 namespace SmartPark.UI;
@@ -46,5 +47,7 @@ static class Program
         services.AddTransient<TarifaForm>();
         services.AddTransient<Services.EmpresaService>();
         services.AddTransient<Services.TarifaService>();
+        services.AddTransient<EntradasSalidasForm>();
+        services.AddTransient<CobrarSalidaForm>();
     }
 }
