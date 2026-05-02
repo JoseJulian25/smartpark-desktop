@@ -7,10 +7,10 @@ namespace SmartPark.UI.Espacios
     {
         private readonly EspaciosService _service;
 
-        public EspaciosList()
+        public EspaciosList(EspaciosService service)
         {
             InitializeComponent();
-            _service = new EspaciosService();
+            _service = service;
         }
 
         private async void EspaciosList_Load(object sender, EventArgs e)
@@ -20,7 +20,7 @@ namespace SmartPark.UI.Espacios
 
         private void EspaciosList_FormClosed(object? sender, FormClosedEventArgs e)
         {
-            _service.Dispose();
+            // No dispose here - service is managed by DI container
         }
 
         private async Task CargarAsync()
