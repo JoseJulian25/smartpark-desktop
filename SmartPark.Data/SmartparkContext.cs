@@ -317,7 +317,6 @@ public partial class SmartparkContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("placa");
-            entity.Property(e => e.TipoVehiculoId).HasColumnName("tipo_vehiculo_id");
 
             entity.HasOne(d => d.CreadoPorNavigation).WithMany(p => p.Tickets)
                 .HasForeignKey(d => d.CreadoPor)
@@ -332,11 +331,6 @@ public partial class SmartparkContext : DbContext
                 .HasForeignKey(d => d.EstadoId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_tickets_estado");
-
-            entity.HasOne(d => d.TipoVehiculo).WithMany(p => p.Tickets)
-                .HasForeignKey(d => d.TipoVehiculoId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_tickets_tipo");
         });
 
         modelBuilder.Entity<TiposVehiculo>(entity =>

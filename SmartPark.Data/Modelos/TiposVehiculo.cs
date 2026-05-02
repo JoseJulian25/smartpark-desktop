@@ -15,5 +15,4 @@ public partial class TiposVehiculo
 
     public virtual Tarifa? Tarifa { get; set; }
 
-    public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
 }

@@ -25,8 +25,6 @@ public partial class Ticket
 
     public int EstadoId { get; set; }
 
-    public int TipoVehiculoId { get; set; }
-
     public virtual Usuario? CreadoPorNavigation { get; set; }
 
     public virtual Espacio Espacio { get; set; } = null!;
@@ -34,6 +32,4 @@ public partial class Ticket
     public virtual EstadosTicket Estado { get; set; } = null!;
 
     public virtual Pago? Pago { get; set; }
-
-    public virtual TiposVehiculo TipoVehiculo { get; set; } = null!;
 }
