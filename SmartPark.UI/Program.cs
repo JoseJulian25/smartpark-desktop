@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SmartPark.Data;
 using SmartPark.UI.Espacios;
+using SmartPark.UI.Configuracion;
 using SmartPark.UI.Main;
 
 namespace SmartPark.UI;
@@ -41,5 +42,9 @@ static class Program
         services.AddTransient<EspaciosList>();
         services.AddTransient<EspacioForm>();
         services.AddTransient<Services.EspaciosService>();
+        services.AddTransient<ConfiguracionForm>();
+        services.AddTransient<TarifaForm>();
+        services.AddTransient<Services.EmpresaService>();
+        services.AddTransient<Services.TarifaService>();
     }
 }

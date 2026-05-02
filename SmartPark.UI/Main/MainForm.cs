@@ -1,4 +1,7 @@
 using SmartPark.UI.Espacios;
+using SmartPark.UI.Configuracion;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace SmartPark.UI.Main
 {
@@ -7,12 +10,19 @@ namespace SmartPark.UI.Main
         public MainForm()
         {
             InitializeComponent();
+            buttonConfiguracion.Click += buttonConfiguracion_Click;
         }
 
         private void buttonEspacios_Click(object sender, EventArgs e)
         {
-            EspaciosList espaciosList = new EspaciosList();
+            var espaciosList = Program.ServiceProvider.GetRequiredService<EspaciosList>();
             espaciosList.ShowDialog();
+        }
+
+        private void buttonConfiguracion_Click(object? sender, EventArgs e)
+        {
+            var configuracionForm = Program.ServiceProvider.GetRequiredService<ConfiguracionForm>();
+            configuracionForm.ShowDialog();
         }
     }
 }
