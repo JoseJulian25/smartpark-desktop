@@ -21,8 +21,9 @@ namespace SmartPark.Tests.Services
             context.Espacios.Add(espacio);
             await context.SaveChangesAsync();
 
-            var ticket = CreateTicket(espacio.Id, 1);
-            context.Tickets.Add(ticket);
+            var ticket1 = CreateTicket(espacio.Id, 1);
+            var ticket2 = CreateTicket(espacio.Id, 1);
+            context.Tickets.AddRange(ticket1, ticket2);
             await context.SaveChangesAsync();
 
             var service = new PagoService(context);
@@ -32,8 +33,8 @@ namespace SmartPark.Tests.Services
                 MetodoPago = "Efectivo",
                 Monto = 100m,
                 MontoRecibido = 100m,
-                TicketId = ticket.Id,
-                Ticket = ticket
+                TicketId = ticket1.Id,
+                Ticket = ticket1
             };
 
             var resultado = await service.Guardar(pago);
@@ -53,8 +54,9 @@ namespace SmartPark.Tests.Services
             context.Espacios.Add(espacio);
             await context.SaveChangesAsync();
 
-            var ticket = CreateTicket(espacio.Id, 1);
-            context.Tickets.Add(ticket);
+            var ticket1 = CreateTicket(espacio.Id, 1);
+            var ticket2 = CreateTicket(espacio.Id, 1);
+            context.Tickets.AddRange(ticket1, ticket2);
             await context.SaveChangesAsync();
 
             var pago = new Pago
@@ -64,8 +66,8 @@ namespace SmartPark.Tests.Services
                 MetodoPago = "Tarjeta",
                 Monto = 150m,
                 MontoRecibido = 200m,
-                TicketId = ticket.Id,
-                Ticket = ticket
+                TicketId = ticket1.Id,
+                Ticket = ticket1
             };
 
             context.Pagos.Add(pago);
@@ -89,8 +91,9 @@ namespace SmartPark.Tests.Services
             context.Espacios.Add(espacio);
             await context.SaveChangesAsync();
 
-            var ticket = CreateTicket(espacio.Id, 1);
-            context.Tickets.Add(ticket);
+            var ticket1 = CreateTicket(espacio.Id, 1);
+            var ticket2 = CreateTicket(espacio.Id, 1);
+            context.Tickets.AddRange(ticket1, ticket2);
             await context.SaveChangesAsync();
 
             var pago = new Pago
@@ -100,8 +103,8 @@ namespace SmartPark.Tests.Services
                 MetodoPago = "Efectivo",
                 Monto = 80m,
                 MontoRecibido = 100m,
-                TicketId = ticket.Id,
-                Ticket = ticket
+                TicketId = ticket1.Id,
+                Ticket = ticket1
             };
 
             context.Pagos.Add(pago);
@@ -125,8 +128,9 @@ namespace SmartPark.Tests.Services
             context.Espacios.Add(espacio);
             await context.SaveChangesAsync();
 
-            var ticket = CreateTicket(espacio.Id, 1);
-            context.Tickets.Add(ticket);
+            var ticket1 = CreateTicket(espacio.Id, 1);
+            var ticket2 = CreateTicket(espacio.Id, 1);
+            context.Tickets.AddRange(ticket1, ticket2);
             await context.SaveChangesAsync();
 
             context.Pagos.AddRange(
@@ -137,8 +141,8 @@ namespace SmartPark.Tests.Services
                     MetodoPago = "Efectivo",
                     Monto = 100m,
                     MontoRecibido = 100m,
-                    TicketId = ticket.Id,
-                    Ticket = ticket
+                    TicketId = ticket1.Id,
+                    Ticket = ticket1
                 },
                 new Pago
                 {
@@ -147,8 +151,8 @@ namespace SmartPark.Tests.Services
                     MetodoPago = "Tarjeta",
                     Monto = 200m,
                     MontoRecibido = 200m,
-                    TicketId = ticket.Id,
-                    Ticket = ticket
+                    TicketId = ticket2.Id,
+                    Ticket = ticket2
                 });
 
             await context.SaveChangesAsync();

@@ -4,7 +4,7 @@ using SmartPark.Data.Modelos;
 using SmartPark.Tests.Infrastructure;
 using SmartPark.UI.Services;
 
-namespace SmartPark.Tests
+namespace SmartPark.Tests.Services
 {
     public class EmpresaServiceTest
     {
@@ -50,7 +50,7 @@ namespace SmartPark.Tests
             await context.SaveChangesAsync();
 
             var service = new EmpresaService(context);
-            var encontrada = await service.Buscar(1);
+            var encontrada = await service.Buscar(1L);
 
             Assert.NotNull(encontrada);
             Assert.Equal("Demo2", encontrada!.Nombre);
@@ -76,7 +76,7 @@ namespace SmartPark.Tests
             await context.SaveChangesAsync();
 
             var service = new EmpresaService(context);
-            var resultado = await service.Eliminar(1);
+            var resultado = await service.Eliminar(1L);
 
             Assert.True(resultado);
             Assert.Equal(0, await context.Empresas.CountAsync());

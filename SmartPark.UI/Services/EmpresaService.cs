@@ -8,7 +8,7 @@ using SmartPark.Data.Modelos;
 
 namespace SmartPark.UI.Services
 {
-    public class EmpresaService : IService<Empresa, int>, IDisposable
+    public class EmpresaService : IService<Empresa, long>, IDisposable
     {
         private readonly SmartparkContext _context;
         private readonly bool _ownsContext;
@@ -37,12 +37,12 @@ namespace SmartPark.UI.Services
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<Empresa?> Buscar(int id)
+        public async Task<Empresa?> Buscar(long id)
         {
             return await _context.Empresas.AsNoTracking().FirstOrDefaultAsync(e => e.Id == id);
         }
 
-        public async Task<bool> Eliminar(int id)
+        public async Task<bool> Eliminar(long id)
         {
             var entidad = await _context.Empresas.FindAsync(id);
             if (entidad == null) return false;

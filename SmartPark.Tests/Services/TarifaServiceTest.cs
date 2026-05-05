@@ -14,7 +14,7 @@ namespace SmartPark.Tests.Services
         {
             var databaseName = TestDBContextFactory.NewDatabaseName();
             await using var context = TestDBContextFactory.CreateContext(databaseName);
-            await SeedTipoVehiculo(context);
+            var tipoVehiculo = await SeedTipoVehiculo(context);
 
             var service = new TarifaService(context);
             var tarifa = new Tarifa
@@ -23,7 +23,8 @@ namespace SmartPark.Tests.Services
                 MinutosMinimo = 60,
                 MinutosTolerancia = 10,
                 PrecioPorFraccion = 50m,
-                TipoVehiculoId = 1
+                TipoVehiculoId = 1,
+                TipoVehiculo = tipoVehiculo
             };
 
             var resultado = await service.Guardar(tarifa);
@@ -37,7 +38,7 @@ namespace SmartPark.Tests.Services
         {
             var databaseName = TestDBContextFactory.NewDatabaseName();
             await using var context = TestDBContextFactory.CreateContext(databaseName);
-            await SeedTipoVehiculo(context);
+            var tipoVehiculo = await SeedTipoVehiculo(context);
 
             var tarifa = new Tarifa
             {
@@ -46,7 +47,8 @@ namespace SmartPark.Tests.Services
                 MinutosMinimo = 30,
                 MinutosTolerancia = 5,
                 PrecioPorFraccion = 25m,
-                TipoVehiculoId = 1
+                TipoVehiculoId = 1,
+                TipoVehiculo = tipoVehiculo
             };
 
             context.Tarifas.Add(tarifa);
@@ -64,7 +66,7 @@ namespace SmartPark.Tests.Services
         {
             var databaseName = TestDBContextFactory.NewDatabaseName();
             await using var context = TestDBContextFactory.CreateContext(databaseName);
-            await SeedTipoVehiculo(context);
+            var tipoVehiculo = await SeedTipoVehiculo(context);
 
             var tarifa = new Tarifa
             {
@@ -73,7 +75,8 @@ namespace SmartPark.Tests.Services
                 MinutosMinimo = 40,
                 MinutosTolerancia = 5,
                 PrecioPorFraccion = 35m,
-                TipoVehiculoId = 1
+                TipoVehiculoId = 1,
+                TipoVehiculo = tipoVehiculo
             };
 
             context.Tarifas.Add(tarifa);
@@ -91,7 +94,8 @@ namespace SmartPark.Tests.Services
         {
             var databaseName = TestDBContextFactory.NewDatabaseName();
             await using var context = TestDBContextFactory.CreateContext(databaseName);
-            await SeedTipoVehiculo(context);
+            var tipoVehiculo1 = await SeedTipoVehiculo(context, 1, "Carro");
+            var tipoVehiculo2 = await SeedTipoVehiculo(context, 2, "Moto");
 
             context.Tarifas.AddRange(
                 new Tarifa
@@ -101,7 +105,8 @@ namespace SmartPark.Tests.Services
                     MinutosMinimo = 60,
                     MinutosTolerancia = 10,
                     PrecioPorFraccion = 50m,
-                    TipoVehiculoId = 1
+                    TipoVehiculoId = 1,
+                    TipoVehiculo = tipoVehiculo1
                 },
                 new Tarifa
                 {
@@ -110,7 +115,8 @@ namespace SmartPark.Tests.Services
                     MinutosMinimo = 20,
                     MinutosTolerancia = 5,
                     PrecioPorFraccion = 15m,
-                    TipoVehiculoId = 1
+                    TipoVehiculoId = 2,
+                    TipoVehiculo = tipoVehiculo2
                 });
 
             await context.SaveChangesAsync();
@@ -136,15 +142,22 @@ namespace SmartPark.Tests.Services
             Assert.Equal("Carro", resultados[0].Nombre);
         }
 
-        private static async Task SeedTipoVehiculo(SmartparkContext context)
+        private static async Task<TiposVehiculo> SeedTipoVehiculo(
+            SmartparkContext context,
+            int id = 1,
+            string nombre = "Carro")
         {
-            context.TiposVehiculos.Add(new TiposVehiculo
+            var tipoVehiculo = new TiposVehiculo
             {
-                Id = 1,
-                Nombre = "Carro"
-            });
+                Id = id,
+                Nombre = nombre
+            };
+
+            context.TiposVehiculos.Add(tipoVehiculo);
 
             await context.SaveChangesAsync();
+
+            return tipoVehiculo;
         }
     }
 }
