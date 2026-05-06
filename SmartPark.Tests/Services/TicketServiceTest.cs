@@ -125,6 +125,124 @@ namespace SmartPark.Tests.Services
             Assert.Equal(1, ticket.EstadoId);
         }
 
+        [Fact]
+        public async Task Guardar_CuandoEntidadEsNull_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new TicketService(context);
+
+            var resultado = await service.Guardar(null!);
+
+            Assert.False(resultado);
+        }
+
+        [Fact]
+        public async Task Guardar_CuandoExiste_RetornaTrue()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            await SeedBaseEntities(context);
+
+            var espacio = CreateEspacio(1);
+            context.Espacios.Add(espacio);
+            await context.SaveChangesAsync();
+
+            var ticket = CreateTicket(espacio.Id, 1);
+            context.Tickets.Add(ticket);
+            await context.SaveChangesAsync();
+
+            var service = new TicketService(context);
+            
+            ticket.Placa = "MODIFICADO";
+            var resultado = await service.Guardar(ticket);
+
+            Assert.True(resultado);
+            var modificado = await context.Tickets.AsNoTracking().FirstOrDefaultAsync(t => t.Id == ticket.Id);
+            Assert.Equal("MODIFICADO", modificado!.Placa);
+        }
+
+        [Fact]
+        public async Task Buscar_CuandoNoExiste_RetornaNull()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new TicketService(context);
+
+            var encontrado = await service.Buscar(999L);
+
+            Assert.Null(encontrado);
+        }
+
+        [Fact]
+        public async Task Eliminar_CuandoNoExiste_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new TicketService(context);
+
+            var resultado = await service.Eliminar(999L);
+
+            Assert.False(resultado);
+        }
+
+        [Fact]
+        public async Task RegistrarEntrada_CuandoTicketEsNull_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new TicketService(context);
+
+            var resultado = await service.RegistrarEntrada(null!, 1);
+
+            Assert.False(resultado);
+        }
+
+        [Fact]
+        public async Task RegistrarEntrada_CuandoEspacioIdInvalido_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new TicketService(context);
+
+            var ticket = new Ticket { Placa = "A0001" };
+            var resultado = await service.RegistrarEntrada(ticket, 0);
+
+            Assert.False(resultado);
+        }
+
+        [Fact]
+        public async Task RegistrarEntrada_CuandoEspacioNoExiste_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new TicketService(context);
+
+            var ticket = new Ticket { Placa = "A0001" };
+            var resultado = await service.RegistrarEntrada(ticket, 999L);
+
+            Assert.False(resultado);
+        }
+
+        [Fact]
+        public async Task RegistrarEntrada_CuandoEspacioNoEstaDisponible_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            await SeedBaseEntities(context);
+
+            var espacio = CreateEspacio(2); // Estado 2 es ocupado
+            context.Espacios.Add(espacio);
+            await context.SaveChangesAsync();
+
+            var service = new TicketService(context);
+
+            var ticket = new Ticket { Placa = "A0001" };
+            var resultado = await service.RegistrarEntrada(ticket, espacio.Id);
+
+            Assert.False(resultado);
+        }
+
         private static async Task SeedBaseEntities(SmartparkContext context)
         {
             context.EstadosEspacios.AddRange(

@@ -201,6 +201,141 @@ namespace SmartPark.Tests.Services
             Assert.Equal(ticket.Id, pago.TicketId);
         }
 
+        [Fact]
+        public async Task Guardar_CuandoEntidadEsNull_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new PagoService(context);
+
+            var resultado = await service.Guardar(null!);
+
+            Assert.False(resultado);
+        }
+
+        [Fact]
+        public async Task Guardar_CuandoExiste_RetornaTrue()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            await SeedBaseEntities(context);
+
+            var espacio = CreateEspacio(2);
+            context.Espacios.Add(espacio);
+            await context.SaveChangesAsync();
+
+            var ticket = CreateTicket(espacio.Id, 1);
+            context.Tickets.Add(ticket);
+            await context.SaveChangesAsync();
+
+            var pago = new Pago
+            {
+                HoraPago = DateTime.UtcNow,
+                MetodoPago = "Efectivo",
+                Monto = 100m,
+                MontoRecibido = 100m,
+                TicketId = ticket.Id
+            };
+            context.Pagos.Add(pago);
+            await context.SaveChangesAsync();
+
+            var service = new PagoService(context);
+            
+            pago.MetodoPago = "Tarjeta";
+            var resultado = await service.Guardar(pago);
+
+            Assert.True(resultado);
+            var modificado = await context.Pagos.AsNoTracking().FirstOrDefaultAsync(p => p.Id == pago.Id);
+            Assert.Equal("Tarjeta", modificado!.MetodoPago);
+        }
+
+        [Fact]
+        public async Task Buscar_CuandoNoExiste_RetornaNull()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new PagoService(context);
+
+            var encontrado = await service.Buscar(999L);
+
+            Assert.Null(encontrado);
+        }
+
+        [Fact]
+        public async Task Eliminar_CuandoNoExiste_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new PagoService(context);
+
+            var resultado = await service.Eliminar(999L);
+
+            Assert.False(resultado);
+        }
+
+        [Fact]
+        public async Task RegistrarCobro_CuandoPagoEsNull_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new PagoService(context);
+
+            var resultado = await service.RegistrarCobro(null!, 1);
+
+            Assert.False(resultado);
+        }
+
+        [Fact]
+        public async Task RegistrarCobro_CuandoTicketIdInvalido_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new PagoService(context);
+
+            var pago = new Pago { MetodoPago = "Efectivo", Monto = 100m, MontoRecibido = 100m };
+            var resultado = await service.RegistrarCobro(pago, 0);
+
+            Assert.False(resultado);
+        }
+
+        [Fact]
+        public async Task RegistrarCobro_CuandoTicketNoExiste_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new PagoService(context);
+
+            var pago = new Pago { MetodoPago = "Efectivo", Monto = 100m, MontoRecibido = 100m };
+            var resultado = await service.RegistrarCobro(pago, 999L);
+
+            Assert.False(resultado);
+        }
+
+        [Fact]
+        public async Task RegistrarCobro_CuandoTicketNoTieneEspacio_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            
+            var ticket = new Ticket
+            {
+                CodigoTicket = "T-123",
+                FechaCreacion = DateTime.UtcNow,
+                HoraEntrada = DateTime.UtcNow,
+                Placa = "B0002",
+                EstadoId = 1
+            };
+            context.Tickets.Add(ticket);
+            await context.SaveChangesAsync();
+
+            var service = new PagoService(context);
+
+            var pago = new Pago { MetodoPago = "Efectivo", Monto = 100m, MontoRecibido = 100m };
+            var resultado = await service.RegistrarCobro(pago, ticket.Id);
+
+            Assert.False(resultado);
+        }
+
         private static async Task SeedBaseEntities(SmartparkContext context)
         {
             context.EstadosEspacios.AddRange(

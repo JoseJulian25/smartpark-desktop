@@ -142,6 +142,71 @@ namespace SmartPark.Tests.Services
             Assert.Equal("Carro", resultados[0].Nombre);
         }
 
+        [Fact]
+        public async Task Guardar_CuandoEntidadEsNull_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new TarifaService(context);
+
+            var resultado = await service.Guardar(null!);
+
+            Assert.False(resultado);
+        }
+
+        [Fact]
+        public async Task Guardar_CuandoExiste_RetornaTrue()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var tipoVehiculo = await SeedTipoVehiculo(context);
+
+            var tarifa = new Tarifa
+            {
+                MinutosFraccion = 30,
+                MinutosMinimo = 60,
+                MinutosTolerancia = 10,
+                PrecioPorFraccion = 50m,
+                TipoVehiculoId = 1,
+                TipoVehiculo = tipoVehiculo
+            };
+            context.Tarifas.Add(tarifa);
+            await context.SaveChangesAsync();
+
+            var service = new TarifaService(context);
+            
+            tarifa.PrecioPorFraccion = 100m;
+            var resultado = await service.Guardar(tarifa);
+
+            Assert.True(resultado);
+            var modificada = await context.Tarifas.AsNoTracking().FirstOrDefaultAsync(t => t.Id == tarifa.Id);
+            Assert.Equal(100m, modificada!.PrecioPorFraccion);
+        }
+
+        [Fact]
+        public async Task Buscar_CuandoNoExiste_RetornaNull()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new TarifaService(context);
+
+            var encontrada = await service.Buscar(999L);
+
+            Assert.Null(encontrada);
+        }
+
+        [Fact]
+        public async Task Eliminar_CuandoNoExiste_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new TarifaService(context);
+
+            var resultado = await service.Eliminar(999L);
+
+            Assert.False(resultado);
+        }
+
         private static async Task<TiposVehiculo> SeedTipoVehiculo(
             SmartparkContext context,
             int id = 1,

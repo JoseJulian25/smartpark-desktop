@@ -119,6 +119,70 @@ namespace SmartPark.Tests.Services
             Assert.Equal("E-004", resultados[0].CodigoEspacio);
         }
 
+        [Fact]
+        public async Task Guardar_CuandoEntidadEsNull_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new EspaciosService(context);
+
+            var resultado = await service.Guardar(null!);
+
+            Assert.False(resultado);
+        }
+
+        [Fact]
+        public async Task Guardar_CuandoExiste_RetornaTrue()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            await SeedBaseEntities(context);
+
+            var espacio = new Espacio
+            {
+                Activo = true,
+                CodigoEspacio = "E-EXISTE",
+                EstadoId = 1,
+                TipoVehiculoId = 1,
+                FechaCreacion = DateTime.UtcNow
+            };
+            context.Espacios.Add(espacio);
+            await context.SaveChangesAsync();
+
+            var service = new EspaciosService(context);
+            
+            espacio.CodigoEspacio = "E-MODIFICADO";
+            var resultado = await service.Guardar(espacio);
+
+            Assert.True(resultado);
+            var modificado = await context.Espacios.AsNoTracking().FirstOrDefaultAsync(e => e.Id == espacio.Id);
+            Assert.Equal("E-MODIFICADO", modificado!.CodigoEspacio);
+        }
+
+        [Fact]
+        public async Task Buscar_CuandoNoExiste_RetornaNull()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new EspaciosService(context);
+
+            var encontrado = await service.Buscar(999L);
+
+            Assert.Null(encontrado);
+        }
+
+        [Fact]
+        public async Task Eliminar_CuandoNoExiste_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new EspaciosService(context);
+
+            var resultado = await service.Eliminar(999L);
+
+            Assert.False(resultado);
+        }
+
         private static async Task SeedBaseEntities(SmartparkContext context)
         {
             context.EstadosEspacios.Add(new EstadosEspacio

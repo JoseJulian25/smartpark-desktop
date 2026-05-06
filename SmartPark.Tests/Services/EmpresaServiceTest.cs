@@ -116,5 +116,68 @@ namespace SmartPark.Tests.Services
             Assert.Single(resultados);
             Assert.Equal("RNC-004", resultados[0].Rnc);
         }
+
+        [Fact]
+        public async Task Guardar_CuandoEntidadEsNull_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new EmpresaService(context);
+
+            var resultado = await service.Guardar(null!);
+
+            Assert.False(resultado);
+        }
+
+        [Fact]
+        public async Task Guardar_CuandoExiste_RetornaTrue()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+
+            var empresa = new Empresa
+            {
+                Direccion = "Av 1",
+                Email = "info@demo.com",
+                Nombre = "Demo",
+                Rnc = "RNC-001",
+                Telefono = "8090000000"
+            };
+            context.Empresas.Add(empresa);
+            await context.SaveChangesAsync();
+
+            var service = new EmpresaService(context);
+            
+            empresa.Nombre = "Demo Actualizado";
+            var resultado = await service.Guardar(empresa);
+
+            Assert.True(resultado);
+            var modificada = await context.Empresas.AsNoTracking().FirstOrDefaultAsync(e => e.Id == empresa.Id);
+            Assert.Equal("Demo Actualizado", modificada!.Nombre);
+        }
+
+        [Fact]
+        public async Task Buscar_CuandoNoExiste_RetornaNull()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new EmpresaService(context);
+
+            var encontrada = await service.Buscar(999L);
+
+            Assert.Null(encontrada);
+        }
+
+        [Fact]
+        public async Task Eliminar_CuandoNoExiste_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            var service = new EmpresaService(context);
+
+            var resultado = await service.Eliminar(999L);
+
+            Assert.False(resultado);
+        }
     }
 }
