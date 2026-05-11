@@ -95,10 +95,10 @@ namespace SmartPark.UI.Configuracion
             // 
             tabPageEmpresa.BackColor = Color.FromArgb(244, 247, 252);
             tabPageEmpresa.Controls.Add(panelEmpresa);
-            tabPageEmpresa.Location = new Point(4, 29);
+            tabPageEmpresa.Location = new Point(4, 24);
             tabPageEmpresa.Name = "tabPageEmpresa";
             tabPageEmpresa.Padding = new Padding(3);
-            tabPageEmpresa.Size = new Size(1080, 657);
+            tabPageEmpresa.Size = new Size(1080, 662);
             tabPageEmpresa.TabIndex = 0;
             tabPageEmpresa.Text = "Empresa";
             // 
@@ -109,7 +109,7 @@ namespace SmartPark.UI.Configuracion
             panelEmpresa.Location = new Point(3, 3);
             panelEmpresa.Name = "panelEmpresa";
             panelEmpresa.Padding = new Padding(0, 12, 0, 12);
-            panelEmpresa.Size = new Size(1074, 651);
+            panelEmpresa.Size = new Size(1074, 656);
             panelEmpresa.TabIndex = 0;
             // 
             // groupBoxEmpresa
@@ -141,7 +141,7 @@ namespace SmartPark.UI.Configuracion
             tableLayoutPanelEmpresa.Controls.Add(labelEmail, 0, 4);
             tableLayoutPanelEmpresa.Controls.Add(textBoxEmail, 1, 4);
             tableLayoutPanelEmpresa.Dock = DockStyle.Fill;
-            tableLayoutPanelEmpresa.Location = new Point(12, 32);
+            tableLayoutPanelEmpresa.Location = new Point(12, 28);
             tableLayoutPanelEmpresa.Name = "tableLayoutPanelEmpresa";
             tableLayoutPanelEmpresa.RowCount = 5;
             tableLayoutPanelEmpresa.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
@@ -149,16 +149,16 @@ namespace SmartPark.UI.Configuracion
             tableLayoutPanelEmpresa.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
             tableLayoutPanelEmpresa.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
             tableLayoutPanelEmpresa.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            tableLayoutPanelEmpresa.Size = new Size(1050, 165);
+            tableLayoutPanelEmpresa.Size = new Size(1050, 169);
             tableLayoutPanelEmpresa.TabIndex = 0;
             // 
             // labelNombreEmpresa
             // 
             labelNombreEmpresa.Anchor = AnchorStyles.Left;
             labelNombreEmpresa.AutoSize = true;
-            labelNombreEmpresa.Location = new Point(3, 6);
+            labelNombreEmpresa.Location = new Point(3, 9);
             labelNombreEmpresa.Name = "labelNombreEmpresa";
-            labelNombreEmpresa.Size = new Size(128, 20);
+            labelNombreEmpresa.Size = new Size(102, 15);
             labelNombreEmpresa.TabIndex = 0;
             labelNombreEmpresa.Text = "Nombre empresa:";
             // 
@@ -167,16 +167,16 @@ namespace SmartPark.UI.Configuracion
             textBoxNombreEmpresa.Dock = DockStyle.Fill;
             textBoxNombreEmpresa.Location = new Point(173, 3);
             textBoxNombreEmpresa.Name = "textBoxNombreEmpresa";
-            textBoxNombreEmpresa.Size = new Size(874, 27);
+            textBoxNombreEmpresa.Size = new Size(874, 23);
             textBoxNombreEmpresa.TabIndex = 1;
             // 
             // labelRnc
             // 
             labelRnc.Anchor = AnchorStyles.Left;
             labelRnc.AutoSize = true;
-            labelRnc.Location = new Point(3, 39);
+            labelRnc.Location = new Point(3, 42);
             labelRnc.Name = "labelRnc";
-            labelRnc.Size = new Size(93, 20);
+            labelRnc.Size = new Size(74, 15);
             labelRnc.TabIndex = 2;
             labelRnc.Text = "RNC / Fiscal:";
             // 
@@ -185,16 +185,16 @@ namespace SmartPark.UI.Configuracion
             textBoxRnc.Dock = DockStyle.Left;
             textBoxRnc.Location = new Point(173, 36);
             textBoxRnc.Name = "textBoxRnc";
-            textBoxRnc.Size = new Size(220, 27);
+            textBoxRnc.Size = new Size(220, 23);
             textBoxRnc.TabIndex = 3;
             // 
             // labelDireccion
             // 
             labelDireccion.Anchor = AnchorStyles.Left;
             labelDireccion.AutoSize = true;
-            labelDireccion.Location = new Point(3, 72);
+            labelDireccion.Location = new Point(3, 75);
             labelDireccion.Name = "labelDireccion";
-            labelDireccion.Size = new Size(75, 20);
+            labelDireccion.Size = new Size(60, 15);
             labelDireccion.TabIndex = 4;
             labelDireccion.Text = "Dirección:";
             // 
@@ -203,16 +203,16 @@ namespace SmartPark.UI.Configuracion
             textBoxDireccion.Dock = DockStyle.Fill;
             textBoxDireccion.Location = new Point(173, 69);
             textBoxDireccion.Name = "textBoxDireccion";
-            textBoxDireccion.Size = new Size(874, 27);
+            textBoxDireccion.Size = new Size(874, 23);
             textBoxDireccion.TabIndex = 5;
             // 
             // labelTelefono
             // 
             labelTelefono.Anchor = AnchorStyles.Left;
             labelTelefono.AutoSize = true;
-            labelTelefono.Location = new Point(3, 105);
+            labelTelefono.Location = new Point(3, 108);
             labelTelefono.Name = "labelTelefono";
-            labelTelefono.Size = new Size(79, 20);
+            labelTelefono.Size = new Size(56, 15);
             labelTelefono.TabIndex = 6;
             labelTelefono.Text = "Teléfono:";
             // 
@@ -221,16 +221,16 @@ namespace SmartPark.UI.Configuracion
             textBoxTelefono.Dock = DockStyle.Left;
             textBoxTelefono.Location = new Point(173, 102);
             textBoxTelefono.Name = "textBoxTelefono";
-            textBoxTelefono.Size = new Size(220, 27);
+            textBoxTelefono.Size = new Size(220, 23);
             textBoxTelefono.TabIndex = 7;
             // 
             // labelEmail
             // 
             labelEmail.Anchor = AnchorStyles.Left;
             labelEmail.AutoSize = true;
-            labelEmail.Location = new Point(3, 139);
+            labelEmail.Location = new Point(3, 143);
             labelEmail.Name = "labelEmail";
-            labelEmail.Size = new Size(54, 20);
+            labelEmail.Size = new Size(39, 15);
             labelEmail.TabIndex = 8;
             labelEmail.Text = "Email:";
             // 
@@ -239,17 +239,17 @@ namespace SmartPark.UI.Configuracion
             textBoxEmail.Dock = DockStyle.Fill;
             textBoxEmail.Location = new Point(173, 135);
             textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new Size(874, 27);
+            textBoxEmail.Size = new Size(874, 23);
             textBoxEmail.TabIndex = 9;
             // 
             // tabPageTarifas
             // 
             tabPageTarifas.BackColor = Color.FromArgb(244, 247, 252);
             tabPageTarifas.Controls.Add(panelTarifas);
-            tabPageTarifas.Location = new Point(4, 29);
+            tabPageTarifas.Location = new Point(4, 24);
             tabPageTarifas.Name = "tabPageTarifas";
             tabPageTarifas.Padding = new Padding(3);
-            tabPageTarifas.Size = new Size(1080, 657);
+            tabPageTarifas.Size = new Size(1080, 662);
             tabPageTarifas.TabIndex = 1;
             tabPageTarifas.Text = "Tarifas";
             // 
@@ -263,7 +263,7 @@ namespace SmartPark.UI.Configuracion
             panelTarifas.Location = new Point(3, 3);
             panelTarifas.Name = "panelTarifas";
             panelTarifas.Padding = new Padding(0, 12, 0, 12);
-            panelTarifas.Size = new Size(1074, 651);
+            panelTarifas.Size = new Size(1074, 656);
             panelTarifas.TabIndex = 0;
             // 
             // dataGridViewTarifas
@@ -298,8 +298,17 @@ namespace SmartPark.UI.Configuracion
             dataGridViewTarifas.RowHeadersVisible = false;
             dataGridViewTarifas.RowHeadersWidth = 51;
             dataGridViewTarifas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTarifas.Size = new Size(1074, 461);
+            dataGridViewTarifas.Size = new Size(1074, 466);
             dataGridViewTarifas.TabIndex = 0;
+            // 
+            // columnId
+            // 
+            columnId.HeaderText = "ID";
+            columnId.MinimumWidth = 6;
+            columnId.Name = "columnId";
+            columnId.ReadOnly = true;
+            columnId.Visible = false;
+            columnId.Width = 50;
             // 
             // columnTipo
             // 
@@ -331,7 +340,6 @@ namespace SmartPark.UI.Configuracion
             columnMinutosMinimo.MinimumWidth = 6;
             columnMinutosMinimo.Name = "columnMinutosMinimo";
             columnMinutosMinimo.ReadOnly = true;
-            columnMinutosMinimo.Width = 100;
             // 
             // columnMinutosTolerancia
             // 
@@ -339,7 +347,6 @@ namespace SmartPark.UI.Configuracion
             columnMinutosTolerancia.MinimumWidth = 6;
             columnMinutosTolerancia.Name = "columnMinutosTolerancia";
             columnMinutosTolerancia.ReadOnly = true;
-            columnMinutosTolerancia.Width = 100;
             // 
             // columnActualizadoEn
             // 
@@ -348,15 +355,6 @@ namespace SmartPark.UI.Configuracion
             columnActualizadoEn.Name = "columnActualizadoEn";
             columnActualizadoEn.ReadOnly = true;
             columnActualizadoEn.Width = 140;
-            // 
-            // columnId
-            // 
-            columnId.HeaderText = "ID";
-            columnId.MinimumWidth = 6;
-            columnId.Name = "columnId";
-            columnId.ReadOnly = true;
-            columnId.Visible = false;
-            columnId.Width = 50;
             // 
             // buttonAgregarTarifa
             // 
@@ -411,7 +409,7 @@ namespace SmartPark.UI.Configuracion
             labelTiempoGracia.AutoSize = true;
             labelTiempoGracia.Location = new Point(16, 31);
             labelTiempoGracia.Name = "labelTiempoGracia";
-            labelTiempoGracia.Size = new Size(127, 20);
+            labelTiempoGracia.Size = new Size(102, 15);
             labelTiempoGracia.TabIndex = 0;
             labelTiempoGracia.Text = "Tiempo de gracia:";
             // 
@@ -420,7 +418,7 @@ namespace SmartPark.UI.Configuracion
             numericUpDownTiempoGracia.Location = new Point(153, 27);
             numericUpDownTiempoGracia.Maximum = new decimal(new int[] { 1440, 0, 0, 0 });
             numericUpDownTiempoGracia.Name = "numericUpDownTiempoGracia";
-            numericUpDownTiempoGracia.Size = new Size(90, 27);
+            numericUpDownTiempoGracia.Size = new Size(90, 23);
             numericUpDownTiempoGracia.TabIndex = 1;
             numericUpDownTiempoGracia.Value = new decimal(new int[] { 15, 0, 0, 0 });
             // 
@@ -470,6 +468,7 @@ namespace SmartPark.UI.Configuracion
             // 
             // ConfiguracionForm
             // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(244, 247, 252);
             ClientSize = new Size(1120, 760);

@@ -3,6 +3,7 @@ using SmartPark.UI.Configuracion;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using SmartPark.UI.EntradasSalidas;
+using SmartPark.UI.Usuarios;
 
 namespace SmartPark.UI.Main
 {
@@ -30,6 +31,12 @@ namespace SmartPark.UI.Main
         {
             var entradasSalidasForm = Program.ServiceProvider.GetRequiredService<EntradasSalidasForm>();
             entradasSalidasForm.ShowDialog();
+        }
+
+        private void buttonUsuarios_Click(object? sender, EventArgs e)
+        {
+            var usuariosForm = Program.ServiceProvider.GetRequiredService<UsuariosForm>();
+            usuariosForm.ShowDialog();
         }
     }
 }

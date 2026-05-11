@@ -181,6 +181,7 @@ namespace SmartPark.UI.Main
             buttonUsuarios.Text = "Usuarios";
             buttonUsuarios.TextAlign = ContentAlignment.MiddleLeft;
             buttonUsuarios.UseVisualStyleBackColor = false;
+            buttonUsuarios.Click += buttonUsuarios_Click;
             // 
             // buttonEspacios
             // 

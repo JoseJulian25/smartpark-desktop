@@ -7,6 +7,7 @@ using SmartPark.UI.Espacios;
 using SmartPark.UI.Configuracion;
 using SmartPark.UI.EntradasSalidas;
 using SmartPark.UI.Main;
+using SmartPark.UI.Usuarios;
 
 namespace SmartPark.UI;
 
@@ -49,7 +50,10 @@ static class Program
         services.AddTransient<Services.TarifaService>();
         services.AddTransient<Services.TicketService>();
         services.AddTransient<Services.PagoService>();
+        services.AddTransient<Services.UsuarioService>();
         services.AddTransient<EntradasSalidasForm>();
         services.AddTransient<CobrarSalidaForm>();
+        services.AddTransient<UsuariosForm>();
+        services.AddTransient<NuevoUsuarioForm>();
     }
 }
