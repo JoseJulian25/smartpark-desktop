@@ -28,6 +28,12 @@
     <Compile Update="Main\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Reservas\NuevaReservaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Reservas\ReservasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Usuarios\NuevoUsuarioForm.cs">
       <SubType>Form</SubType>
     </Compile>

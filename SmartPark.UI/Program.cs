@@ -10,6 +10,7 @@ using SmartPark.UI.Main;
 using SmartPark.UI.Usuarios;
 using SmartPark.UI.Consultas;
 using SmartPark.UI.Acceso;
+using SmartPark.UI.Reservas;
 using SmartPark.Data.Modelos;
 
 namespace SmartPark.UI;
@@ -67,6 +68,8 @@ static class Program
         services.AddTransient<UsuariosForm>();
         services.AddTransient<NuevoUsuarioForm>();
         services.AddTransient<ConsultasForm>();
+        services.AddTransient<ReservasForm>();
+        services.AddTransient<NuevaReservaForm>();
         services.AddTransient<LoginForm>();
     }
 }

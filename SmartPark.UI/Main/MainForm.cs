@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SmartPark.UI.EntradasSalidas;
 using SmartPark.UI.Usuarios;
 using SmartPark.UI.Consultas;
+using SmartPark.UI.Reservas;
 
 namespace SmartPark.UI.Main
 {
@@ -13,6 +14,7 @@ namespace SmartPark.UI.Main
         public MainForm()
         {
             InitializeComponent();
+            buttonReservas.Click += buttonReservas_Click;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -48,6 +50,12 @@ namespace SmartPark.UI.Main
         {
             var configuracionForm = Program.ServiceProvider.GetRequiredService<ConfiguracionForm>();
             configuracionForm.ShowDialog();
+        }
+
+        private void buttonReservas_Click(object? sender, EventArgs e)
+        {
+            var reservasForm = Program.ServiceProvider.GetRequiredService<ReservasForm>();
+            reservasForm.ShowDialog();
         }
 
     }
