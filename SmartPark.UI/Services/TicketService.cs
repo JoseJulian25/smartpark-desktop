@@ -46,7 +46,6 @@ namespace SmartPark.UI.Services
             return await _context.Tickets.AsNoTracking()
                 .Include(t => t.Espacio)
                     .ThenInclude(e => e.TipoVehiculo)
-                .Include(t => t.Estado)
                 .Include(t => t.Pago)
                 .FirstOrDefaultAsync(t => t.Id == id);
         }
@@ -65,7 +64,6 @@ namespace SmartPark.UI.Services
             return await _context.Tickets.AsNoTracking()
                 .Include(t => t.Espacio)
                     .ThenInclude(e => e.TipoVehiculo)
-                .Include(t => t.Estado)
                 .Include(t => t.Pago)
                 .Where(criterio)
                 .ToListAsync();
@@ -76,7 +74,7 @@ namespace SmartPark.UI.Services
             if (ticket == null || espacioId <= 0) return false;
 
             var espacio = await _context.Espacios.FirstOrDefaultAsync(e => e.Id == espacioId);
-            if (espacio == null || espacio.EstadoId != 1)
+            if (espacio == null || !string.Equals(espacio.Estado, "LIBRE", StringComparison.OrdinalIgnoreCase))
             {
                 return false;
             }
@@ -89,12 +87,40 @@ namespace SmartPark.UI.Services
             ticket.HoraEntrada = now;
             ticket.HoraSalida = null;
             ticket.MontoTotal = null;
+            ticket.Anulado = false;
+            ticket.FechaAnulacion = null;
             ticket.EspacioId = espacioId;
-            ticket.EstadoId = 1;
+            ticket.Estado = "ACTIVO";
             ticket.CreadoPor = Program.UsuarioActual?.Id;
 
             await _context.Tickets.AddAsync(ticket);
-            espacio.EstadoId = 2;
+            espacio.Estado = "OCUPADO";
+
+            return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> AnularTicket(long ticketId)
+        {
+            var ticket = await _context.Tickets
+                .Include(t => t.Espacio)
+                .Include(t => t.Pago)
+                .FirstOrDefaultAsync(t => t.Id == ticketId);
+
+            if (ticket == null || ticket.Espacio == null)
+                return false;
+
+            if (ticket.Pago != null)
+                return false;
+
+            if (ticket.Anulado)
+                return false;
+
+            ticket.Anulado = true;
+            ticket.FechaAnulacion = DateTime.Now;
+            ticket.Estado = "ANULADO";
+            ticket.HoraSalida = null;
+            ticket.MontoTotal = null;
+            ticket.Espacio.Estado = "LIBRE";
 
             return await _context.SaveChangesAsync() > 0;
         }

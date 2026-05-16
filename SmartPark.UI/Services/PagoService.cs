@@ -82,13 +82,39 @@ namespace SmartPark.UI.Services
             pago.HoraPago = now;
             pago.TicketId = ticket.Id;
             pago.ProcesadoPor = Program.UsuarioActual?.Id;
+            pago.Anulado = false;
+            pago.FechaAnulacion = null;
 
             ticket.HoraSalida = now;
             ticket.MontoTotal = pago.Monto;
-            ticket.EstadoId = 2;
-            ticket.Espacio.EstadoId = 1;
+            ticket.Estado = "CERRADO";
+            ticket.Espacio.Estado = "LIBRE";
 
             await _context.Pagos.AddAsync(pago);
+
+            return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> AnularPago(long pagoId)
+        {
+            var pago = await _context.Pagos
+                .Include(p => p.Ticket)
+                    .ThenInclude(t => t.Espacio)
+                .FirstOrDefaultAsync(p => p.Id == pagoId);
+
+            if (pago == null || pago.Ticket == null || pago.Ticket.Espacio == null)
+                return false;
+
+            if (pago.Anulado)
+                return false;
+
+            pago.Ticket.HoraSalida = null;
+            pago.Ticket.MontoTotal = null;
+            pago.Ticket.Estado = "ACTIVO";
+            pago.Ticket.Espacio.Estado = "OCUPADO";
+
+            pago.Anulado = true;
+            pago.FechaAnulacion = DateTime.Now;
 
             return await _context.SaveChangesAsync() > 0;
         }

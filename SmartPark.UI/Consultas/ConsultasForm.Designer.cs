@@ -24,6 +24,7 @@ namespace SmartPark.UI.Consultas
             groupBoxHistorialResultados = new GroupBox();
             dataGridViewHistorial = new DataGridView();
             groupBoxHistorialFiltros = new GroupBox();
+            buttonHistorialAnular = new Button();
             buttonHistorialLimpiar = new Button();
             buttonHistorialBuscar = new Button();
             textBoxHistorialTicket = new TextBox();
@@ -38,6 +39,7 @@ namespace SmartPark.UI.Consultas
             groupBoxPagosResultados = new GroupBox();
             dataGridViewPagos = new DataGridView();
             groupBoxPagosFiltros = new GroupBox();
+            buttonPagosAnular = new Button();
             buttonPagosLimpiar = new Button();
             buttonPagosBuscar = new Button();
             textBoxPagoTicket = new TextBox();
@@ -55,6 +57,8 @@ namespace SmartPark.UI.Consultas
             columnPagoRecibido = new DataGridViewTextBoxColumn();
             columnPagoFecha = new DataGridViewTextBoxColumn();
             columnPagoProcesadoPor = new DataGridViewTextBoxColumn();
+            columnPagoAnulado = new DataGridViewTextBoxColumn();
+            columnPagoFechaAnulacion = new DataGridViewTextBoxColumn();
             columnHistId = new DataGridViewTextBoxColumn();
             columnHistTicket = new DataGridViewTextBoxColumn();
             columnHistPlaca = new DataGridViewTextBoxColumn();
@@ -65,6 +69,8 @@ namespace SmartPark.UI.Consultas
             columnHistTiempo = new DataGridViewTextBoxColumn();
             columnHistMonto = new DataGridViewTextBoxColumn();
             columnHistCreadoPor = new DataGridViewTextBoxColumn();
+            columnHistAnulado = new DataGridViewTextBoxColumn();
+            columnHistFechaAnulacion = new DataGridViewTextBoxColumn();
             panelMain.SuspendLayout();
             tabControlConsultas.SuspendLayout();
             tabHistorial.SuspendLayout();
@@ -131,7 +137,7 @@ namespace SmartPark.UI.Consultas
             dataGridViewHistorial.AllowUserToResizeRows = false;
             dataGridViewHistorial.BackgroundColor = Color.White;
             dataGridViewHistorial.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewHistorial.Columns.AddRange(new DataGridViewColumn[] { columnHistId, columnHistTicket, columnHistPlaca, columnHistTipo, columnHistEspacio, columnHistEntrada, columnHistSalida, columnHistTiempo, columnHistMonto, columnHistCreadoPor });
+            dataGridViewHistorial.Columns.AddRange(new DataGridViewColumn[] { columnHistId, columnHistTicket, columnHistPlaca, columnHistTipo, columnHistEspacio, columnHistEntrada, columnHistSalida, columnHistTiempo, columnHistMonto, columnHistCreadoPor, columnHistAnulado, columnHistFechaAnulacion });
             dataGridViewHistorial.Dock = DockStyle.Fill;
             dataGridViewHistorial.Location = new Point(10, 30);
             dataGridViewHistorial.MultiSelect = false;
@@ -145,6 +151,7 @@ namespace SmartPark.UI.Consultas
             // 
             // groupBoxHistorialFiltros
             // 
+            groupBoxHistorialFiltros.Controls.Add(buttonHistorialAnular);
             groupBoxHistorialFiltros.Controls.Add(buttonHistorialLimpiar);
             groupBoxHistorialFiltros.Controls.Add(buttonHistorialBuscar);
             groupBoxHistorialFiltros.Controls.Add(textBoxHistorialTicket);
@@ -164,6 +171,22 @@ namespace SmartPark.UI.Consultas
             groupBoxHistorialFiltros.TabIndex = 0;
             groupBoxHistorialFiltros.TabStop = false;
             groupBoxHistorialFiltros.Text = "Criterios de Busqueda";
+            // 
+            // buttonHistorialAnular
+            // 
+            buttonHistorialAnular.BackColor = Color.White;
+            buttonHistorialAnular.FlatAppearance.BorderColor = Color.FromArgb(220, 53, 69);
+            buttonHistorialAnular.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 228, 230);
+            buttonHistorialAnular.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 239, 241);
+            buttonHistorialAnular.FlatStyle = FlatStyle.Flat;
+            buttonHistorialAnular.ForeColor = Color.FromArgb(220, 53, 69);
+            buttonHistorialAnular.Location = new Point(860, 54);
+            buttonHistorialAnular.Name = "buttonHistorialAnular";
+            buttonHistorialAnular.Size = new Size(120, 30);
+            buttonHistorialAnular.TabIndex = 10;
+            buttonHistorialAnular.Text = "Anular Ticket";
+            buttonHistorialAnular.UseVisualStyleBackColor = false;
+            buttonHistorialAnular.Click += buttonHistorialAnular_Click;
             // 
             // buttonHistorialLimpiar
             // 
@@ -295,7 +318,7 @@ namespace SmartPark.UI.Consultas
             dataGridViewPagos.AllowUserToResizeRows = false;
             dataGridViewPagos.BackgroundColor = Color.White;
             dataGridViewPagos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPagos.Columns.AddRange(new DataGridViewColumn[] { columnPagoId, columnPagoTicket, columnPagoMetodo, columnPagoMonto, columnPagoRecibido, columnPagoFecha, columnPagoProcesadoPor });
+            dataGridViewPagos.Columns.AddRange(new DataGridViewColumn[] { columnPagoId, columnPagoTicket, columnPagoMetodo, columnPagoMonto, columnPagoRecibido, columnPagoFecha, columnPagoProcesadoPor, columnPagoAnulado, columnPagoFechaAnulacion });
             dataGridViewPagos.Dock = DockStyle.Fill;
             dataGridViewPagos.Location = new Point(10, 30);
             dataGridViewPagos.MultiSelect = false;
@@ -309,6 +332,7 @@ namespace SmartPark.UI.Consultas
             // 
             // groupBoxPagosFiltros
             // 
+            groupBoxPagosFiltros.Controls.Add(buttonPagosAnular);
             groupBoxPagosFiltros.Controls.Add(buttonPagosLimpiar);
             groupBoxPagosFiltros.Controls.Add(buttonPagosBuscar);
             groupBoxPagosFiltros.Controls.Add(textBoxPagoTicket);
@@ -328,6 +352,22 @@ namespace SmartPark.UI.Consultas
             groupBoxPagosFiltros.TabIndex = 0;
             groupBoxPagosFiltros.TabStop = false;
             groupBoxPagosFiltros.Text = "Criterios de Busqueda";
+            // 
+            // buttonPagosAnular
+            // 
+            buttonPagosAnular.BackColor = Color.White;
+            buttonPagosAnular.FlatAppearance.BorderColor = Color.FromArgb(220, 53, 69);
+            buttonPagosAnular.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 228, 230);
+            buttonPagosAnular.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 239, 241);
+            buttonPagosAnular.FlatStyle = FlatStyle.Flat;
+            buttonPagosAnular.ForeColor = Color.FromArgb(220, 53, 69);
+            buttonPagosAnular.Location = new Point(860, 54);
+            buttonPagosAnular.Name = "buttonPagosAnular";
+            buttonPagosAnular.Size = new Size(120, 30);
+            buttonPagosAnular.TabIndex = 10;
+            buttonPagosAnular.Text = "Anular Pago";
+            buttonPagosAnular.UseVisualStyleBackColor = false;
+            buttonPagosAnular.Click += buttonPagosAnular_Click;
             // 
             // buttonPagosLimpiar
             // 
@@ -485,6 +525,22 @@ namespace SmartPark.UI.Consultas
             columnPagoProcesadoPor.ReadOnly = true;
             columnPagoProcesadoPor.Width = 160;
             // 
+            // columnPagoAnulado
+            // 
+            columnPagoAnulado.HeaderText = "Anulado";
+            columnPagoAnulado.MinimumWidth = 6;
+            columnPagoAnulado.Name = "columnPagoAnulado";
+            columnPagoAnulado.ReadOnly = true;
+            columnPagoAnulado.Width = 90;
+            // 
+            // columnPagoFechaAnulacion
+            // 
+            columnPagoFechaAnulacion.HeaderText = "Fecha Anulacion";
+            columnPagoFechaAnulacion.MinimumWidth = 6;
+            columnPagoFechaAnulacion.Name = "columnPagoFechaAnulacion";
+            columnPagoFechaAnulacion.ReadOnly = true;
+            columnPagoFechaAnulacion.Width = 160;
+            // 
             // columnHistId
             // 
             columnHistId.HeaderText = "ID";
@@ -565,6 +621,22 @@ namespace SmartPark.UI.Consultas
             columnHistCreadoPor.ReadOnly = true;
             columnHistCreadoPor.Width = 160;
             // 
+            // columnHistAnulado
+            // 
+            columnHistAnulado.HeaderText = "Anulado";
+            columnHistAnulado.MinimumWidth = 6;
+            columnHistAnulado.Name = "columnHistAnulado";
+            columnHistAnulado.ReadOnly = true;
+            columnHistAnulado.Width = 90;
+            // 
+            // columnHistFechaAnulacion
+            // 
+            columnHistFechaAnulacion.HeaderText = "Fecha Anulacion";
+            columnHistFechaAnulacion.MinimumWidth = 6;
+            columnHistFechaAnulacion.Name = "columnHistFechaAnulacion";
+            columnHistFechaAnulacion.ReadOnly = true;
+            columnHistFechaAnulacion.Width = 160;
+            // 
             // ConsultasForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -601,6 +673,7 @@ namespace SmartPark.UI.Consultas
         private GroupBox groupBoxHistorialResultados;
         private DataGridView dataGridViewHistorial;
         private GroupBox groupBoxHistorialFiltros;
+        private Button buttonHistorialAnular;
         private Button buttonHistorialLimpiar;
         private Button buttonHistorialBuscar;
         private TextBox textBoxHistorialTicket;
@@ -615,6 +688,7 @@ namespace SmartPark.UI.Consultas
         private GroupBox groupBoxPagosResultados;
         private DataGridView dataGridViewPagos;
         private GroupBox groupBoxPagosFiltros;
+        private Button buttonPagosAnular;
         private Button buttonPagosLimpiar;
         private Button buttonPagosBuscar;
         private TextBox textBoxPagoTicket;
@@ -635,6 +709,8 @@ namespace SmartPark.UI.Consultas
         private DataGridViewTextBoxColumn columnHistTiempo;
         private DataGridViewTextBoxColumn columnHistMonto;
         private DataGridViewTextBoxColumn columnHistCreadoPor;
+        private DataGridViewTextBoxColumn columnHistAnulado;
+        private DataGridViewTextBoxColumn columnHistFechaAnulacion;
         private DataGridViewTextBoxColumn columnPagoId;
         private DataGridViewTextBoxColumn columnPagoTicket;
         private DataGridViewTextBoxColumn columnPagoMetodo;
@@ -642,5 +718,7 @@ namespace SmartPark.UI.Consultas
         private DataGridViewTextBoxColumn columnPagoRecibido;
         private DataGridViewTextBoxColumn columnPagoFecha;
         private DataGridViewTextBoxColumn columnPagoProcesadoPor;
+        private DataGridViewTextBoxColumn columnPagoAnulado;
+        private DataGridViewTextBoxColumn columnPagoFechaAnulacion;
     }
 }
