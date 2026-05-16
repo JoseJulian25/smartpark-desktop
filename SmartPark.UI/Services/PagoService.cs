@@ -81,6 +81,7 @@ namespace SmartPark.UI.Services
             var now = DateTime.Now;
             pago.HoraPago = now;
             pago.TicketId = ticket.Id;
+            pago.ProcesadoPor = Program.UsuarioActual?.Id;
 
             ticket.HoraSalida = now;
             ticket.MontoTotal = pago.Monto;

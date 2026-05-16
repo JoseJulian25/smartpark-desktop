@@ -91,6 +91,7 @@ namespace SmartPark.UI.Services
             ticket.MontoTotal = null;
             ticket.EspacioId = espacioId;
             ticket.EstadoId = 1;
+            ticket.CreadoPor = Program.UsuarioActual?.Id;
 
             await _context.Tickets.AddAsync(ticket);
             espacio.EstadoId = 2;
