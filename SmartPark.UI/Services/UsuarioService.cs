@@ -73,6 +73,22 @@ namespace SmartPark.UI.Services
             return await _context.Roles.AsNoTracking().ToListAsync();
         }
 
+        public async Task<Usuario?> IniciarSesionAsync(string username, string password)
+        {
+            var normalized = username?.Trim().ToLowerInvariant();
+            if (string.IsNullOrWhiteSpace(normalized) || string.IsNullOrWhiteSpace(password))
+            {
+                return null;
+            }
+
+            return await _context.Usuarios.AsNoTracking()
+                .Include(u => u.Rol)
+                .FirstOrDefaultAsync(u => !u.Eliminado
+                    && u.Activo
+                    && u.Username.ToLower() == normalized
+                    && u.Password == password);
+        }
+
         public void Dispose()
         {
             if (_ownsContext)

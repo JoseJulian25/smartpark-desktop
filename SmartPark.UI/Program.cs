@@ -9,12 +9,15 @@ using SmartPark.UI.EntradasSalidas;
 using SmartPark.UI.Main;
 using SmartPark.UI.Usuarios;
 using SmartPark.UI.Consultas;
+using SmartPark.UI.Acceso;
+using SmartPark.Data.Modelos;
 
 namespace SmartPark.UI;
 
 static class Program
 {
     public static ServiceProvider ServiceProvider { get; private set; }
+    public static Usuario? UsuarioActual { get; private set; }
 
     /// <summary>
     ///  The main entry point for the application.
@@ -29,7 +32,13 @@ static class Program
         ConfigurerServices(services);
 
         ServiceProvider = services.BuildServiceProvider();
-        Application.Run(ServiceProvider.GetRequiredService<MainForm>());
+        using var loginForm = ServiceProvider.GetRequiredService<LoginForm>();
+
+        if (loginForm.ShowDialog() == DialogResult.OK)
+        {
+            UsuarioActual = loginForm.UsuarioAutenticado;
+            Application.Run(ServiceProvider.GetRequiredService<MainForm>());
+        }
     }
 
     private static void ConfigurerServices(ServiceCollection services)
@@ -58,5 +67,6 @@ static class Program
         services.AddTransient<UsuariosForm>();
         services.AddTransient<NuevoUsuarioForm>();
         services.AddTransient<ConsultasForm>();
+        services.AddTransient<LoginForm>();
     }
 }

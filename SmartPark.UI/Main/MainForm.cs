@@ -13,20 +13,17 @@ namespace SmartPark.UI.Main
         public MainForm()
         {
             InitializeComponent();
-            buttonConfiguracion.Click += buttonConfiguracion_Click;
-            buttonConsultas.Click += buttonConsultas_Click;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            toolStripStatusUsuario.Text = $"Usuario: {Program.UsuarioActual?.Nombre ?? "Desconocido"}";
         }
 
         private void buttonEspacios_Click(object sender, EventArgs e)
         {
             var espaciosList = Program.ServiceProvider.GetRequiredService<EspaciosList>();
             espaciosList.ShowDialog();
-        }
-
-        private void buttonConfiguracion_Click(object? sender, EventArgs e)
-        {
-            var configuracionForm = Program.ServiceProvider.GetRequiredService<ConfiguracionForm>();
-            configuracionForm.ShowDialog();
         }
 
         private void buttonEntradasSalidas_Click(object sender, EventArgs e)
@@ -41,10 +38,17 @@ namespace SmartPark.UI.Main
             usuariosForm.ShowDialog();
         }
 
-        private void buttonConsultas_Click(object? sender, EventArgs e)
+        private void buttonConsultas_Click(object sender, EventArgs e)
         {
             var consultasForm = Program.ServiceProvider.GetRequiredService<ConsultasForm>();
             consultasForm.ShowDialog();
         }
+
+        private void buttonConfiguracion_Click(object sender, EventArgs e)
+        {
+            var configuracionForm = Program.ServiceProvider.GetRequiredService<ConfiguracionForm>();
+            configuracionForm.ShowDialog();
+        }
+
     }
 }

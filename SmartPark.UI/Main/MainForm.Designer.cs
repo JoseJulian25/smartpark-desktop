@@ -139,6 +139,7 @@ namespace SmartPark.UI.Main
             buttonConsultas.Text = "Consultas";
             buttonConsultas.TextAlign = ContentAlignment.MiddleLeft;
             buttonConsultas.UseVisualStyleBackColor = false;
+            buttonConsultas.Click += buttonConsultas_Click;
             // 
             // buttonConfiguracion
             // 
@@ -160,6 +161,7 @@ namespace SmartPark.UI.Main
             buttonConfiguracion.Text = "Configuracion";
             buttonConfiguracion.TextAlign = ContentAlignment.MiddleLeft;
             buttonConfiguracion.UseVisualStyleBackColor = false;
+            buttonConfiguracion.Click += buttonConfiguracion_Click;
             // 
             // buttonUsuarios
             // 
@@ -653,6 +655,7 @@ namespace SmartPark.UI.Main
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SmartPark";
             WindowState = FormWindowState.Maximized;
+            Load += MainForm_Load;
             panelSidebar.ResumeLayout(false);
             panelSidebarNav.ResumeLayout(false);
             panelSidebarTop.ResumeLayout(false);
