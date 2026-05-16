@@ -138,7 +138,7 @@ namespace SmartPark.UI.EntradasSalidas
                 ? (int?)null
                 : Convert.ToInt32(comboBoxTipoVehiculo.SelectedValue);
 
-            var espacios = await _espaciosService!.GetList(e => e.EstadoId == 1 && e.Activo && (!tipoId.HasValue || e.TipoVehiculoId == tipoId.Value));
+            var espacios = await _espaciosService!.GetList(e => e.Estado == "LIBRE" && e.Activo && (!tipoId.HasValue || e.TipoVehiculoId == tipoId.Value));
             comboBoxEspacioAsignado.DataSource = null;
             comboBoxEspacioAsignado.DisplayMember = "CodigoEspacio";
             comboBoxEspacioAsignado.ValueMember = "Id";
@@ -147,7 +147,7 @@ namespace SmartPark.UI.EntradasSalidas
 
         private async Task CargarVehiculosActivos()
         {
-            var tickets = await _ticketService!.GetList(t => t.EstadoId == 1);
+            var tickets = await _ticketService!.GetList(t => t.Estado == "ACTIVO");
             dataGridViewVehiculos.Rows.Clear();
 
             foreach (var ticket in tickets)

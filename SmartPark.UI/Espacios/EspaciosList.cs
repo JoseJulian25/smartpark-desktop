@@ -29,9 +29,9 @@ namespace SmartPark.UI.Espacios
             var espacios = await _service.GetList(_ => true);
 
             labelTotalValue.Text = espacios.Count.ToString();
-            labelLibresValue.Text = espacios.Count(x => x.Estado != null && x.Estado.Nombre == "LIBRE").ToString();
-            labelOcupadosValue.Text = espacios.Count(x => x.Estado != null && x.Estado.Nombre == "OCUPADO").ToString();
-            labelReservadosValue.Text = espacios.Count(x => x.Estado != null && x.Estado.Nombre == "RESERVADO").ToString();
+            labelLibresValue.Text = espacios.Count(x => x.Estado == "LIBRE").ToString();
+            labelOcupadosValue.Text = espacios.Count(x => x.Estado == "OCUPADO").ToString();
+            labelReservadosValue.Text = espacios.Count(x => x.Estado == "RESERVADO").ToString();
 
             dataGridViewEspacios.Rows.Clear();
 
@@ -41,7 +41,7 @@ namespace SmartPark.UI.Espacios
                     espacio.Id,
                     espacio.CodigoEspacio,
                     espacio.TipoVehiculo?.Nombre ?? string.Empty,
-                    espacio.Estado?.Nombre ?? string.Empty,
+                    espacio.Estado,
                     string.Empty);
             }
         }

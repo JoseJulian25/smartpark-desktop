@@ -20,12 +20,6 @@ public partial class SmartparkContext : DbContext
 
     public virtual DbSet<Espacio> Espacios { get; set; }
 
-    public virtual DbSet<EstadosEspacio> EstadosEspacios { get; set; }
-
-    public virtual DbSet<EstadosReserva> EstadosReservas { get; set; }
-
-    public virtual DbSet<EstadosTicket> EstadosTickets { get; set; }
-
     public virtual DbSet<Pago> Pagos { get; set; }
 
     public virtual DbSet<Reserva> Reservas { get; set; }
@@ -93,64 +87,17 @@ public partial class SmartparkContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("codigo_espacio");
-            entity.Property(e => e.EstadoId).HasColumnName("estado_id");
+            entity.Property(e => e.Estado)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("estado");
             entity.Property(e => e.FechaCreacion).HasColumnName("fecha_creacion");
             entity.Property(e => e.TipoVehiculoId).HasColumnName("tipo_vehiculo_id");
-
-            entity.HasOne(d => d.Estado).WithMany(p => p.Espacios)
-                .HasForeignKey(d => d.EstadoId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_espacios_estado");
 
             entity.HasOne(d => d.TipoVehiculo).WithMany(p => p.Espacios)
                 .HasForeignKey(d => d.TipoVehiculoId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_espacios_tipo_vehiculo");
-        });
-
-        modelBuilder.Entity<EstadosEspacio>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("estados_espacio_pkey");
-
-            entity.ToTable("estados_espacio");
-
-            entity.HasIndex(e => e.Nombre, "UQ__estados___72AFBCC62C49DF6A").IsUnique();
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Nombre)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("nombre");
-        });
-
-        modelBuilder.Entity<EstadosReserva>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("estados_reserva_pkey");
-
-            entity.ToTable("estados_reserva");
-
-            entity.HasIndex(e => e.Nombre, "UQ__estados___72AFBCC6BC47873F").IsUnique();
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Nombre)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("nombre");
-        });
-
-        modelBuilder.Entity<EstadosTicket>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("estados_ticket_pkey");
-
-            entity.ToTable("estados_ticket");
-
-            entity.HasIndex(e => e.Nombre, "UQ__estados___72AFBCC662B440DA").IsUnique();
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Nombre)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("nombre");
         });
 
         modelBuilder.Entity<Pago>(entity =>
@@ -162,6 +109,8 @@ public partial class SmartparkContext : DbContext
             entity.HasIndex(e => e.TicketId, "UQ__pagos__D596F96A62E8B40F").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Anulado).HasColumnName("anulado");
+            entity.Property(e => e.FechaAnulacion).HasColumnName("fecha_anulacion");
             entity.Property(e => e.HoraPago).HasColumnName("hora_pago");
             entity.Property(e => e.MetodoPago)
                 .HasMaxLength(50)
@@ -214,7 +163,10 @@ public partial class SmartparkContext : DbContext
                 .HasColumnName("codigo_reserva");
             entity.Property(e => e.CreadoPor).HasColumnName("creado_por");
             entity.Property(e => e.EspacioId).HasColumnName("espacio_id");
-            entity.Property(e => e.EstadoId).HasColumnName("estado_id");
+            entity.Property(e => e.Estado)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("estado");
             entity.Property(e => e.FechaCreacion).HasColumnName("fecha_creacion");
             entity.Property(e => e.HoraFin).HasColumnName("hora_fin");
             entity.Property(e => e.HoraInicio).HasColumnName("hora_inicio");
@@ -241,10 +193,6 @@ public partial class SmartparkContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_reservas_espacio");
 
-            entity.HasOne(d => d.Estado).WithMany(p => p.Reservas)
-                .HasForeignKey(d => d.EstadoId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_reservas_estado");
 
             entity.HasOne(d => d.TipoVehiculo).WithMany(p => p.Reservas)
                 .HasForeignKey(d => d.TipoVehiculoId)
@@ -306,7 +254,12 @@ public partial class SmartparkContext : DbContext
                 .HasColumnName("codigo_ticket");
             entity.Property(e => e.CreadoPor).HasColumnName("creado_por");
             entity.Property(e => e.EspacioId).HasColumnName("espacio_id");
-            entity.Property(e => e.EstadoId).HasColumnName("estado_id");
+            entity.Property(e => e.Anulado).HasColumnName("anulado");
+            entity.Property(e => e.Estado)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("estado");
+            entity.Property(e => e.FechaAnulacion).HasColumnName("fecha_anulacion");
             entity.Property(e => e.FechaCreacion).HasColumnName("fecha_creacion");
             entity.Property(e => e.HoraEntrada).HasColumnName("hora_entrada");
             entity.Property(e => e.HoraSalida).HasColumnName("hora_salida");
@@ -327,10 +280,6 @@ public partial class SmartparkContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_tickets_espacio");
 
-            entity.HasOne(d => d.Estado).WithMany(p => p.Tickets)
-                .HasForeignKey(d => d.EstadoId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_tickets_estado");
         });
 
         modelBuilder.Entity<TiposVehiculo>(entity =>

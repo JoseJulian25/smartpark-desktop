@@ -31,7 +31,7 @@ public partial class Reserva
 
     public long EspacioId { get; set; }
 
-    public int EstadoId { get; set; }
+    public string Estado { get; set; } = null!;
 
     public int TipoVehiculoId { get; set; }
 
@@ -40,8 +40,6 @@ public partial class Reserva
     public virtual Usuario? CreadoPorNavigation { get; set; }
 
     public virtual Espacio Espacio { get; set; } = null!;
-
-    public virtual EstadosReserva Estado { get; set; } = null!;
 
     public virtual TiposVehiculo TipoVehiculo { get; set; } = null!;
 }

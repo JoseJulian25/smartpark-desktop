@@ -59,7 +59,6 @@ namespace SmartPark.UI.Services
         public async Task<List<Espacio>> GetList(Expression<Func<Espacio, bool>> criterio)
         {
             return await _context.Espacios
-                .Include(e => e.Estado)
                 .Include(e => e.TipoVehiculo)
                 .Where(criterio)
                 .AsNoTracking()

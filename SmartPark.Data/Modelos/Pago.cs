@@ -15,6 +15,10 @@ public partial class Pago
 
     public decimal MontoRecibido { get; set; }
 
+    public bool Anulado { get; set; }
+
+    public DateTime? FechaAnulacion { get; set; }
+
     public long? ProcesadoPor { get; set; }
 
     public long TicketId { get; set; }

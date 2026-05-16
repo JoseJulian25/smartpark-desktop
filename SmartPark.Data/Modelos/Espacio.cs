@@ -13,11 +13,9 @@ public partial class Espacio
 
     public DateTime? FechaCreacion { get; set; }
 
-    public int EstadoId { get; set; }
+    public string Estado { get; set; } = null!;
 
     public int TipoVehiculoId { get; set; }
-
-    public virtual EstadosEspacio Estado { get; set; } = null!;
 
     public virtual ICollection<Reserva> Reservas { get; set; } = new List<Reserva>();
 

@@ -74,7 +74,7 @@ namespace SmartPark.UI.Espacios
                 {
                     FechaCreacion = DateTime.Now,
                     Activo = true,
-                    EstadoId = 1
+                    Estado = "LIBRE"
                 };
 
 
