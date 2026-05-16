@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using SmartPark.UI.EntradasSalidas;
 using SmartPark.UI.Usuarios;
+using SmartPark.UI.Consultas;
 
 namespace SmartPark.UI.Main
 {
@@ -13,6 +14,7 @@ namespace SmartPark.UI.Main
         {
             InitializeComponent();
             buttonConfiguracion.Click += buttonConfiguracion_Click;
+            buttonConsultas.Click += buttonConsultas_Click;
         }
 
         private void buttonEspacios_Click(object sender, EventArgs e)
@@ -37,6 +39,12 @@ namespace SmartPark.UI.Main
         {
             var usuariosForm = Program.ServiceProvider.GetRequiredService<UsuariosForm>();
             usuariosForm.ShowDialog();
+        }
+
+        private void buttonConsultas_Click(object? sender, EventArgs e)
+        {
+            var consultasForm = Program.ServiceProvider.GetRequiredService<ConsultasForm>();
+            consultasForm.ShowDialog();
         }
     }
 }
