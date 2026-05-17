@@ -59,6 +59,32 @@ namespace SmartPark.UI.Reservas
             await CargarAsync();
         }
 
+        private async void buttonConfirmar_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewReservas.CurrentRow == null)
+                return;
+
+            if (!long.TryParse(Convert.ToString(dataGridViewReservas.CurrentRow.Cells[0].Value), out var id))
+                return;
+
+            var confirmacion = MessageBox.Show(
+                "¿Deseas confirmar esta reserva?",
+                "Confirmar",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmacion != DialogResult.Yes)
+                return;
+
+            if (await _service.ConfirmarReserva(id))
+            {
+                await CargarAsync();
+                return;
+            }
+
+            MessageBox.Show("No se pudo confirmar la reserva.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         private async Task CargarAsync()
         {
             var estado = comboBoxEstado.SelectedItem?.ToString() ?? "Todos";

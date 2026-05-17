@@ -13,17 +13,20 @@ namespace SmartPark.UI.Services
     {
         private readonly SmartparkContext _context;
         private readonly bool _ownsContext;
+        private readonly TicketService _ticketService;
 
         public ReservaService(SmartparkContext context)
         {
             _context = context;
             _ownsContext = false;
+            _ticketService = new TicketService(context);
         }
 
         public ReservaService()
         {
             _context = new SmartparkContext();
             _ownsContext = true;
+            _ticketService = new TicketService(_context);
         }
 
         public async Task<bool> Guardar(Reserva entidad)
@@ -113,6 +116,30 @@ namespace SmartPark.UI.Services
                 .Select(r => r.EspacioId)
                 .Distinct()
                 .ToListAsync();
+        }
+
+        public async Task<bool> ConfirmarReserva(long reservaId)
+        {
+            var reserva = await _context.Reservas.FirstOrDefaultAsync(r => r.Id == reservaId);
+            if (reserva == null)
+                return false;
+
+            if (!string.Equals(reserva.Estado, "PENDIENTE", StringComparison.OrdinalIgnoreCase))
+                return false;
+            
+
+            var ticket = new Ticket
+            {
+                Placa = reserva.Placa
+            };
+
+            var registrado = await _ticketService.RegistrarEntrada(ticket, reserva.EspacioId);
+            if (!registrado)
+                return false;
+
+            reserva.Estado = "ACTIVA";
+            _context.Reservas.Update(reserva);
+            return await _context.SaveChangesAsync() > 0;
         }
 
         public void Dispose()

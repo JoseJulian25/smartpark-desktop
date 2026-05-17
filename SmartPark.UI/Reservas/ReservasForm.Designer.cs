@@ -7,6 +7,7 @@ namespace SmartPark.UI.Reservas
         private Panel panelMain;
         private Panel panelToolbar;
         private Button buttonNuevaReserva;
+        private Button buttonConfirmar;
         private Button buttonEditar;
         private GroupBox groupBoxFiltros;
         private ComboBox comboBoxEstado;
@@ -65,6 +66,7 @@ namespace SmartPark.UI.Reservas
             comboBoxEstado = new ComboBox();
             labelEstado = new Label();
             panelToolbar = new Panel();
+            buttonConfirmar = new Button();
             buttonEditar = new Button();
             buttonNuevaReserva = new Button();
             panelMain.SuspendLayout();
@@ -288,6 +290,7 @@ namespace SmartPark.UI.Reservas
             // 
             // panelToolbar
             // 
+            panelToolbar.Controls.Add(buttonConfirmar);
             panelToolbar.Controls.Add(buttonEditar);
             panelToolbar.Controls.Add(buttonNuevaReserva);
             panelToolbar.Dock = DockStyle.Top;
@@ -296,6 +299,22 @@ namespace SmartPark.UI.Reservas
             panelToolbar.Padding = new Padding(0, 10, 0, 10);
             panelToolbar.Size = new Size(1248, 78);
             panelToolbar.TabIndex = 0;
+            // 
+            // buttonConfirmar
+            // 
+            buttonConfirmar.BackColor = Color.White;
+            buttonConfirmar.FlatAppearance.BorderColor = Color.FromArgb(40, 66, 104);
+            buttonConfirmar.FlatAppearance.MouseDownBackColor = Color.FromArgb(226, 234, 243);
+            buttonConfirmar.FlatAppearance.MouseOverBackColor = Color.FromArgb(240, 246, 252);
+            buttonConfirmar.FlatStyle = FlatStyle.Flat;
+            buttonConfirmar.ForeColor = Color.FromArgb(40, 66, 104);
+            buttonConfirmar.Location = new Point(260, 18);
+            buttonConfirmar.Name = "buttonConfirmar";
+            buttonConfirmar.Size = new Size(120, 36);
+            buttonConfirmar.TabIndex = 2;
+            buttonConfirmar.Text = "Confirmar";
+            buttonConfirmar.UseVisualStyleBackColor = false;
+            buttonConfirmar.Click += buttonConfirmar_Click;
             // 
             // buttonEditar
             // 
