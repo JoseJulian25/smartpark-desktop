@@ -45,12 +45,10 @@ namespace SmartPark.UI.Main
             menuConsultas = new ToolStripMenuItem();
             toolStripMain = new ToolStrip();
             toolStripButtonEntradasSalidas = new ToolStripButton();
-            toolStripButtonReservas = new ToolStripButton();
             toolStripButtonNuevaReserva = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             toolStripButtonEspacios = new ToolStripButton();
-            toolStripButtonConsultas = new ToolStripButton();
-            toolStripSeparator2 = new ToolStripSeparator();
+            toolStripButtonTarifas = new ToolStripButton();
             panelMain = new Panel();
             groupBoxAlertas = new GroupBox();
             dataGridViewAlertas = new DataGridView();
@@ -75,6 +73,8 @@ namespace SmartPark.UI.Main
             panelKpi5 = new Panel();
             labelKpi5Value = new Label();
             labelKpi5Title = new Label();
+            panelKpiHeader = new Panel();
+            buttonActualizar = new Button();
             statusStripMain = new StatusStrip();
             toolStripStatusUsuario = new ToolStripStatusLabel();
             toolStripStatusSep2 = new ToolStripStatusLabel();
@@ -91,6 +91,7 @@ namespace SmartPark.UI.Main
             panelKpi3.SuspendLayout();
             panelKpi4.SuspendLayout();
             panelKpi5.SuspendLayout();
+            panelKpiHeader.SuspendLayout();
             statusStripMain.SuspendLayout();
             SuspendLayout();
             // 
@@ -98,6 +99,7 @@ namespace SmartPark.UI.Main
             // 
             menuStripMain.BackColor = Color.FromArgb(40, 66, 104);
             menuStripMain.ForeColor = Color.White;
+            menuStripMain.ImageScalingSize = new Size(20, 20);
             menuStripMain.Items.AddRange(new ToolStripItem[] { menuArchivo, menuOperaciones, menuAdministracion, menuConsultas });
             menuStripMain.Location = new Point(0, 0);
             menuStripMain.Name = "menuStripMain";
@@ -115,14 +117,14 @@ namespace SmartPark.UI.Main
             // menuCerrarSesion
             // 
             menuCerrarSesion.Name = "menuCerrarSesion";
-            menuCerrarSesion.Size = new Size(173, 26);
+            menuCerrarSesion.Size = new Size(177, 26);
             menuCerrarSesion.Text = "Cerrar sesion";
             menuCerrarSesion.Click += menuCerrarSesion_Click;
             // 
             // menuSalir
             // 
             menuSalir.Name = "menuSalir";
-            menuSalir.Size = new Size(173, 26);
+            menuSalir.Size = new Size(177, 26);
             menuSalir.Text = "Salir";
             menuSalir.Click += menuSalir_Click;
             // 
@@ -130,27 +132,27 @@ namespace SmartPark.UI.Main
             // 
             menuOperaciones.DropDownItems.AddRange(new ToolStripItem[] { menuEntradasSalidas, menuReservas, menuNuevaReserva });
             menuOperaciones.Name = "menuOperaciones";
-            menuOperaciones.Size = new Size(102, 24);
+            menuOperaciones.Size = new Size(106, 24);
             menuOperaciones.Text = "Operaciones";
             // 
             // menuEntradasSalidas
             // 
             menuEntradasSalidas.Name = "menuEntradasSalidas";
-            menuEntradasSalidas.Size = new Size(203, 26);
+            menuEntradasSalidas.Size = new Size(224, 26);
             menuEntradasSalidas.Text = "Entradas y Salidas";
             menuEntradasSalidas.Click += buttonEntradasSalidas_Click;
             // 
             // menuReservas
             // 
             menuReservas.Name = "menuReservas";
-            menuReservas.Size = new Size(203, 26);
+            menuReservas.Size = new Size(224, 26);
             menuReservas.Text = "Reservas";
             menuReservas.Click += buttonReservas_Click;
             // 
             // menuNuevaReserva
             // 
             menuNuevaReserva.Name = "menuNuevaReserva";
-            menuNuevaReserva.Size = new Size(203, 26);
+            menuNuevaReserva.Size = new Size(224, 26);
             menuNuevaReserva.Text = "Nueva reserva";
             menuNuevaReserva.Click += menuNuevaReserva_Click;
             // 
@@ -158,34 +160,34 @@ namespace SmartPark.UI.Main
             // 
             menuAdministracion.DropDownItems.AddRange(new ToolStripItem[] { menuEspacios, menuUsuarios, menuConfiguracion });
             menuAdministracion.Name = "menuAdministracion";
-            menuAdministracion.Size = new Size(126, 24);
+            menuAdministracion.Size = new Size(123, 24);
             menuAdministracion.Text = "Administracion";
             // 
             // menuEspacios
             // 
             menuEspacios.Name = "menuEspacios";
-            menuEspacios.Size = new Size(183, 26);
+            menuEspacios.Size = new Size(224, 26);
             menuEspacios.Text = "Espacios";
             menuEspacios.Click += buttonEspacios_Click;
             // 
             // menuUsuarios
             // 
             menuUsuarios.Name = "menuUsuarios";
-            menuUsuarios.Size = new Size(183, 26);
+            menuUsuarios.Size = new Size(224, 26);
             menuUsuarios.Text = "Usuarios";
             menuUsuarios.Click += buttonUsuarios_Click;
             // 
             // menuConfiguracion
             // 
             menuConfiguracion.Name = "menuConfiguracion";
-            menuConfiguracion.Size = new Size(183, 26);
+            menuConfiguracion.Size = new Size(224, 26);
             menuConfiguracion.Text = "Configuracion";
             menuConfiguracion.Click += buttonConfiguracion_Click;
             // 
             // menuConsultas
             // 
             menuConsultas.Name = "menuConsultas";
-            menuConsultas.Size = new Size(83, 24);
+            menuConsultas.Size = new Size(86, 24);
             menuConsultas.Text = "Consultas";
             menuConsultas.Click += buttonConsultas_Click;
             // 
@@ -193,7 +195,8 @@ namespace SmartPark.UI.Main
             // 
             toolStripMain.BackColor = Color.FromArgb(40, 66, 104);
             toolStripMain.ForeColor = Color.White;
-            toolStripMain.Items.AddRange(new ToolStripItem[] { toolStripButtonEntradasSalidas, toolStripButtonReservas, toolStripButtonNuevaReserva, toolStripSeparator1, toolStripButtonEspacios, toolStripButtonConsultas, toolStripSeparator2 });
+            toolStripMain.ImageScalingSize = new Size(20, 20);
+            toolStripMain.Items.AddRange(new ToolStripItem[] { toolStripButtonEntradasSalidas, toolStripButtonNuevaReserva, toolStripSeparator1, toolStripButtonEspacios, toolStripButtonTarifas });
             toolStripMain.Location = new Point(0, 28);
             toolStripMain.Name = "toolStripMain";
             toolStripMain.Size = new Size(1559, 27);
@@ -204,23 +207,15 @@ namespace SmartPark.UI.Main
             // 
             toolStripButtonEntradasSalidas.DisplayStyle = ToolStripItemDisplayStyle.Text;
             toolStripButtonEntradasSalidas.Name = "toolStripButtonEntradasSalidas";
-            toolStripButtonEntradasSalidas.Size = new Size(133, 24);
+            toolStripButtonEntradasSalidas.Size = new Size(123, 24);
             toolStripButtonEntradasSalidas.Text = "Entradas/Salidas";
             toolStripButtonEntradasSalidas.Click += buttonEntradasSalidas_Click;
-            // 
-            // toolStripButtonReservas
-            // 
-            toolStripButtonReservas.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripButtonReservas.Name = "toolStripButtonReservas";
-            toolStripButtonReservas.Size = new Size(69, 24);
-            toolStripButtonReservas.Text = "Reservas";
-            toolStripButtonReservas.Click += buttonReservas_Click;
             // 
             // toolStripButtonNuevaReserva
             // 
             toolStripButtonNuevaReserva.DisplayStyle = ToolStripItemDisplayStyle.Text;
             toolStripButtonNuevaReserva.Name = "toolStripButtonNuevaReserva";
-            toolStripButtonNuevaReserva.Size = new Size(111, 24);
+            toolStripButtonNuevaReserva.Size = new Size(106, 24);
             toolStripButtonNuevaReserva.Text = "Nueva reserva";
             toolStripButtonNuevaReserva.Click += menuNuevaReserva_Click;
             // 
@@ -233,22 +228,17 @@ namespace SmartPark.UI.Main
             // 
             toolStripButtonEspacios.DisplayStyle = ToolStripItemDisplayStyle.Text;
             toolStripButtonEspacios.Name = "toolStripButtonEspacios";
-            toolStripButtonEspacios.Size = new Size(63, 24);
+            toolStripButtonEspacios.Size = new Size(70, 24);
             toolStripButtonEspacios.Text = "Espacios";
             toolStripButtonEspacios.Click += buttonEspacios_Click;
             // 
-            // toolStripButtonConsultas
+            // toolStripButtonTarifas
             // 
-            toolStripButtonConsultas.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripButtonConsultas.Name = "toolStripButtonConsultas";
-            toolStripButtonConsultas.Size = new Size(77, 24);
-            toolStripButtonConsultas.Text = "Consultas";
-            toolStripButtonConsultas.Click += buttonConsultas_Click;
-            // 
-            // toolStripSeparator2
-            // 
-            toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(6, 27);
+            toolStripButtonTarifas.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButtonTarifas.Name = "toolStripButtonTarifas";
+            toolStripButtonTarifas.Size = new Size(60, 24);
+            toolStripButtonTarifas.Text = "Tarifas";
+            toolStripButtonTarifas.Click += buttonTarifas_Click;
             // 
             // panelMain
             // 
@@ -272,7 +262,7 @@ namespace SmartPark.UI.Main
             groupBoxAlertas.Margin = new Padding(3, 4, 3, 4);
             groupBoxAlertas.Name = "groupBoxAlertas";
             groupBoxAlertas.Padding = new Padding(9, 11, 9, 13);
-            groupBoxAlertas.Size = new Size(1272, 368);
+            groupBoxAlertas.Size = new Size(1523, 368);
             groupBoxAlertas.TabIndex = 2;
             groupBoxAlertas.TabStop = false;
             groupBoxAlertas.Text = "Alertas Operativas";
@@ -294,7 +284,7 @@ namespace SmartPark.UI.Main
             dataGridViewAlertas.RowHeadersVisible = false;
             dataGridViewAlertas.RowHeadersWidth = 51;
             dataGridViewAlertas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewAlertas.Size = new Size(1254, 324);
+            dataGridViewAlertas.Size = new Size(1505, 324);
             dataGridViewAlertas.TabIndex = 0;
             // 
             // columnNumero
@@ -332,13 +322,14 @@ namespace SmartPark.UI.Main
             // groupBoxPanelControl
             // 
             groupBoxPanelControl.Controls.Add(tableLayoutPanelKpis);
+            groupBoxPanelControl.Controls.Add(panelKpiHeader);
             groupBoxPanelControl.Dock = DockStyle.Top;
             groupBoxPanelControl.Font = new Font("Segoe UI", 9F);
             groupBoxPanelControl.Location = new Point(18, 21);
             groupBoxPanelControl.Margin = new Padding(3, 4, 3, 4);
             groupBoxPanelControl.Name = "groupBoxPanelControl";
             groupBoxPanelControl.Padding = new Padding(9, 11, 9, 13);
-            groupBoxPanelControl.Size = new Size(1272, 200);
+            groupBoxPanelControl.Size = new Size(1523, 200);
             groupBoxPanelControl.TabIndex = 1;
             groupBoxPanelControl.TabStop = false;
             groupBoxPanelControl.Text = "Panel de Control";
@@ -357,12 +348,12 @@ namespace SmartPark.UI.Main
             tableLayoutPanelKpis.Controls.Add(panelKpi4, 3, 0);
             tableLayoutPanelKpis.Controls.Add(panelKpi5, 4, 0);
             tableLayoutPanelKpis.Dock = DockStyle.Fill;
-            tableLayoutPanelKpis.Location = new Point(9, 31);
+            tableLayoutPanelKpis.Location = new Point(9, 67);
             tableLayoutPanelKpis.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanelKpis.Name = "tableLayoutPanelKpis";
             tableLayoutPanelKpis.RowCount = 1;
             tableLayoutPanelKpis.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanelKpis.Size = new Size(1254, 156);
+            tableLayoutPanelKpis.Size = new Size(1505, 120);
             tableLayoutPanelKpis.TabIndex = 0;
             // 
             // panelKpi1
@@ -376,7 +367,7 @@ namespace SmartPark.UI.Main
             panelKpi1.Margin = new Padding(3, 4, 3, 4);
             panelKpi1.Name = "panelKpi1";
             panelKpi1.Padding = new Padding(11);
-            panelKpi1.Size = new Size(244, 148);
+            panelKpi1.Size = new Size(295, 112);
             panelKpi1.TabIndex = 0;
             // 
             // labelKpi1Value
@@ -405,11 +396,11 @@ namespace SmartPark.UI.Main
             panelKpi2.Controls.Add(labelKpi2Value);
             panelKpi2.Controls.Add(labelKpi2Title);
             panelKpi2.Dock = DockStyle.Fill;
-            panelKpi2.Location = new Point(253, 4);
+            panelKpi2.Location = new Point(304, 4);
             panelKpi2.Margin = new Padding(3, 4, 3, 4);
             panelKpi2.Name = "panelKpi2";
             panelKpi2.Padding = new Padding(11);
-            panelKpi2.Size = new Size(244, 148);
+            panelKpi2.Size = new Size(295, 112);
             panelKpi2.TabIndex = 1;
             // 
             // labelKpi2Value
@@ -439,11 +430,11 @@ namespace SmartPark.UI.Main
             panelKpi3.Controls.Add(labelKpi3Value);
             panelKpi3.Controls.Add(labelKpi3Title);
             panelKpi3.Dock = DockStyle.Fill;
-            panelKpi3.Location = new Point(503, 4);
+            panelKpi3.Location = new Point(605, 4);
             panelKpi3.Margin = new Padding(3, 4, 3, 4);
             panelKpi3.Name = "panelKpi3";
             panelKpi3.Padding = new Padding(11);
-            panelKpi3.Size = new Size(244, 148);
+            panelKpi3.Size = new Size(295, 112);
             panelKpi3.TabIndex = 2;
             // 
             // labelKpi3Value
@@ -473,11 +464,11 @@ namespace SmartPark.UI.Main
             panelKpi4.Controls.Add(labelKpi4Value);
             panelKpi4.Controls.Add(labelKpi4Title);
             panelKpi4.Dock = DockStyle.Fill;
-            panelKpi4.Location = new Point(753, 4);
+            panelKpi4.Location = new Point(906, 4);
             panelKpi4.Margin = new Padding(3, 4, 3, 4);
             panelKpi4.Name = "panelKpi4";
             panelKpi4.Padding = new Padding(11);
-            panelKpi4.Size = new Size(244, 148);
+            panelKpi4.Size = new Size(295, 112);
             panelKpi4.TabIndex = 3;
             // 
             // labelKpi4Value
@@ -507,11 +498,11 @@ namespace SmartPark.UI.Main
             panelKpi5.Controls.Add(labelKpi5Value);
             panelKpi5.Controls.Add(labelKpi5Title);
             panelKpi5.Dock = DockStyle.Fill;
-            panelKpi5.Location = new Point(1003, 4);
+            panelKpi5.Location = new Point(1207, 4);
             panelKpi5.Margin = new Padding(3, 4, 3, 4);
             panelKpi5.Name = "panelKpi5";
             panelKpi5.Padding = new Padding(11);
-            panelKpi5.Size = new Size(248, 148);
+            panelKpi5.Size = new Size(295, 112);
             panelKpi5.TabIndex = 4;
             // 
             // labelKpi5Value
@@ -534,9 +525,33 @@ namespace SmartPark.UI.Main
             labelKpi5Title.TabIndex = 0;
             labelKpi5Title.Text = "Reservas Pendientes";
             // 
+            // panelKpiHeader
+            // 
+            panelKpiHeader.Controls.Add(buttonActualizar);
+            panelKpiHeader.Dock = DockStyle.Top;
+            panelKpiHeader.Location = new Point(9, 31);
+            panelKpiHeader.Margin = new Padding(3, 4, 3, 4);
+            panelKpiHeader.Name = "panelKpiHeader";
+            panelKpiHeader.Size = new Size(1505, 36);
+            panelKpiHeader.TabIndex = 1;
+            // 
+            // buttonActualizar
+            // 
+            buttonActualizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonActualizar.BackColor = Color.FromArgb(40, 66, 104);
+            buttonActualizar.FlatStyle = FlatStyle.Flat;
+            buttonActualizar.ForeColor = Color.White;
+            buttonActualizar.Location = new Point(1385, 3);
+            buttonActualizar.Margin = new Padding(3, 4, 3, 4);
+            buttonActualizar.Name = "buttonActualizar";
+            buttonActualizar.Size = new Size(117, 30);
+            buttonActualizar.TabIndex = 0;
+            buttonActualizar.Text = "Actualizar";
+            buttonActualizar.UseVisualStyleBackColor = false;
+            buttonActualizar.Click += toolStripButtonActualizar_Click;
+            // 
             // statusStripMain
             // 
-            statusStripMain.Dock = DockStyle.Bottom;
             statusStripMain.ImageScalingSize = new Size(20, 20);
             statusStripMain.Items.AddRange(new ToolStripItem[] { toolStripStatusUsuario, toolStripStatusSep2, toolStripStatusFecha });
             statusStripMain.Location = new Point(0, 989);
@@ -577,6 +592,7 @@ namespace SmartPark.UI.Main
             Controls.Add(statusStripMain);
             Font = new Font("Segoe UI", 9F);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = menuStripMain;
             Margin = new Padding(3, 4, 3, 4);
             MinimumSize = new Size(1369, 918);
             Name = "MainForm";
@@ -584,7 +600,6 @@ namespace SmartPark.UI.Main
             Text = "SmartPark";
             WindowState = FormWindowState.Maximized;
             Load += MainForm_Load;
-            MainMenuStrip = menuStripMain;
             menuStripMain.ResumeLayout(false);
             menuStripMain.PerformLayout();
             toolStripMain.ResumeLayout(false);
@@ -604,6 +619,7 @@ namespace SmartPark.UI.Main
             panelKpi4.PerformLayout();
             panelKpi5.ResumeLayout(false);
             panelKpi5.PerformLayout();
+            panelKpiHeader.ResumeLayout(false);
             statusStripMain.ResumeLayout(false);
             statusStripMain.PerformLayout();
             ResumeLayout(false);
@@ -631,10 +647,12 @@ namespace SmartPark.UI.Main
         private ToolStripButton toolStripButtonNuevaReserva;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton toolStripButtonEspacios;
+        private ToolStripButton toolStripButtonTarifas;
         private ToolStripButton toolStripButtonConsultas;
-        private ToolStripSeparator toolStripSeparator2;
         private Panel panelMain;
         private GroupBox groupBoxPanelControl;
+        private Panel panelKpiHeader;
+        private Button buttonActualizar;
         private TableLayoutPanel tableLayoutPanelKpis;
         private Panel panelKpi1;
         private Label labelKpi1Title;

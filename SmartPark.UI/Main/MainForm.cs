@@ -14,7 +14,7 @@ namespace SmartPark.UI.Main
         private readonly EspaciosService _espaciosService;
         private readonly TicketService _ticketService;
         private readonly ReservaService _reservaService;
-
+2
         public MainForm(EspaciosService espaciosService, TicketService ticketService, ReservaService reservaService)
         {
             InitializeComponent();
@@ -60,6 +60,12 @@ namespace SmartPark.UI.Main
             configuracionForm.ShowDialog();
         }
 
+        private void buttonTarifas_Click(object? sender, EventArgs e)
+        {
+            var tarifaForm = Program.ServiceProvider.GetRequiredService<TarifaForm>();
+            tarifaForm.ShowDialog();
+        }
+
         private void buttonReservas_Click(object? sender, EventArgs e)
         {
             var reservasForm = Program.ServiceProvider.GetRequiredService<ReservasForm>();
@@ -80,6 +86,11 @@ namespace SmartPark.UI.Main
         private void menuSalir_Click(object? sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private async void toolStripButtonActualizar_Click(object? sender, EventArgs e)
+        {
+            await CargarDashboardAsync();
         }
 
         private async Task CargarDashboardAsync()
