@@ -60,10 +60,9 @@ namespace SmartPark.UI.EntradasSalidas
             panelMain.Controls.Add(groupBoxEntrada);
             panelMain.Dock = DockStyle.Fill;
             panelMain.Location = new Point(0, 0);
-            panelMain.Margin = new Padding(3, 2, 3, 2);
             panelMain.Name = "panelMain";
-            panelMain.Padding = new Padding(14, 12, 14, 12);
-            panelMain.Size = new Size(1056, 600);
+            panelMain.Padding = new Padding(16, 16, 16, 16);
+            panelMain.Size = new Size(1207, 800);
             panelMain.TabIndex = 0;
             // 
             // groupBoxVehiculos
@@ -72,12 +71,11 @@ namespace SmartPark.UI.EntradasSalidas
             groupBoxVehiculos.Controls.Add(dataGridViewVehiculos);
             groupBoxVehiculos.Controls.Add(panelBotonesVehiculos);
             groupBoxVehiculos.Font = new Font("Segoe UI", 9F);
-            groupBoxVehiculos.Location = new Point(11, 201);
-            groupBoxVehiculos.Margin = new Padding(3, 2, 3, 2);
-            groupBoxVehiculos.MinimumSize = new Size(1022, 350);
+            groupBoxVehiculos.Location = new Point(12, 264);
+            groupBoxVehiculos.MinimumSize = new Size(1168, 467);
             groupBoxVehiculos.Name = "groupBoxVehiculos";
-            groupBoxVehiculos.Padding = new Padding(10, 9, 10, 9);
-            groupBoxVehiculos.Size = new Size(1032, 388);
+            groupBoxVehiculos.Padding = new Padding(11, 12, 11, 12);
+            groupBoxVehiculos.Size = new Size(1179, 517);
             groupBoxVehiculos.TabIndex = 1;
             groupBoxVehiculos.TabStop = false;
             groupBoxVehiculos.Text = "Vehículos Actuales en el Parqueo";
@@ -107,15 +105,15 @@ namespace SmartPark.UI.EntradasSalidas
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridViewVehiculos.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewVehiculos.Location = new Point(10, 19);
-            dataGridViewVehiculos.Margin = new Padding(3, 2, 3, 2);
+            dataGridViewVehiculos.Location = new Point(11, 25);
+            dataGridViewVehiculos.MinimumSize = new Size(1155, 429);
             dataGridViewVehiculos.MultiSelect = false;
             dataGridViewVehiculos.Name = "dataGridViewVehiculos";
             dataGridViewVehiculos.ReadOnly = true;
             dataGridViewVehiculos.RowHeadersVisible = false;
             dataGridViewVehiculos.RowHeadersWidth = 51;
             dataGridViewVehiculos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewVehiculos.Size = new Size(1011, 322);
+            dataGridViewVehiculos.Size = new Size(1156, 429);
             dataGridViewVehiculos.TabIndex = 0;
             // 
             // columnId
@@ -180,10 +178,9 @@ namespace SmartPark.UI.EntradasSalidas
             panelBotonesVehiculos.Controls.Add(buttonCobrar);
             panelBotonesVehiculos.Controls.Add(buttonActualizar);
             panelBotonesVehiculos.Dock = DockStyle.Bottom;
-            panelBotonesVehiculos.Location = new Point(10, 345);
-            panelBotonesVehiculos.Margin = new Padding(3, 2, 3, 2);
+            panelBotonesVehiculos.Location = new Point(11, 460);
             panelBotonesVehiculos.Name = "panelBotonesVehiculos";
-            panelBotonesVehiculos.Size = new Size(1012, 34);
+            panelBotonesVehiculos.Size = new Size(1157, 45);
             panelBotonesVehiculos.TabIndex = 1;
             // 
             // buttonCobrar
@@ -195,9 +192,8 @@ namespace SmartPark.UI.EntradasSalidas
             buttonCobrar.FlatStyle = FlatStyle.Flat;
             buttonCobrar.ForeColor = Color.White;
             buttonCobrar.Location = new Point(0, 0);
-            buttonCobrar.Margin = new Padding(3, 2, 3, 2);
             buttonCobrar.Name = "buttonCobrar";
-            buttonCobrar.Size = new Size(88, 32);
+            buttonCobrar.Size = new Size(101, 43);
             buttonCobrar.TabIndex = 0;
             buttonCobrar.Text = "Cobrar";
             buttonCobrar.UseVisualStyleBackColor = false;
@@ -211,10 +207,9 @@ namespace SmartPark.UI.EntradasSalidas
             buttonActualizar.FlatAppearance.MouseOverBackColor = Color.FromArgb(238, 246, 255);
             buttonActualizar.FlatStyle = FlatStyle.Flat;
             buttonActualizar.ForeColor = Color.FromArgb(31, 118, 221);
-            buttonActualizar.Location = new Point(93, 0);
-            buttonActualizar.Margin = new Padding(3, 2, 3, 2);
+            buttonActualizar.Location = new Point(106, 0);
             buttonActualizar.Name = "buttonActualizar";
-            buttonActualizar.Size = new Size(96, 32);
+            buttonActualizar.Size = new Size(110, 43);
             buttonActualizar.TabIndex = 1;
             buttonActualizar.Text = "Actualizar";
             buttonActualizar.UseVisualStyleBackColor = false;
@@ -226,11 +221,10 @@ namespace SmartPark.UI.EntradasSalidas
             groupBoxEntrada.Controls.Add(panelBotoneEntrada);
             groupBoxEntrada.Dock = DockStyle.Top;
             groupBoxEntrada.Font = new Font("Segoe UI", 9F);
-            groupBoxEntrada.Location = new Point(14, 12);
-            groupBoxEntrada.Margin = new Padding(3, 2, 3, 2);
+            groupBoxEntrada.Location = new Point(16, 16);
             groupBoxEntrada.Name = "groupBoxEntrada";
-            groupBoxEntrada.Padding = new Padding(10, 9, 10, 9);
-            groupBoxEntrada.Size = new Size(1028, 166);
+            groupBoxEntrada.Padding = new Padding(11, 12, 11, 12);
+            groupBoxEntrada.Size = new Size(1175, 221);
             groupBoxEntrada.TabIndex = 0;
             groupBoxEntrada.TabStop = false;
             groupBoxEntrada.Text = "Registrar Entrada de Vehículo";
@@ -238,7 +232,7 @@ namespace SmartPark.UI.EntradasSalidas
             // tableLayoutPanelEntrada
             // 
             tableLayoutPanelEntrada.ColumnCount = 2;
-            tableLayoutPanelEntrada.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 149F));
+            tableLayoutPanelEntrada.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 170F));
             tableLayoutPanelEntrada.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanelEntrada.Controls.Add(labelPlaca, 0, 0);
             tableLayoutPanelEntrada.Controls.Add(textBoxPlaca, 1, 0);
@@ -249,24 +243,23 @@ namespace SmartPark.UI.EntradasSalidas
             tableLayoutPanelEntrada.Controls.Add(labelHoraEntrada, 0, 3);
             tableLayoutPanelEntrada.Controls.Add(textBoxHoraEntrada, 1, 3);
             tableLayoutPanelEntrada.Dock = DockStyle.Fill;
-            tableLayoutPanelEntrada.Location = new Point(10, 25);
-            tableLayoutPanelEntrada.Margin = new Padding(3, 2, 3, 2);
+            tableLayoutPanelEntrada.Location = new Point(11, 32);
             tableLayoutPanelEntrada.Name = "tableLayoutPanelEntrada";
             tableLayoutPanelEntrada.RowCount = 4;
-            tableLayoutPanelEntrada.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
-            tableLayoutPanelEntrada.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
-            tableLayoutPanelEntrada.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
-            tableLayoutPanelEntrada.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
-            tableLayoutPanelEntrada.Size = new Size(1008, 98);
+            tableLayoutPanelEntrada.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
+            tableLayoutPanelEntrada.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
+            tableLayoutPanelEntrada.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
+            tableLayoutPanelEntrada.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
+            tableLayoutPanelEntrada.Size = new Size(1153, 132);
             tableLayoutPanelEntrada.TabIndex = 0;
             // 
             // labelPlaca
             // 
             labelPlaca.Anchor = AnchorStyles.Left;
             labelPlaca.AutoSize = true;
-            labelPlaca.Location = new Point(3, 5);
+            labelPlaca.Location = new Point(3, 6);
             labelPlaca.Name = "labelPlaca";
-            labelPlaca.Size = new Size(38, 15);
+            labelPlaca.Size = new Size(47, 20);
             labelPlaca.TabIndex = 0;
             labelPlaca.Text = "Placa:";
             // 
@@ -274,19 +267,18 @@ namespace SmartPark.UI.EntradasSalidas
             // 
             textBoxPlaca.CharacterCasing = CharacterCasing.Upper;
             textBoxPlaca.Dock = DockStyle.Fill;
-            textBoxPlaca.Location = new Point(152, 2);
-            textBoxPlaca.Margin = new Padding(3, 2, 3, 2);
+            textBoxPlaca.Location = new Point(173, 3);
             textBoxPlaca.Name = "textBoxPlaca";
-            textBoxPlaca.Size = new Size(853, 23);
+            textBoxPlaca.Size = new Size(977, 27);
             textBoxPlaca.TabIndex = 1;
             // 
             // labelTipoVehiculo
             // 
             labelTipoVehiculo.Anchor = AnchorStyles.Left;
             labelTipoVehiculo.AutoSize = true;
-            labelTipoVehiculo.Location = new Point(3, 30);
+            labelTipoVehiculo.Location = new Point(3, 39);
             labelTipoVehiculo.Name = "labelTipoVehiculo";
-            labelTipoVehiculo.Size = new Size(98, 15);
+            labelTipoVehiculo.Size = new Size(123, 20);
             labelTipoVehiculo.TabIndex = 2;
             labelTipoVehiculo.Text = "Tipo de Vehículo:";
             // 
@@ -294,19 +286,18 @@ namespace SmartPark.UI.EntradasSalidas
             // 
             comboBoxTipoVehiculo.Dock = DockStyle.Fill;
             comboBoxTipoVehiculo.Items.AddRange(new object[] { "Auto", "Moto", "Camioneta", "SUV" });
-            comboBoxTipoVehiculo.Location = new Point(152, 27);
-            comboBoxTipoVehiculo.Margin = new Padding(3, 2, 3, 2);
+            comboBoxTipoVehiculo.Location = new Point(173, 36);
             comboBoxTipoVehiculo.Name = "comboBoxTipoVehiculo";
-            comboBoxTipoVehiculo.Size = new Size(853, 23);
+            comboBoxTipoVehiculo.Size = new Size(977, 28);
             comboBoxTipoVehiculo.TabIndex = 3;
             // 
             // labelEspacioAsignado
             // 
             labelEspacioAsignado.Anchor = AnchorStyles.Left;
             labelEspacioAsignado.AutoSize = true;
-            labelEspacioAsignado.Location = new Point(3, 55);
+            labelEspacioAsignado.Location = new Point(3, 72);
             labelEspacioAsignado.Name = "labelEspacioAsignado";
-            labelEspacioAsignado.Size = new Size(103, 15);
+            labelEspacioAsignado.Size = new Size(130, 20);
             labelEspacioAsignado.TabIndex = 4;
             labelEspacioAsignado.Text = "Espacio Asignado:";
             // 
@@ -314,19 +305,18 @@ namespace SmartPark.UI.EntradasSalidas
             // 
             comboBoxEspacioAsignado.Dock = DockStyle.Fill;
             comboBoxEspacioAsignado.Items.AddRange(new object[] { "Seleccionar espacio...", "A-001", "A-002", "B-001", "C-001" });
-            comboBoxEspacioAsignado.Location = new Point(152, 52);
-            comboBoxEspacioAsignado.Margin = new Padding(3, 2, 3, 2);
+            comboBoxEspacioAsignado.Location = new Point(173, 69);
             comboBoxEspacioAsignado.Name = "comboBoxEspacioAsignado";
-            comboBoxEspacioAsignado.Size = new Size(853, 23);
+            comboBoxEspacioAsignado.Size = new Size(977, 28);
             comboBoxEspacioAsignado.TabIndex = 5;
             // 
             // labelHoraEntrada
             // 
             labelHoraEntrada.Anchor = AnchorStyles.Left;
             labelHoraEntrada.AutoSize = true;
-            labelHoraEntrada.Location = new Point(3, 80);
+            labelHoraEntrada.Location = new Point(3, 105);
             labelHoraEntrada.Name = "labelHoraEntrada";
-            labelHoraEntrada.Size = new Size(95, 15);
+            labelHoraEntrada.Size = new Size(121, 20);
             labelHoraEntrada.TabIndex = 6;
             labelHoraEntrada.Text = "Hora de Entrada:";
             // 
@@ -334,20 +324,18 @@ namespace SmartPark.UI.EntradasSalidas
             // 
             textBoxHoraEntrada.Dock = DockStyle.Left;
             textBoxHoraEntrada.Enabled = false;
-            textBoxHoraEntrada.Location = new Point(152, 77);
-            textBoxHoraEntrada.Margin = new Padding(3, 2, 3, 2);
+            textBoxHoraEntrada.Location = new Point(173, 102);
             textBoxHoraEntrada.Name = "textBoxHoraEntrada";
-            textBoxHoraEntrada.Size = new Size(106, 23);
+            textBoxHoraEntrada.Size = new Size(121, 27);
             textBoxHoraEntrada.TabIndex = 7;
             // 
             // panelBotoneEntrada
             // 
             panelBotoneEntrada.Controls.Add(buttonGuardarEntrada);
             panelBotoneEntrada.Dock = DockStyle.Bottom;
-            panelBotoneEntrada.Location = new Point(10, 123);
-            panelBotoneEntrada.Margin = new Padding(3, 2, 3, 2);
+            panelBotoneEntrada.Location = new Point(11, 164);
             panelBotoneEntrada.Name = "panelBotoneEntrada";
-            panelBotoneEntrada.Size = new Size(1008, 34);
+            panelBotoneEntrada.Size = new Size(1153, 45);
             panelBotoneEntrada.TabIndex = 1;
             // 
             // buttonGuardarEntrada
@@ -358,10 +346,9 @@ namespace SmartPark.UI.EntradasSalidas
             buttonGuardarEntrada.FlatAppearance.MouseOverBackColor = Color.FromArgb(45, 131, 232);
             buttonGuardarEntrada.FlatStyle = FlatStyle.Flat;
             buttonGuardarEntrada.ForeColor = Color.White;
-            buttonGuardarEntrada.Location = new Point(3, 4);
-            buttonGuardarEntrada.Margin = new Padding(3, 2, 3, 2);
+            buttonGuardarEntrada.Location = new Point(3, 5);
             buttonGuardarEntrada.Name = "buttonGuardarEntrada";
-            buttonGuardarEntrada.Size = new Size(122, 24);
+            buttonGuardarEntrada.Size = new Size(139, 32);
             buttonGuardarEntrada.TabIndex = 0;
             buttonGuardarEntrada.Text = "Guardar Entrada";
             buttonGuardarEntrada.UseVisualStyleBackColor = false;
@@ -369,14 +356,13 @@ namespace SmartPark.UI.EntradasSalidas
             // 
             // EntradasSalidasForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(244, 247, 252);
-            ClientSize = new Size(1056, 600);
+            ClientSize = new Size(1207, 800);
             Controls.Add(panelMain);
             Font = new Font("Segoe UI", 9F);
-            Margin = new Padding(3, 2, 3, 2);
-            MinimumSize = new Size(1066, 639);
+            MinimumSize = new Size(1216, 836);
             Name = "EntradasSalidasForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "SmartPark - Entradas y Salidas";
