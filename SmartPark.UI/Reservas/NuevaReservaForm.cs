@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Windows.Forms;
 using SmartPark.Data.Modelos;
 
@@ -60,7 +61,12 @@ namespace SmartPark.UI.Reservas
                 return;
             }
 
-            var espacios = await _espaciosService.GetList(e => e.Activo && e.TipoVehiculoId == tipoVehiculoId);
+            var fecha = dateTimeFecha.Value.Date;
+            var reservados = await _service.GetEspaciosReservados(fecha, _editingReserva?.Id);
+
+            var espacios = await _espaciosService.GetList(e => e.Activo
+                && e.TipoVehiculoId == tipoVehiculoId
+                && !reservados.Contains(e.Id));
             comboBoxEspacio.DisplayMember = "CodigoEspacio";
             comboBoxEspacio.ValueMember = "Id";
             comboBoxEspacio.DataSource = espacios;
@@ -157,6 +163,14 @@ namespace SmartPark.UI.Reservas
             }
 
             MessageBox.Show("No se pudo guardar la reserva.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private async void dateTimeFecha_ValueChanged(object sender, EventArgs e)
+        {
+            if (_loading)
+                return;
+
+            await CargarEspaciosPorTipoAsync();
         }
 
         

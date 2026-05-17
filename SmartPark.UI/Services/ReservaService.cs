@@ -97,6 +97,24 @@ namespace SmartPark.UI.Services
                 .ToListAsync();
         }
 
+        public async Task<List<long>> GetEspaciosReservados(DateTime fecha, long? excludeReservaId = null)
+        {
+            var dia = fecha.Date;
+            var query = _context.Reservas.AsNoTracking()
+                .Where(r => r.HoraInicio.Date == dia)
+                .Where(r => r.Estado == "PENDIENTE" || r.Estado == "ACTIVA");
+
+            if (excludeReservaId.HasValue)
+            {
+                query = query.Where(r => r.Id != excludeReservaId.Value);
+            }
+
+            return await query
+                .Select(r => r.EspacioId)
+                .Distinct()
+                .ToListAsync();
+        }
+
         public void Dispose()
         {
             if (_ownsContext)

@@ -145,6 +145,7 @@ namespace SmartPark.UI.Reservas
             dateTimeFecha.Name = "dateTimeFecha";
             dateTimeFecha.Size = new Size(160, 27);
             dateTimeFecha.TabIndex = 11;
+            dateTimeFecha.ValueChanged += dateTimeFecha_ValueChanged;
             // 
             // labelFecha
             // 
