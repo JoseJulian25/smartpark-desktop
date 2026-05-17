@@ -17,6 +17,8 @@ public partial class Ticket
 
     public decimal? MontoTotal { get; set; }
 
+    public long? ReservaId { get; set; }
+
     public bool Anulado { get; set; }
 
     public DateTime? FechaAnulacion { get; set; }
@@ -32,6 +34,8 @@ public partial class Ticket
     public virtual Usuario? CreadoPorNavigation { get; set; }
 
     public virtual Espacio Espacio { get; set; } = null!;
+
+    public virtual Reserva? Reserva { get; set; }
 
     public virtual Pago? Pago { get; set; }
 }

@@ -90,6 +90,16 @@ namespace SmartPark.UI.Services
             ticket.Estado = "CERRADO";
             ticket.Espacio.Estado = "LIBRE";
 
+            if (ticket.ReservaId.HasValue)
+            {
+                var reserva = await _context.Reservas.FirstOrDefaultAsync(r => r.Id == ticket.ReservaId.Value);
+                if (reserva != null)
+                {
+                    reserva.HoraFin = now;
+                    reserva.Estado = "FINALIZADA";
+                }
+            }
+
             await _context.Pagos.AddAsync(pago);
 
             return await _context.SaveChangesAsync() > 0;

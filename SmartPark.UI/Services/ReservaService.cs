@@ -130,7 +130,8 @@ namespace SmartPark.UI.Services
 
             var ticket = new Ticket
             {
-                Placa = reserva.Placa
+                Placa = reserva.Placa,
+                ReservaId = reserva.Id
             };
 
             var registrado = await _ticketService.RegistrarEntrada(ticket, reserva.EspacioId);

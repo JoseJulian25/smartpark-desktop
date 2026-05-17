@@ -254,6 +254,7 @@ public partial class SmartparkContext : DbContext
                 .HasColumnName("codigo_ticket");
             entity.Property(e => e.CreadoPor).HasColumnName("creado_por");
             entity.Property(e => e.EspacioId).HasColumnName("espacio_id");
+            entity.Property(e => e.ReservaId).HasColumnName("reserva_id");
             entity.Property(e => e.Anulado).HasColumnName("anulado");
             entity.Property(e => e.Estado)
                 .HasMaxLength(30)
@@ -279,6 +280,11 @@ public partial class SmartparkContext : DbContext
                 .HasForeignKey(d => d.EspacioId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_tickets_espacio");
+
+            entity.HasOne(d => d.Reserva)
+                .WithMany()
+                .HasForeignKey(d => d.ReservaId)
+                .HasConstraintName("fk_tickets_reserva");
 
         });
 
