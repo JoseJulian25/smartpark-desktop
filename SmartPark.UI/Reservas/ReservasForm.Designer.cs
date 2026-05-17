@@ -341,6 +341,7 @@ namespace SmartPark.UI.Reservas
             Name = "ReservasForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "SmartPark - Gestion de Reservas";
+            Load += ReservasForm_Load_1;
             panelMain.ResumeLayout(false);
             groupBoxResultados.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewReservas).EndInit();

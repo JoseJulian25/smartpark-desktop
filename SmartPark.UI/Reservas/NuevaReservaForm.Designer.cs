@@ -8,6 +8,8 @@ namespace SmartPark.UI.Reservas
         private GroupBox groupBoxFormulario;
         private TextBox textBoxCliente;
         private Label labelCliente;
+        private TextBox textBoxEmail;
+        private Label labelEmail;
         private TextBox textBoxPlaca;
         private Label labelPlaca;
         private ComboBox comboBoxTipoVehiculo;
@@ -51,6 +53,8 @@ namespace SmartPark.UI.Reservas
             labelTipoVehiculo = new Label();
             textBoxPlaca = new TextBox();
             labelPlaca = new Label();
+            textBoxEmail = new TextBox();
+            labelEmail = new Label();
             textBoxCliente = new TextBox();
             labelCliente = new Label();
             panelButtons = new Panel();
@@ -86,6 +90,8 @@ namespace SmartPark.UI.Reservas
             groupBoxFormulario.Controls.Add(labelTipoVehiculo);
             groupBoxFormulario.Controls.Add(textBoxPlaca);
             groupBoxFormulario.Controls.Add(labelPlaca);
+            groupBoxFormulario.Controls.Add(textBoxEmail);
+            groupBoxFormulario.Controls.Add(labelEmail);
             groupBoxFormulario.Controls.Add(textBoxCliente);
             groupBoxFormulario.Controls.Add(labelCliente);
             groupBoxFormulario.Dock = DockStyle.Fill;
@@ -100,53 +106,53 @@ namespace SmartPark.UI.Reservas
             // 
             // textBoxCelular
             // 
-            textBoxCelular.Location = new Point(152, 276);
+            textBoxCelular.Location = new Point(152, 312);
             textBoxCelular.Name = "textBoxCelular";
             textBoxCelular.Size = new Size(200, 27);
-            textBoxCelular.TabIndex = 13;
+            textBoxCelular.TabIndex = 15;
             // 
             // labelCelular
             // 
             labelCelular.AutoSize = true;
-            labelCelular.Location = new Point(24, 280);
+            labelCelular.Location = new Point(24, 316);
             labelCelular.Name = "labelCelular";
             labelCelular.Size = new Size(114, 20);
-            labelCelular.TabIndex = 12;
+            labelCelular.TabIndex = 14;
             labelCelular.Text = "Numero celular:";
             // 
             // dateTimeHoraInicio
             // 
             dateTimeHoraInicio.Format = DateTimePickerFormat.Time;
-            dateTimeHoraInicio.Location = new Point(152, 232);
+            dateTimeHoraInicio.Location = new Point(152, 268);
             dateTimeHoraInicio.Name = "dateTimeHoraInicio";
             dateTimeHoraInicio.ShowUpDown = true;
             dateTimeHoraInicio.Size = new Size(120, 27);
-            dateTimeHoraInicio.TabIndex = 11;
+            dateTimeHoraInicio.TabIndex = 13;
             // 
             // labelHoraInicio
             // 
             labelHoraInicio.AutoSize = true;
-            labelHoraInicio.Location = new Point(24, 236);
+            labelHoraInicio.Location = new Point(24, 272);
             labelHoraInicio.Name = "labelHoraInicio";
             labelHoraInicio.Size = new Size(85, 20);
-            labelHoraInicio.TabIndex = 10;
+            labelHoraInicio.TabIndex = 12;
             labelHoraInicio.Text = "Hora inicio:";
             // 
             // dateTimeFecha
             // 
             dateTimeFecha.Format = DateTimePickerFormat.Short;
-            dateTimeFecha.Location = new Point(152, 188);
+            dateTimeFecha.Location = new Point(152, 224);
             dateTimeFecha.Name = "dateTimeFecha";
             dateTimeFecha.Size = new Size(160, 27);
-            dateTimeFecha.TabIndex = 9;
+            dateTimeFecha.TabIndex = 11;
             // 
             // labelFecha
             // 
             labelFecha.AutoSize = true;
-            labelFecha.Location = new Point(24, 192);
+            labelFecha.Location = new Point(24, 228);
             labelFecha.Name = "labelFecha";
             labelFecha.Size = new Size(50, 20);
-            labelFecha.TabIndex = 8;
+            labelFecha.TabIndex = 10;
             labelFecha.Text = "Fecha:";
             // 
             // comboBoxEspacio
@@ -154,18 +160,18 @@ namespace SmartPark.UI.Reservas
             comboBoxEspacio.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxEspacio.FormattingEnabled = true;
             comboBoxEspacio.Items.AddRange(new object[] { "A-012", "B-025", "C-008" });
-            comboBoxEspacio.Location = new Point(152, 144);
+            comboBoxEspacio.Location = new Point(152, 180);
             comboBoxEspacio.Name = "comboBoxEspacio";
             comboBoxEspacio.Size = new Size(200, 28);
-            comboBoxEspacio.TabIndex = 7;
+            comboBoxEspacio.TabIndex = 9;
             // 
             // labelEspacio
             // 
             labelEspacio.AutoSize = true;
-            labelEspacio.Location = new Point(24, 148);
+            labelEspacio.Location = new Point(24, 184);
             labelEspacio.Name = "labelEspacio";
             labelEspacio.Size = new Size(63, 20);
-            labelEspacio.TabIndex = 6;
+            labelEspacio.TabIndex = 8;
             labelEspacio.Text = "Espacio:";
             // 
             // comboBoxTipoVehiculo
@@ -173,35 +179,52 @@ namespace SmartPark.UI.Reservas
             comboBoxTipoVehiculo.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTipoVehiculo.FormattingEnabled = true;
             comboBoxTipoVehiculo.Items.AddRange(new object[] { "Auto", "Moto", "Camioneta", "SUV" });
-            comboBoxTipoVehiculo.Location = new Point(152, 100);
+            comboBoxTipoVehiculo.Location = new Point(152, 136);
             comboBoxTipoVehiculo.Name = "comboBoxTipoVehiculo";
             comboBoxTipoVehiculo.Size = new Size(200, 28);
-            comboBoxTipoVehiculo.TabIndex = 5;
+            comboBoxTipoVehiculo.TabIndex = 7;
+            comboBoxTipoVehiculo.SelectedIndexChanged += this.comboBoxTipoVehiculo_SelectedIndexChanged;
             // 
             // labelTipoVehiculo
             // 
             labelTipoVehiculo.AutoSize = true;
-            labelTipoVehiculo.Location = new Point(24, 104);
+            labelTipoVehiculo.Location = new Point(24, 140);
             labelTipoVehiculo.Name = "labelTipoVehiculo";
             labelTipoVehiculo.Size = new Size(122, 20);
-            labelTipoVehiculo.TabIndex = 4;
+            labelTipoVehiculo.TabIndex = 6;
             labelTipoVehiculo.Text = "Tipo de vehiculo:";
             // 
             // textBoxPlaca
             // 
-            textBoxPlaca.Location = new Point(152, 64);
+            textBoxPlaca.Location = new Point(152, 100);
             textBoxPlaca.Name = "textBoxPlaca";
             textBoxPlaca.Size = new Size(150, 27);
-            textBoxPlaca.TabIndex = 3;
+            textBoxPlaca.TabIndex = 5;
             // 
             // labelPlaca
             // 
             labelPlaca.AutoSize = true;
-            labelPlaca.Location = new Point(24, 68);
+            labelPlaca.Location = new Point(24, 104);
             labelPlaca.Name = "labelPlaca";
             labelPlaca.Size = new Size(47, 20);
-            labelPlaca.TabIndex = 2;
+            labelPlaca.TabIndex = 4;
             labelPlaca.Text = "Placa:";
+            // 
+            // textBoxEmail
+            // 
+            textBoxEmail.Location = new Point(152, 64);
+            textBoxEmail.Name = "textBoxEmail";
+            textBoxEmail.Size = new Size(320, 27);
+            textBoxEmail.TabIndex = 3;
+            // 
+            // labelEmail
+            // 
+            labelEmail.AutoSize = true;
+            labelEmail.Location = new Point(24, 68);
+            labelEmail.Name = "labelEmail";
+            labelEmail.Size = new Size(57, 20);
+            labelEmail.TabIndex = 2;
+            labelEmail.Text = "Correo:";
             // 
             // textBoxCliente
             // 
@@ -258,6 +281,7 @@ namespace SmartPark.UI.Reservas
             Name = "NuevaReservaForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "SmartPark - Nueva Reserva";
+            Load += NuevaReservaForm_Load;
             panelMain.ResumeLayout(false);
             groupBoxFormulario.ResumeLayout(false);
             groupBoxFormulario.PerformLayout();

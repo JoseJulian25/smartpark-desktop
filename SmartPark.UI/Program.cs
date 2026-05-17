@@ -63,6 +63,7 @@ static class Program
         services.AddTransient<Services.PagoService>();
         services.AddTransient<Services.ConsultasService>();
         services.AddTransient<Services.UsuarioService>();
+        services.AddTransient<Services.ReservaService>();
         services.AddTransient<EntradasSalidasForm>();
         services.AddTransient<CobrarSalidaForm>();
         services.AddTransient<UsuariosForm>();
