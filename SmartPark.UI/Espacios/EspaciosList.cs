@@ -31,7 +31,6 @@ namespace SmartPark.UI.Espacios
             labelTotalValue.Text = espacios.Count.ToString();
             labelLibresValue.Text = espacios.Count(x => x.Estado == "LIBRE").ToString();
             labelOcupadosValue.Text = espacios.Count(x => x.Estado == "OCUPADO").ToString();
-            labelReservadosValue.Text = espacios.Count(x => x.Estado == "RESERVADO").ToString();
 
             dataGridViewEspacios.Rows.Clear();
 

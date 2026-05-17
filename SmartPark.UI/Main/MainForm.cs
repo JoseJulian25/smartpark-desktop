@@ -14,7 +14,6 @@ namespace SmartPark.UI.Main
         public MainForm()
         {
             InitializeComponent();
-            buttonReservas.Click += buttonReservas_Click;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -56,6 +55,22 @@ namespace SmartPark.UI.Main
         {
             var reservasForm = Program.ServiceProvider.GetRequiredService<ReservasForm>();
             reservasForm.ShowDialog();
+        }
+
+        private void menuNuevaReserva_Click(object? sender, EventArgs e)
+        {
+            var form = Program.ServiceProvider.GetRequiredService<NuevaReservaForm>();
+            form.ShowDialog();
+        }
+
+        private void menuCerrarSesion_Click(object? sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void menuSalir_Click(object? sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
     }

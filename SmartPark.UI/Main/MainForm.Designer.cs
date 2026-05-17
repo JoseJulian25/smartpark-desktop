@@ -30,19 +30,27 @@ namespace SmartPark.UI.Main
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            panelSidebar = new Panel();
-            panelSidebarNav = new Panel();
-            buttonConsultas = new Button();
-            buttonConfiguracion = new Button();
-            buttonUsuarios = new Button();
-            buttonEspacios = new Button();
-            buttonReservas = new Button();
-            buttonEntradasSalidas = new Button();
-            buttonInicio = new Button();
-            buttonLogout = new Button();
-            panelSidebarTop = new Panel();
-            pictureBox1 = new PictureBox();
-            labelSystemName = new Label();
+            menuStripMain = new MenuStrip();
+            menuArchivo = new ToolStripMenuItem();
+            menuCerrarSesion = new ToolStripMenuItem();
+            menuSalir = new ToolStripMenuItem();
+            menuOperaciones = new ToolStripMenuItem();
+            menuEntradasSalidas = new ToolStripMenuItem();
+            menuReservas = new ToolStripMenuItem();
+            menuNuevaReserva = new ToolStripMenuItem();
+            menuAdministracion = new ToolStripMenuItem();
+            menuEspacios = new ToolStripMenuItem();
+            menuUsuarios = new ToolStripMenuItem();
+            menuConfiguracion = new ToolStripMenuItem();
+            menuConsultas = new ToolStripMenuItem();
+            toolStripMain = new ToolStrip();
+            toolStripButtonEntradasSalidas = new ToolStripButton();
+            toolStripButtonReservas = new ToolStripButton();
+            toolStripButtonNuevaReserva = new ToolStripButton();
+            toolStripSeparator1 = new ToolStripSeparator();
+            toolStripButtonEspacios = new ToolStripButton();
+            toolStripButtonConsultas = new ToolStripButton();
+            toolStripSeparator2 = new ToolStripSeparator();
             panelMain = new Panel();
             groupBoxAlertas = new GroupBox();
             dataGridViewAlertas = new DataGridView();
@@ -71,10 +79,8 @@ namespace SmartPark.UI.Main
             toolStripStatusUsuario = new ToolStripStatusLabel();
             toolStripStatusSep2 = new ToolStripStatusLabel();
             toolStripStatusFecha = new ToolStripStatusLabel();
-            panelSidebar.SuspendLayout();
-            panelSidebarNav.SuspendLayout();
-            panelSidebarTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            menuStripMain.SuspendLayout();
+            toolStripMain.SuspendLayout();
             panelMain.SuspendLayout();
             groupBoxAlertas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAlertas).BeginInit();
@@ -88,241 +94,161 @@ namespace SmartPark.UI.Main
             statusStripMain.SuspendLayout();
             SuspendLayout();
             // 
-            // panelSidebar
+            // menuStripMain
             // 
-            panelSidebar.BackColor = Color.FromArgb(26, 35, 50);
-            panelSidebar.BorderStyle = BorderStyle.FixedSingle;
-            panelSidebar.Controls.Add(panelSidebarNav);
-            panelSidebar.Controls.Add(buttonLogout);
-            panelSidebar.Controls.Add(panelSidebarTop);
-            panelSidebar.Dock = DockStyle.Left;
-            panelSidebar.Location = new Point(0, 0);
-            panelSidebar.Margin = new Padding(3, 4, 3, 4);
-            panelSidebar.Name = "panelSidebar";
-            panelSidebar.Size = new Size(251, 1015);
-            panelSidebar.TabIndex = 0;
+            menuStripMain.BackColor = Color.FromArgb(40, 66, 104);
+            menuStripMain.ForeColor = Color.White;
+            menuStripMain.Items.AddRange(new ToolStripItem[] { menuArchivo, menuOperaciones, menuAdministracion, menuConsultas });
+            menuStripMain.Location = new Point(0, 0);
+            menuStripMain.Name = "menuStripMain";
+            menuStripMain.Size = new Size(1559, 28);
+            menuStripMain.TabIndex = 0;
+            menuStripMain.Text = "menuStripMain";
             // 
-            // panelSidebarNav
+            // menuArchivo
             // 
-            panelSidebarNav.Controls.Add(buttonConsultas);
-            panelSidebarNav.Controls.Add(buttonConfiguracion);
-            panelSidebarNav.Controls.Add(buttonUsuarios);
-            panelSidebarNav.Controls.Add(buttonEspacios);
-            panelSidebarNav.Controls.Add(buttonReservas);
-            panelSidebarNav.Controls.Add(buttonEntradasSalidas);
-            panelSidebarNav.Controls.Add(buttonInicio);
-            panelSidebarNav.Dock = DockStyle.Fill;
-            panelSidebarNav.Location = new Point(0, 99);
-            panelSidebarNav.Margin = new Padding(3, 4, 3, 4);
-            panelSidebarNav.Name = "panelSidebarNav";
-            panelSidebarNav.Padding = new Padding(5, 8, 5, 8);
-            panelSidebarNav.Size = new Size(249, 865);
-            panelSidebarNav.TabIndex = 1;
+            menuArchivo.DropDownItems.AddRange(new ToolStripItem[] { menuCerrarSesion, menuSalir });
+            menuArchivo.Name = "menuArchivo";
+            menuArchivo.Size = new Size(73, 24);
+            menuArchivo.Text = "Archivo";
             // 
-            // buttonConsultas
+            // menuCerrarSesion
             // 
-            buttonConsultas.BackColor = Color.FromArgb(26, 35, 50);
-            buttonConsultas.Cursor = Cursors.Hand;
-            buttonConsultas.Dock = DockStyle.Top;
-            buttonConsultas.FlatAppearance.BorderSize = 0;
-            buttonConsultas.FlatAppearance.MouseDownBackColor = Color.FromArgb(56, 74, 106);
-            buttonConsultas.FlatAppearance.MouseOverBackColor = Color.FromArgb(43, 57, 82);
-            buttonConsultas.FlatStyle = FlatStyle.Flat;
-            buttonConsultas.Font = new Font("Segoe UI", 9F);
-            buttonConsultas.ForeColor = Color.FromArgb(219, 232, 250);
-            buttonConsultas.Location = new Point(5, 302);
-            buttonConsultas.Margin = new Padding(3, 4, 3, 4);
-            buttonConsultas.Name = "buttonConsultas";
-            buttonConsultas.Padding = new Padding(11, 0, 0, 0);
-            buttonConsultas.Size = new Size(239, 49);
-            buttonConsultas.TabIndex = 7;
-            buttonConsultas.Text = "Consultas";
-            buttonConsultas.TextAlign = ContentAlignment.MiddleLeft;
-            buttonConsultas.UseVisualStyleBackColor = false;
-            buttonConsultas.Click += buttonConsultas_Click;
+            menuCerrarSesion.Name = "menuCerrarSesion";
+            menuCerrarSesion.Size = new Size(173, 26);
+            menuCerrarSesion.Text = "Cerrar sesion";
+            menuCerrarSesion.Click += menuCerrarSesion_Click;
             // 
-            // buttonConfiguracion
+            // menuSalir
             // 
-            buttonConfiguracion.BackColor = Color.FromArgb(26, 35, 50);
-            buttonConfiguracion.Cursor = Cursors.Hand;
-            buttonConfiguracion.Dock = DockStyle.Top;
-            buttonConfiguracion.FlatAppearance.BorderSize = 0;
-            buttonConfiguracion.FlatAppearance.MouseDownBackColor = Color.FromArgb(56, 74, 106);
-            buttonConfiguracion.FlatAppearance.MouseOverBackColor = Color.FromArgb(43, 57, 82);
-            buttonConfiguracion.FlatStyle = FlatStyle.Flat;
-            buttonConfiguracion.Font = new Font("Segoe UI", 9F);
-            buttonConfiguracion.ForeColor = Color.FromArgb(219, 232, 250);
-            buttonConfiguracion.Location = new Point(5, 253);
-            buttonConfiguracion.Margin = new Padding(3, 4, 3, 4);
-            buttonConfiguracion.Name = "buttonConfiguracion";
-            buttonConfiguracion.Padding = new Padding(11, 0, 0, 0);
-            buttonConfiguracion.Size = new Size(239, 49);
-            buttonConfiguracion.TabIndex = 6;
-            buttonConfiguracion.Text = "Configuracion";
-            buttonConfiguracion.TextAlign = ContentAlignment.MiddleLeft;
-            buttonConfiguracion.UseVisualStyleBackColor = false;
-            buttonConfiguracion.Click += buttonConfiguracion_Click;
+            menuSalir.Name = "menuSalir";
+            menuSalir.Size = new Size(173, 26);
+            menuSalir.Text = "Salir";
+            menuSalir.Click += menuSalir_Click;
             // 
-            // buttonUsuarios
+            // menuOperaciones
             // 
-            buttonUsuarios.BackColor = Color.FromArgb(26, 35, 50);
-            buttonUsuarios.Cursor = Cursors.Hand;
-            buttonUsuarios.Dock = DockStyle.Top;
-            buttonUsuarios.FlatAppearance.BorderSize = 0;
-            buttonUsuarios.FlatAppearance.MouseDownBackColor = Color.FromArgb(56, 74, 106);
-            buttonUsuarios.FlatAppearance.MouseOverBackColor = Color.FromArgb(43, 57, 82);
-            buttonUsuarios.FlatStyle = FlatStyle.Flat;
-            buttonUsuarios.Font = new Font("Segoe UI", 9F);
-            buttonUsuarios.ForeColor = Color.FromArgb(219, 232, 250);
-            buttonUsuarios.Location = new Point(5, 204);
-            buttonUsuarios.Margin = new Padding(3, 4, 3, 4);
-            buttonUsuarios.Name = "buttonUsuarios";
-            buttonUsuarios.Padding = new Padding(11, 0, 0, 0);
-            buttonUsuarios.Size = new Size(239, 49);
-            buttonUsuarios.TabIndex = 5;
-            buttonUsuarios.Text = "Usuarios";
-            buttonUsuarios.TextAlign = ContentAlignment.MiddleLeft;
-            buttonUsuarios.UseVisualStyleBackColor = false;
-            buttonUsuarios.Click += buttonUsuarios_Click;
+            menuOperaciones.DropDownItems.AddRange(new ToolStripItem[] { menuEntradasSalidas, menuReservas, menuNuevaReserva });
+            menuOperaciones.Name = "menuOperaciones";
+            menuOperaciones.Size = new Size(102, 24);
+            menuOperaciones.Text = "Operaciones";
             // 
-            // buttonEspacios
+            // menuEntradasSalidas
             // 
-            buttonEspacios.BackColor = Color.FromArgb(26, 35, 50);
-            buttonEspacios.Cursor = Cursors.Hand;
-            buttonEspacios.Dock = DockStyle.Top;
-            buttonEspacios.FlatAppearance.BorderSize = 0;
-            buttonEspacios.FlatAppearance.MouseDownBackColor = Color.FromArgb(56, 74, 106);
-            buttonEspacios.FlatAppearance.MouseOverBackColor = Color.FromArgb(43, 57, 82);
-            buttonEspacios.FlatStyle = FlatStyle.Flat;
-            buttonEspacios.Font = new Font("Segoe UI", 9F);
-            buttonEspacios.ForeColor = Color.FromArgb(219, 232, 250);
-            buttonEspacios.Location = new Point(5, 155);
-            buttonEspacios.Margin = new Padding(3, 4, 3, 4);
-            buttonEspacios.Name = "buttonEspacios";
-            buttonEspacios.Padding = new Padding(11, 0, 0, 0);
-            buttonEspacios.Size = new Size(239, 49);
-            buttonEspacios.TabIndex = 4;
-            buttonEspacios.Text = "Espacios";
-            buttonEspacios.TextAlign = ContentAlignment.MiddleLeft;
-            buttonEspacios.UseVisualStyleBackColor = false;
-            buttonEspacios.Click += buttonEspacios_Click;
+            menuEntradasSalidas.Name = "menuEntradasSalidas";
+            menuEntradasSalidas.Size = new Size(203, 26);
+            menuEntradasSalidas.Text = "Entradas y Salidas";
+            menuEntradasSalidas.Click += buttonEntradasSalidas_Click;
             // 
-            // buttonReservas
+            // menuReservas
             // 
-            buttonReservas.BackColor = Color.FromArgb(26, 35, 50);
-            buttonReservas.Cursor = Cursors.Hand;
-            buttonReservas.Dock = DockStyle.Top;
-            buttonReservas.FlatAppearance.BorderSize = 0;
-            buttonReservas.FlatAppearance.MouseDownBackColor = Color.FromArgb(56, 74, 106);
-            buttonReservas.FlatAppearance.MouseOverBackColor = Color.FromArgb(43, 57, 82);
-            buttonReservas.FlatStyle = FlatStyle.Flat;
-            buttonReservas.Font = new Font("Segoe UI", 9F);
-            buttonReservas.ForeColor = Color.FromArgb(219, 232, 250);
-            buttonReservas.Location = new Point(5, 106);
-            buttonReservas.Margin = new Padding(3, 4, 3, 4);
-            buttonReservas.Name = "buttonReservas";
-            buttonReservas.Padding = new Padding(11, 0, 0, 0);
-            buttonReservas.Size = new Size(239, 49);
-            buttonReservas.TabIndex = 3;
-            buttonReservas.Text = "Reservas";
-            buttonReservas.TextAlign = ContentAlignment.MiddleLeft;
-            buttonReservas.UseVisualStyleBackColor = false;
+            menuReservas.Name = "menuReservas";
+            menuReservas.Size = new Size(203, 26);
+            menuReservas.Text = "Reservas";
+            menuReservas.Click += buttonReservas_Click;
             // 
-            // buttonEntradasSalidas
+            // menuNuevaReserva
             // 
-            buttonEntradasSalidas.BackColor = Color.FromArgb(26, 35, 50);
-            buttonEntradasSalidas.Cursor = Cursors.Hand;
-            buttonEntradasSalidas.Dock = DockStyle.Top;
-            buttonEntradasSalidas.FlatAppearance.BorderSize = 0;
-            buttonEntradasSalidas.FlatAppearance.MouseDownBackColor = Color.FromArgb(56, 74, 106);
-            buttonEntradasSalidas.FlatAppearance.MouseOverBackColor = Color.FromArgb(43, 57, 82);
-            buttonEntradasSalidas.FlatStyle = FlatStyle.Flat;
-            buttonEntradasSalidas.Font = new Font("Segoe UI", 9F);
-            buttonEntradasSalidas.ForeColor = Color.FromArgb(219, 232, 250);
-            buttonEntradasSalidas.Location = new Point(5, 57);
-            buttonEntradasSalidas.Margin = new Padding(3, 4, 3, 4);
-            buttonEntradasSalidas.Name = "buttonEntradasSalidas";
-            buttonEntradasSalidas.Padding = new Padding(11, 0, 0, 0);
-            buttonEntradasSalidas.Size = new Size(239, 49);
-            buttonEntradasSalidas.TabIndex = 2;
-            buttonEntradasSalidas.Text = "Entradas y Salidas";
-            buttonEntradasSalidas.TextAlign = ContentAlignment.MiddleLeft;
-            buttonEntradasSalidas.UseVisualStyleBackColor = false;
-            buttonEntradasSalidas.Click += buttonEntradasSalidas_Click;
+            menuNuevaReserva.Name = "menuNuevaReserva";
+            menuNuevaReserva.Size = new Size(203, 26);
+            menuNuevaReserva.Text = "Nueva reserva";
+            menuNuevaReserva.Click += menuNuevaReserva_Click;
             // 
-            // buttonInicio
+            // menuAdministracion
             // 
-            buttonInicio.BackColor = Color.SkyBlue;
-            buttonInicio.Dock = DockStyle.Top;
-            buttonInicio.FlatAppearance.BorderSize = 0;
-            buttonInicio.FlatAppearance.MouseDownBackColor = Color.FromArgb(41, 170, 159);
-            buttonInicio.FlatAppearance.MouseOverBackColor = Color.FromArgb(66, 219, 207);
-            buttonInicio.FlatStyle = FlatStyle.Flat;
-            buttonInicio.Font = new Font("Segoe UI", 9F);
-            buttonInicio.ForeColor = Color.FromArgb(16, 28, 48);
-            buttonInicio.Location = new Point(5, 8);
-            buttonInicio.Margin = new Padding(3, 4, 3, 4);
-            buttonInicio.Name = "buttonInicio";
-            buttonInicio.Padding = new Padding(11, 0, 0, 0);
-            buttonInicio.Size = new Size(239, 49);
-            buttonInicio.TabIndex = 1;
-            buttonInicio.Text = "Inicio";
-            buttonInicio.TextAlign = ContentAlignment.MiddleLeft;
-            buttonInicio.UseVisualStyleBackColor = false;
+            menuAdministracion.DropDownItems.AddRange(new ToolStripItem[] { menuEspacios, menuUsuarios, menuConfiguracion });
+            menuAdministracion.Name = "menuAdministracion";
+            menuAdministracion.Size = new Size(126, 24);
+            menuAdministracion.Text = "Administracion";
             // 
-            // buttonLogout
+            // menuEspacios
             // 
-            buttonLogout.BackColor = Color.FromArgb(26, 35, 50);
-            buttonLogout.Dock = DockStyle.Bottom;
-            buttonLogout.FlatAppearance.BorderSize = 0;
-            buttonLogout.FlatAppearance.MouseDownBackColor = Color.FromArgb(56, 74, 106);
-            buttonLogout.FlatAppearance.MouseOverBackColor = Color.FromArgb(43, 57, 82);
-            buttonLogout.FlatStyle = FlatStyle.Flat;
-            buttonLogout.Font = new Font("Segoe UI", 9F);
-            buttonLogout.ForeColor = Color.FromArgb(219, 232, 250);
-            buttonLogout.Location = new Point(0, 964);
-            buttonLogout.Margin = new Padding(3, 4, 3, 4);
-            buttonLogout.Name = "buttonLogout";
-            buttonLogout.Padding = new Padding(11, 0, 0, 0);
-            buttonLogout.Size = new Size(249, 49);
-            buttonLogout.TabIndex = 8;
-            buttonLogout.Text = "Cerrar Sesion";
-            buttonLogout.TextAlign = ContentAlignment.MiddleLeft;
-            buttonLogout.UseVisualStyleBackColor = false;
+            menuEspacios.Name = "menuEspacios";
+            menuEspacios.Size = new Size(183, 26);
+            menuEspacios.Text = "Espacios";
+            menuEspacios.Click += buttonEspacios_Click;
             // 
-            // panelSidebarTop
+            // menuUsuarios
             // 
-            panelSidebarTop.BackColor = Color.FromArgb(32, 44, 64);
-            panelSidebarTop.BorderStyle = BorderStyle.FixedSingle;
-            panelSidebarTop.Controls.Add(pictureBox1);
-            panelSidebarTop.Controls.Add(labelSystemName);
-            panelSidebarTop.Dock = DockStyle.Top;
-            panelSidebarTop.Location = new Point(0, 0);
-            panelSidebarTop.Margin = new Padding(3, 4, 3, 4);
-            panelSidebarTop.Name = "panelSidebarTop";
-            panelSidebarTop.Size = new Size(249, 99);
-            panelSidebarTop.TabIndex = 0;
+            menuUsuarios.Name = "menuUsuarios";
+            menuUsuarios.Size = new Size(183, 26);
+            menuUsuarios.Text = "Usuarios";
+            menuUsuarios.Click += buttonUsuarios_Click;
             // 
-            // pictureBox1
+            // menuConfiguracion
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(22, 19);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(54, 51);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
+            menuConfiguracion.Name = "menuConfiguracion";
+            menuConfiguracion.Size = new Size(183, 26);
+            menuConfiguracion.Text = "Configuracion";
+            menuConfiguracion.Click += buttonConfiguracion_Click;
             // 
-            // labelSystemName
+            // menuConsultas
             // 
-            labelSystemName.AutoSize = true;
-            labelSystemName.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelSystemName.ForeColor = Color.White;
-            labelSystemName.Location = new Point(82, 28);
-            labelSystemName.Name = "labelSystemName";
-            labelSystemName.Size = new Size(126, 31);
-            labelSystemName.TabIndex = 1;
-            labelSystemName.Text = "SmartPark";
+            menuConsultas.Name = "menuConsultas";
+            menuConsultas.Size = new Size(83, 24);
+            menuConsultas.Text = "Consultas";
+            menuConsultas.Click += buttonConsultas_Click;
+            // 
+            // toolStripMain
+            // 
+            toolStripMain.BackColor = Color.FromArgb(40, 66, 104);
+            toolStripMain.ForeColor = Color.White;
+            toolStripMain.Items.AddRange(new ToolStripItem[] { toolStripButtonEntradasSalidas, toolStripButtonReservas, toolStripButtonNuevaReserva, toolStripSeparator1, toolStripButtonEspacios, toolStripButtonConsultas, toolStripSeparator2 });
+            toolStripMain.Location = new Point(0, 28);
+            toolStripMain.Name = "toolStripMain";
+            toolStripMain.Size = new Size(1559, 27);
+            toolStripMain.TabIndex = 1;
+            toolStripMain.Text = "toolStripMain";
+            // 
+            // toolStripButtonEntradasSalidas
+            // 
+            toolStripButtonEntradasSalidas.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButtonEntradasSalidas.Name = "toolStripButtonEntradasSalidas";
+            toolStripButtonEntradasSalidas.Size = new Size(133, 24);
+            toolStripButtonEntradasSalidas.Text = "Entradas/Salidas";
+            toolStripButtonEntradasSalidas.Click += buttonEntradasSalidas_Click;
+            // 
+            // toolStripButtonReservas
+            // 
+            toolStripButtonReservas.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButtonReservas.Name = "toolStripButtonReservas";
+            toolStripButtonReservas.Size = new Size(69, 24);
+            toolStripButtonReservas.Text = "Reservas";
+            toolStripButtonReservas.Click += buttonReservas_Click;
+            // 
+            // toolStripButtonNuevaReserva
+            // 
+            toolStripButtonNuevaReserva.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButtonNuevaReserva.Name = "toolStripButtonNuevaReserva";
+            toolStripButtonNuevaReserva.Size = new Size(111, 24);
+            toolStripButtonNuevaReserva.Text = "Nueva reserva";
+            toolStripButtonNuevaReserva.Click += menuNuevaReserva_Click;
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(6, 27);
+            // 
+            // toolStripButtonEspacios
+            // 
+            toolStripButtonEspacios.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButtonEspacios.Name = "toolStripButtonEspacios";
+            toolStripButtonEspacios.Size = new Size(63, 24);
+            toolStripButtonEspacios.Text = "Espacios";
+            toolStripButtonEspacios.Click += buttonEspacios_Click;
+            // 
+            // toolStripButtonConsultas
+            // 
+            toolStripButtonConsultas.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButtonConsultas.Name = "toolStripButtonConsultas";
+            toolStripButtonConsultas.Size = new Size(77, 24);
+            toolStripButtonConsultas.Text = "Consultas";
+            toolStripButtonConsultas.Click += buttonConsultas_Click;
+            // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(6, 27);
             // 
             // panelMain
             // 
@@ -330,12 +256,12 @@ namespace SmartPark.UI.Main
             panelMain.Controls.Add(groupBoxAlertas);
             panelMain.Controls.Add(groupBoxPanelControl);
             panelMain.Dock = DockStyle.Fill;
-            panelMain.Location = new Point(251, 0);
+            panelMain.Location = new Point(0, 55);
             panelMain.Margin = new Padding(3, 4, 3, 4);
             panelMain.Name = "panelMain";
             panelMain.Padding = new Padding(18, 21, 18, 21);
-            panelMain.Size = new Size(1308, 1015);
-            panelMain.TabIndex = 1;
+            panelMain.Size = new Size(1559, 934);
+            panelMain.TabIndex = 2;
             // 
             // groupBoxAlertas
             // 
@@ -610,14 +536,15 @@ namespace SmartPark.UI.Main
             // 
             // statusStripMain
             // 
+            statusStripMain.Dock = DockStyle.Bottom;
             statusStripMain.ImageScalingSize = new Size(20, 20);
             statusStripMain.Items.AddRange(new ToolStripItem[] { toolStripStatusUsuario, toolStripStatusSep2, toolStripStatusFecha });
-            statusStripMain.Location = new Point(251, 989);
+            statusStripMain.Location = new Point(0, 989);
             statusStripMain.Name = "statusStripMain";
             statusStripMain.Padding = new Padding(1, 0, 16, 0);
-            statusStripMain.Size = new Size(1308, 26);
+            statusStripMain.Size = new Size(1559, 26);
             statusStripMain.SizingGrip = false;
-            statusStripMain.TabIndex = 2;
+            statusStripMain.TabIndex = 3;
             statusStripMain.Text = "statusStrip1";
             // 
             // toolStripStatusUsuario
@@ -644,9 +571,10 @@ namespace SmartPark.UI.Main
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(240, 240, 240);
             ClientSize = new Size(1559, 1015);
-            Controls.Add(statusStripMain);
             Controls.Add(panelMain);
-            Controls.Add(panelSidebar);
+            Controls.Add(toolStripMain);
+            Controls.Add(menuStripMain);
+            Controls.Add(statusStripMain);
             Font = new Font("Segoe UI", 9F);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
@@ -656,11 +584,11 @@ namespace SmartPark.UI.Main
             Text = "SmartPark";
             WindowState = FormWindowState.Maximized;
             Load += MainForm_Load;
-            panelSidebar.ResumeLayout(false);
-            panelSidebarNav.ResumeLayout(false);
-            panelSidebarTop.ResumeLayout(false);
-            panelSidebarTop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            MainMenuStrip = menuStripMain;
+            menuStripMain.ResumeLayout(false);
+            menuStripMain.PerformLayout();
+            toolStripMain.ResumeLayout(false);
+            toolStripMain.PerformLayout();
             panelMain.ResumeLayout(false);
             groupBoxAlertas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewAlertas).EndInit();
@@ -684,18 +612,27 @@ namespace SmartPark.UI.Main
 
         #endregion
 
-        private Panel panelSidebar;
-        private Panel panelSidebarTop;
-        private Label labelSystemName;
-        private Panel panelSidebarNav;
-        private Button buttonInicio;
-        private Button buttonEntradasSalidas;
-        private Button buttonReservas;
-        private Button buttonEspacios;
-        private Button buttonUsuarios;
-        private Button buttonConfiguracion;
-        private Button buttonConsultas;
-        private Button buttonLogout;
+        private MenuStrip menuStripMain;
+        private ToolStripMenuItem menuArchivo;
+        private ToolStripMenuItem menuCerrarSesion;
+        private ToolStripMenuItem menuSalir;
+        private ToolStripMenuItem menuOperaciones;
+        private ToolStripMenuItem menuEntradasSalidas;
+        private ToolStripMenuItem menuReservas;
+        private ToolStripMenuItem menuNuevaReserva;
+        private ToolStripMenuItem menuAdministracion;
+        private ToolStripMenuItem menuEspacios;
+        private ToolStripMenuItem menuUsuarios;
+        private ToolStripMenuItem menuConfiguracion;
+        private ToolStripMenuItem menuConsultas;
+        private ToolStrip toolStripMain;
+        private ToolStripButton toolStripButtonEntradasSalidas;
+        private ToolStripButton toolStripButtonReservas;
+        private ToolStripButton toolStripButtonNuevaReserva;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripButton toolStripButtonEspacios;
+        private ToolStripButton toolStripButtonConsultas;
+        private ToolStripSeparator toolStripSeparator2;
         private Panel panelMain;
         private GroupBox groupBoxPanelControl;
         private TableLayoutPanel tableLayoutPanelKpis;
@@ -724,6 +661,5 @@ namespace SmartPark.UI.Main
         private ToolStripStatusLabel toolStripStatusUsuario;
         private ToolStripStatusLabel toolStripStatusSep2;
         private ToolStripStatusLabel toolStripStatusFecha;
-        private PictureBox pictureBox1;
     }
 }
