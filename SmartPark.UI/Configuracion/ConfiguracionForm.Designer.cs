@@ -20,6 +20,7 @@ namespace SmartPark.UI.Configuracion
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panelMain = new Panel();
             tabControlConfiguracion = new TabControl();
             tabPageEmpresa = new TabPage();
@@ -37,23 +38,20 @@ namespace SmartPark.UI.Configuracion
             labelEmail = new Label();
             textBoxEmail = new TextBox();
             tabPageTarifas = new TabPage();
-            panelTarifas = new Panel();
-            dataGridViewTarifas = new DataGridView();
-            columnId = new DataGridViewTextBoxColumn();
-            columnTipo = new DataGridViewTextBoxColumn();
-            columnTarifaHora = new DataGridViewTextBoxColumn();
-            columnFraccion = new DataGridViewTextBoxColumn();
-            columnMinutosMinimo = new DataGridViewTextBoxColumn();
-            columnMinutosTolerancia = new DataGridViewTextBoxColumn();
-            columnActualizadoEn = new DataGridViewTextBoxColumn();
-            buttonAgregarTarifa = new Button();
-            buttonEditarTarifa = new Button();
-            groupBoxReglas = new GroupBox();
-            labelTiempoGracia = new Label();
-            numericUpDownTiempoGracia = new NumericUpDown();
             panelFooter = new Panel();
             buttonCancelar = new Button();
             buttonGuardar = new Button();
+            buttonEditarTarifa = new Button();
+            buttonAgregarTarifa = new Button();
+            dataGridViewTarifas = new DataGridView();
+            columnActualizadoEn = new DataGridViewTextBoxColumn();
+            columnMinutosTolerancia = new DataGridViewTextBoxColumn();
+            columnMinutosMinimo = new DataGridViewTextBoxColumn();
+            columnFraccion = new DataGridViewTextBoxColumn();
+            columnTarifaHora = new DataGridViewTextBoxColumn();
+            columnTipo = new DataGridViewTextBoxColumn();
+            columnId = new DataGridViewTextBoxColumn();
+            panelTarifas = new Panel();
             panelMain.SuspendLayout();
             tabControlConfiguracion.SuspendLayout();
             tabPageEmpresa.SuspendLayout();
@@ -61,11 +59,9 @@ namespace SmartPark.UI.Configuracion
             groupBoxEmpresa.SuspendLayout();
             tableLayoutPanelEmpresa.SuspendLayout();
             tabPageTarifas.SuspendLayout();
-            panelTarifas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewTarifas).BeginInit();
-            groupBoxReglas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownTiempoGracia).BeginInit();
             panelFooter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTarifas).BeginInit();
+            panelTarifas.SuspendLayout();
             SuspendLayout();
             // 
             // panelMain
@@ -75,9 +71,10 @@ namespace SmartPark.UI.Configuracion
             panelMain.Controls.Add(panelFooter);
             panelMain.Dock = DockStyle.Fill;
             panelMain.Location = new Point(0, 0);
+            panelMain.Margin = new Padding(3, 4, 3, 4);
             panelMain.Name = "panelMain";
-            panelMain.Padding = new Padding(16);
-            panelMain.Size = new Size(1120, 760);
+            panelMain.Padding = new Padding(12);
+            panelMain.Size = new Size(980, 680);
             panelMain.TabIndex = 0;
             // 
             // tabControlConfiguracion
@@ -85,20 +82,22 @@ namespace SmartPark.UI.Configuracion
             tabControlConfiguracion.Controls.Add(tabPageEmpresa);
             tabControlConfiguracion.Controls.Add(tabPageTarifas);
             tabControlConfiguracion.Dock = DockStyle.Fill;
-            tabControlConfiguracion.Location = new Point(16, 16);
+            tabControlConfiguracion.Location = new Point(12, 12);
+            tabControlConfiguracion.Margin = new Padding(3, 4, 3, 4);
             tabControlConfiguracion.Name = "tabControlConfiguracion";
             tabControlConfiguracion.SelectedIndex = 0;
-            tabControlConfiguracion.Size = new Size(1088, 690);
+            tabControlConfiguracion.Size = new Size(956, 612);
             tabControlConfiguracion.TabIndex = 0;
             // 
             // tabPageEmpresa
             // 
             tabPageEmpresa.BackColor = Color.FromArgb(244, 247, 252);
             tabPageEmpresa.Controls.Add(panelEmpresa);
-            tabPageEmpresa.Location = new Point(4, 24);
+            tabPageEmpresa.Location = new Point(4, 29);
+            tabPageEmpresa.Margin = new Padding(3, 4, 3, 4);
             tabPageEmpresa.Name = "tabPageEmpresa";
-            tabPageEmpresa.Padding = new Padding(3);
-            tabPageEmpresa.Size = new Size(1080, 662);
+            tabPageEmpresa.Padding = new Padding(3, 4, 3, 4);
+            tabPageEmpresa.Size = new Size(948, 579);
             tabPageEmpresa.TabIndex = 0;
             tabPageEmpresa.Text = "Empresa";
             // 
@@ -106,10 +105,11 @@ namespace SmartPark.UI.Configuracion
             // 
             panelEmpresa.Controls.Add(groupBoxEmpresa);
             panelEmpresa.Dock = DockStyle.Fill;
-            panelEmpresa.Location = new Point(3, 3);
+            panelEmpresa.Location = new Point(3, 4);
+            panelEmpresa.Margin = new Padding(3, 4, 3, 4);
             panelEmpresa.Name = "panelEmpresa";
-            panelEmpresa.Padding = new Padding(0, 12, 0, 12);
-            panelEmpresa.Size = new Size(1074, 656);
+            panelEmpresa.Padding = new Padding(0, 16, 0, 16);
+            panelEmpresa.Size = new Size(942, 571);
             panelEmpresa.TabIndex = 0;
             // 
             // groupBoxEmpresa
@@ -117,10 +117,11 @@ namespace SmartPark.UI.Configuracion
             groupBoxEmpresa.Controls.Add(tableLayoutPanelEmpresa);
             groupBoxEmpresa.Dock = DockStyle.Top;
             groupBoxEmpresa.Font = new Font("Segoe UI", 9F);
-            groupBoxEmpresa.Location = new Point(0, 12);
+            groupBoxEmpresa.Location = new Point(0, 16);
+            groupBoxEmpresa.Margin = new Padding(3, 4, 3, 4);
             groupBoxEmpresa.Name = "groupBoxEmpresa";
-            groupBoxEmpresa.Padding = new Padding(12);
-            groupBoxEmpresa.Size = new Size(1074, 209);
+            groupBoxEmpresa.Padding = new Padding(14, 16, 14, 16);
+            groupBoxEmpresa.Size = new Size(942, 260);
             groupBoxEmpresa.TabIndex = 0;
             groupBoxEmpresa.TabStop = false;
             groupBoxEmpresa.Text = "Datos de Empresa";
@@ -128,7 +129,7 @@ namespace SmartPark.UI.Configuracion
             // tableLayoutPanelEmpresa
             // 
             tableLayoutPanelEmpresa.ColumnCount = 2;
-            tableLayoutPanelEmpresa.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 170F));
+            tableLayoutPanelEmpresa.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 194F));
             tableLayoutPanelEmpresa.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanelEmpresa.Controls.Add(labelNombreEmpresa, 0, 0);
             tableLayoutPanelEmpresa.Controls.Add(textBoxNombreEmpresa, 1, 0);
@@ -141,130 +142,207 @@ namespace SmartPark.UI.Configuracion
             tableLayoutPanelEmpresa.Controls.Add(labelEmail, 0, 4);
             tableLayoutPanelEmpresa.Controls.Add(textBoxEmail, 1, 4);
             tableLayoutPanelEmpresa.Dock = DockStyle.Fill;
-            tableLayoutPanelEmpresa.Location = new Point(12, 28);
+            tableLayoutPanelEmpresa.Location = new Point(14, 36);
+            tableLayoutPanelEmpresa.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanelEmpresa.Name = "tableLayoutPanelEmpresa";
             tableLayoutPanelEmpresa.RowCount = 5;
-            tableLayoutPanelEmpresa.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            tableLayoutPanelEmpresa.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            tableLayoutPanelEmpresa.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            tableLayoutPanelEmpresa.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            tableLayoutPanelEmpresa.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            tableLayoutPanelEmpresa.Size = new Size(1050, 169);
+            tableLayoutPanelEmpresa.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            tableLayoutPanelEmpresa.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            tableLayoutPanelEmpresa.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            tableLayoutPanelEmpresa.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            tableLayoutPanelEmpresa.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            tableLayoutPanelEmpresa.Size = new Size(914, 220);
             tableLayoutPanelEmpresa.TabIndex = 0;
             // 
             // labelNombreEmpresa
             // 
             labelNombreEmpresa.Anchor = AnchorStyles.Left;
             labelNombreEmpresa.AutoSize = true;
-            labelNombreEmpresa.Location = new Point(3, 9);
+            labelNombreEmpresa.Location = new Point(3, 12);
             labelNombreEmpresa.Name = "labelNombreEmpresa";
-            labelNombreEmpresa.Size = new Size(102, 15);
+            labelNombreEmpresa.Size = new Size(128, 20);
             labelNombreEmpresa.TabIndex = 0;
             labelNombreEmpresa.Text = "Nombre empresa:";
             // 
             // textBoxNombreEmpresa
             // 
             textBoxNombreEmpresa.Dock = DockStyle.Fill;
-            textBoxNombreEmpresa.Location = new Point(173, 3);
+            textBoxNombreEmpresa.Location = new Point(197, 4);
+            textBoxNombreEmpresa.Margin = new Padding(3, 4, 3, 4);
             textBoxNombreEmpresa.Name = "textBoxNombreEmpresa";
-            textBoxNombreEmpresa.Size = new Size(874, 23);
+            textBoxNombreEmpresa.Size = new Size(1000, 27);
             textBoxNombreEmpresa.TabIndex = 1;
             // 
             // labelRnc
             // 
             labelRnc.Anchor = AnchorStyles.Left;
             labelRnc.AutoSize = true;
-            labelRnc.Location = new Point(3, 42);
+            labelRnc.Location = new Point(3, 56);
             labelRnc.Name = "labelRnc";
-            labelRnc.Size = new Size(74, 15);
+            labelRnc.Size = new Size(91, 20);
             labelRnc.TabIndex = 2;
             labelRnc.Text = "RNC / Fiscal:";
             // 
             // textBoxRnc
             // 
             textBoxRnc.Dock = DockStyle.Left;
-            textBoxRnc.Location = new Point(173, 36);
+            textBoxRnc.Location = new Point(197, 48);
+            textBoxRnc.Margin = new Padding(3, 4, 3, 4);
             textBoxRnc.Name = "textBoxRnc";
-            textBoxRnc.Size = new Size(220, 23);
+            textBoxRnc.Size = new Size(251, 27);
             textBoxRnc.TabIndex = 3;
             // 
             // labelDireccion
             // 
             labelDireccion.Anchor = AnchorStyles.Left;
             labelDireccion.AutoSize = true;
-            labelDireccion.Location = new Point(3, 75);
+            labelDireccion.Location = new Point(3, 100);
             labelDireccion.Name = "labelDireccion";
-            labelDireccion.Size = new Size(60, 15);
+            labelDireccion.Size = new Size(75, 20);
             labelDireccion.TabIndex = 4;
             labelDireccion.Text = "Dirección:";
             // 
             // textBoxDireccion
             // 
             textBoxDireccion.Dock = DockStyle.Fill;
-            textBoxDireccion.Location = new Point(173, 69);
+            textBoxDireccion.Location = new Point(197, 92);
+            textBoxDireccion.Margin = new Padding(3, 4, 3, 4);
             textBoxDireccion.Name = "textBoxDireccion";
-            textBoxDireccion.Size = new Size(874, 23);
+            textBoxDireccion.Size = new Size(1000, 27);
             textBoxDireccion.TabIndex = 5;
             // 
             // labelTelefono
             // 
             labelTelefono.Anchor = AnchorStyles.Left;
             labelTelefono.AutoSize = true;
-            labelTelefono.Location = new Point(3, 108);
+            labelTelefono.Location = new Point(3, 144);
             labelTelefono.Name = "labelTelefono";
-            labelTelefono.Size = new Size(56, 15);
+            labelTelefono.Size = new Size(70, 20);
             labelTelefono.TabIndex = 6;
             labelTelefono.Text = "Teléfono:";
             // 
             // textBoxTelefono
             // 
             textBoxTelefono.Dock = DockStyle.Left;
-            textBoxTelefono.Location = new Point(173, 102);
+            textBoxTelefono.Location = new Point(197, 136);
+            textBoxTelefono.Margin = new Padding(3, 4, 3, 4);
             textBoxTelefono.Name = "textBoxTelefono";
-            textBoxTelefono.Size = new Size(220, 23);
+            textBoxTelefono.Size = new Size(251, 27);
             textBoxTelefono.TabIndex = 7;
             // 
             // labelEmail
             // 
             labelEmail.Anchor = AnchorStyles.Left;
             labelEmail.AutoSize = true;
-            labelEmail.Location = new Point(3, 143);
+            labelEmail.Location = new Point(3, 191);
             labelEmail.Name = "labelEmail";
-            labelEmail.Size = new Size(39, 15);
+            labelEmail.Size = new Size(49, 20);
             labelEmail.TabIndex = 8;
             labelEmail.Text = "Email:";
             // 
             // textBoxEmail
             // 
             textBoxEmail.Dock = DockStyle.Fill;
-            textBoxEmail.Location = new Point(173, 135);
+            textBoxEmail.Location = new Point(197, 180);
+            textBoxEmail.Margin = new Padding(3, 4, 3, 4);
             textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new Size(874, 23);
+            textBoxEmail.Size = new Size(1000, 27);
             textBoxEmail.TabIndex = 9;
             // 
             // tabPageTarifas
             // 
             tabPageTarifas.BackColor = Color.FromArgb(244, 247, 252);
             tabPageTarifas.Controls.Add(panelTarifas);
-            tabPageTarifas.Location = new Point(4, 24);
+            tabPageTarifas.Location = new Point(4, 29);
+            tabPageTarifas.Margin = new Padding(3, 4, 3, 4);
             tabPageTarifas.Name = "tabPageTarifas";
-            tabPageTarifas.Padding = new Padding(3);
-            tabPageTarifas.Size = new Size(1080, 662);
+            tabPageTarifas.Padding = new Padding(3, 4, 3, 4);
+            tabPageTarifas.Size = new Size(948, 579);
             tabPageTarifas.TabIndex = 1;
             tabPageTarifas.Text = "Tarifas";
             // 
-            // panelTarifas
+            // panelFooter
             // 
-            panelTarifas.Controls.Add(dataGridViewTarifas);
-            panelTarifas.Controls.Add(buttonAgregarTarifa);
-            panelTarifas.Controls.Add(buttonEditarTarifa);
-            panelTarifas.Controls.Add(groupBoxReglas);
-            panelTarifas.Dock = DockStyle.Fill;
-            panelTarifas.Location = new Point(3, 3);
-            panelTarifas.Name = "panelTarifas";
-            panelTarifas.Padding = new Padding(0, 12, 0, 12);
-            panelTarifas.Size = new Size(1074, 656);
-            panelTarifas.TabIndex = 0;
+            panelFooter.Controls.Add(buttonCancelar);
+            panelFooter.Controls.Add(buttonGuardar);
+            panelFooter.Dock = DockStyle.Bottom;
+            panelFooter.Location = new Point(12, 624);
+            panelFooter.Margin = new Padding(3, 4, 3, 4);
+            panelFooter.Name = "panelFooter";
+            panelFooter.Size = new Size(956, 44);
+            panelFooter.TabIndex = 1;
+            // 
+            // buttonCancelar
+            // 
+            buttonCancelar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonCancelar.BackColor = Color.White;
+            buttonCancelar.FlatAppearance.BorderColor = Color.FromArgb(31, 118, 221);
+            buttonCancelar.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 237, 255);
+            buttonCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(238, 246, 255);
+            buttonCancelar.FlatStyle = FlatStyle.Flat;
+            buttonCancelar.ForeColor = Color.FromArgb(31, 118, 221);
+            buttonCancelar.Location = new Point(829, 0);
+            buttonCancelar.Margin = new Padding(3, 4, 3, 4);
+            buttonCancelar.Name = "buttonCancelar";
+            buttonCancelar.Size = new Size(127, 43);
+            buttonCancelar.TabIndex = 1;
+            buttonCancelar.Text = "Cancelar";
+            buttonCancelar.UseVisualStyleBackColor = false;
+            buttonCancelar.Click += buttonCancelar_Click;
+            // 
+            // buttonGuardar
+            // 
+            buttonGuardar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonGuardar.BackColor = Color.FromArgb(31, 118, 221);
+            buttonGuardar.FlatAppearance.BorderColor = Color.FromArgb(31, 118, 221);
+            buttonGuardar.FlatAppearance.MouseDownBackColor = Color.FromArgb(22, 94, 180);
+            buttonGuardar.FlatAppearance.MouseOverBackColor = Color.FromArgb(45, 131, 232);
+            buttonGuardar.FlatStyle = FlatStyle.Flat;
+            buttonGuardar.ForeColor = Color.White;
+            buttonGuardar.Location = new Point(694, 0);
+            buttonGuardar.Margin = new Padding(3, 4, 3, 4);
+            buttonGuardar.Name = "buttonGuardar";
+            buttonGuardar.Size = new Size(127, 43);
+            buttonGuardar.TabIndex = 0;
+            buttonGuardar.Text = "Guardar";
+            buttonGuardar.UseVisualStyleBackColor = false;
+            buttonGuardar.Click += buttonGuardar_Click;
+            // 
+            // buttonEditarTarifa
+            // 
+            buttonEditarTarifa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonEditarTarifa.BackColor = Color.FromArgb(31, 118, 221);
+            buttonEditarTarifa.FlatAppearance.BorderColor = Color.FromArgb(31, 118, 221);
+            buttonEditarTarifa.FlatAppearance.MouseDownBackColor = Color.FromArgb(22, 94, 180);
+            buttonEditarTarifa.FlatAppearance.MouseOverBackColor = Color.FromArgb(45, 131, 232);
+            buttonEditarTarifa.FlatStyle = FlatStyle.Flat;
+            buttonEditarTarifa.ForeColor = Color.White;
+            buttonEditarTarifa.Location = new Point(828, 4);
+            buttonEditarTarifa.Margin = new Padding(3, 4, 3, 4);
+            buttonEditarTarifa.Name = "buttonEditarTarifa";
+            buttonEditarTarifa.Size = new Size(114, 43);
+            buttonEditarTarifa.TabIndex = 1;
+            buttonEditarTarifa.Text = "Editar";
+            buttonEditarTarifa.UseVisualStyleBackColor = false;
+            buttonEditarTarifa.Click += buttonEditarTarifa_Click;
+            // 
+            // buttonAgregarTarifa
+            // 
+            buttonAgregarTarifa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonAgregarTarifa.BackColor = Color.FromArgb(31, 118, 221);
+            buttonAgregarTarifa.FlatAppearance.BorderColor = Color.FromArgb(31, 118, 221);
+            buttonAgregarTarifa.FlatAppearance.MouseDownBackColor = Color.FromArgb(22, 94, 180);
+            buttonAgregarTarifa.FlatAppearance.MouseOverBackColor = Color.FromArgb(45, 131, 232);
+            buttonAgregarTarifa.FlatStyle = FlatStyle.Flat;
+            buttonAgregarTarifa.ForeColor = Color.White;
+            buttonAgregarTarifa.Location = new Point(708, 4);
+            buttonAgregarTarifa.Margin = new Padding(3, 4, 3, 4);
+            buttonAgregarTarifa.Name = "buttonAgregarTarifa";
+            buttonAgregarTarifa.Size = new Size(114, 43);
+            buttonAgregarTarifa.TabIndex = 2;
+            buttonAgregarTarifa.Text = "Agregar";
+            buttonAgregarTarifa.UseVisualStyleBackColor = false;
+            buttonAgregarTarifa.Click += buttonAgregarTarifa_Click;
             // 
             // dataGridViewTarifas
             // 
@@ -291,15 +369,72 @@ namespace SmartPark.UI.Configuracion
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridViewTarifas.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewTarifas.Location = new Point(0, 178);
+            dataGridViewTarifas.Location = new Point(0, 68);
+            dataGridViewTarifas.Margin = new Padding(3, 4, 3, 4);
             dataGridViewTarifas.MultiSelect = false;
             dataGridViewTarifas.Name = "dataGridViewTarifas";
             dataGridViewTarifas.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewTarifas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewTarifas.RowHeadersVisible = false;
             dataGridViewTarifas.RowHeadersWidth = 51;
             dataGridViewTarifas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTarifas.Size = new Size(1074, 466);
+            dataGridViewTarifas.Size = new Size(942, 467);
             dataGridViewTarifas.TabIndex = 0;
+            // 
+            // columnActualizadoEn
+            // 
+            columnActualizadoEn.HeaderText = "Actualizado";
+            columnActualizadoEn.MinimumWidth = 6;
+            columnActualizadoEn.Name = "columnActualizadoEn";
+            columnActualizadoEn.ReadOnly = true;
+            columnActualizadoEn.Width = 140;
+            // 
+            // columnMinutosTolerancia
+            // 
+            columnMinutosTolerancia.HeaderText = "Tolerancia";
+            columnMinutosTolerancia.MinimumWidth = 6;
+            columnMinutosTolerancia.Name = "columnMinutosTolerancia";
+            columnMinutosTolerancia.ReadOnly = true;
+            columnMinutosTolerancia.Width = 125;
+            // 
+            // columnMinutosMinimo
+            // 
+            columnMinutosMinimo.HeaderText = "Mín. Minutos";
+            columnMinutosMinimo.MinimumWidth = 6;
+            columnMinutosMinimo.Name = "columnMinutosMinimo";
+            columnMinutosMinimo.ReadOnly = true;
+            columnMinutosMinimo.Width = 125;
+            // 
+            // columnFraccion
+            // 
+            columnFraccion.HeaderText = "Fracción (min)";
+            columnFraccion.MinimumWidth = 6;
+            columnFraccion.Name = "columnFraccion";
+            columnFraccion.ReadOnly = true;
+            columnFraccion.Width = 130;
+            // 
+            // columnTarifaHora
+            // 
+            columnTarifaHora.HeaderText = "Tarifa por Hora";
+            columnTarifaHora.MinimumWidth = 6;
+            columnTarifaHora.Name = "columnTarifaHora";
+            columnTarifaHora.ReadOnly = true;
+            columnTarifaHora.Width = 140;
+            // 
+            // columnTipo
+            // 
+            columnTipo.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            columnTipo.HeaderText = "Tipo de Vehículo";
+            columnTipo.MinimumWidth = 6;
+            columnTipo.Name = "columnTipo";
+            columnTipo.ReadOnly = true;
             // 
             // columnId
             // 
@@ -310,171 +445,29 @@ namespace SmartPark.UI.Configuracion
             columnId.Visible = false;
             columnId.Width = 50;
             // 
-            // columnTipo
+            // panelTarifas
             // 
-            columnTipo.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            columnTipo.HeaderText = "Tipo de Vehículo";
-            columnTipo.MinimumWidth = 6;
-            columnTipo.Name = "columnTipo";
-            columnTipo.ReadOnly = true;
-            // 
-            // columnTarifaHora
-            // 
-            columnTarifaHora.HeaderText = "Tarifa por Hora";
-            columnTarifaHora.MinimumWidth = 6;
-            columnTarifaHora.Name = "columnTarifaHora";
-            columnTarifaHora.ReadOnly = true;
-            columnTarifaHora.Width = 140;
-            // 
-            // columnFraccion
-            // 
-            columnFraccion.HeaderText = "Fracción (min)";
-            columnFraccion.MinimumWidth = 6;
-            columnFraccion.Name = "columnFraccion";
-            columnFraccion.ReadOnly = true;
-            columnFraccion.Width = 130;
-            // 
-            // columnMinutosMinimo
-            // 
-            columnMinutosMinimo.HeaderText = "Mín. Minutos";
-            columnMinutosMinimo.MinimumWidth = 6;
-            columnMinutosMinimo.Name = "columnMinutosMinimo";
-            columnMinutosMinimo.ReadOnly = true;
-            // 
-            // columnMinutosTolerancia
-            // 
-            columnMinutosTolerancia.HeaderText = "Tolerancia";
-            columnMinutosTolerancia.MinimumWidth = 6;
-            columnMinutosTolerancia.Name = "columnMinutosTolerancia";
-            columnMinutosTolerancia.ReadOnly = true;
-            // 
-            // columnActualizadoEn
-            // 
-            columnActualizadoEn.HeaderText = "Actualizado";
-            columnActualizadoEn.MinimumWidth = 6;
-            columnActualizadoEn.Name = "columnActualizadoEn";
-            columnActualizadoEn.ReadOnly = true;
-            columnActualizadoEn.Width = 140;
-            // 
-            // buttonAgregarTarifa
-            // 
-            buttonAgregarTarifa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonAgregarTarifa.BackColor = Color.FromArgb(31, 118, 221);
-            buttonAgregarTarifa.FlatAppearance.BorderColor = Color.FromArgb(31, 118, 221);
-            buttonAgregarTarifa.FlatAppearance.MouseDownBackColor = Color.FromArgb(22, 94, 180);
-            buttonAgregarTarifa.FlatAppearance.MouseOverBackColor = Color.FromArgb(45, 131, 232);
-            buttonAgregarTarifa.FlatStyle = FlatStyle.Flat;
-            buttonAgregarTarifa.ForeColor = Color.White;
-            buttonAgregarTarifa.Location = new Point(868, 140);
-            buttonAgregarTarifa.Name = "buttonAgregarTarifa";
-            buttonAgregarTarifa.Size = new Size(100, 32);
-            buttonAgregarTarifa.TabIndex = 2;
-            buttonAgregarTarifa.Text = "Agregar";
-            buttonAgregarTarifa.UseVisualStyleBackColor = false;
-            buttonAgregarTarifa.Click += buttonAgregarTarifa_Click;
-            // 
-            // buttonEditarTarifa
-            // 
-            buttonEditarTarifa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonEditarTarifa.BackColor = Color.FromArgb(31, 118, 221);
-            buttonEditarTarifa.FlatAppearance.BorderColor = Color.FromArgb(31, 118, 221);
-            buttonEditarTarifa.FlatAppearance.MouseDownBackColor = Color.FromArgb(22, 94, 180);
-            buttonEditarTarifa.FlatAppearance.MouseOverBackColor = Color.FromArgb(45, 131, 232);
-            buttonEditarTarifa.FlatStyle = FlatStyle.Flat;
-            buttonEditarTarifa.ForeColor = Color.White;
-            buttonEditarTarifa.Location = new Point(974, 140);
-            buttonEditarTarifa.Name = "buttonEditarTarifa";
-            buttonEditarTarifa.Size = new Size(100, 32);
-            buttonEditarTarifa.TabIndex = 1;
-            buttonEditarTarifa.Text = "Editar";
-            buttonEditarTarifa.UseVisualStyleBackColor = false;
-            buttonEditarTarifa.Click += buttonEditarTarifa_Click;
-            // 
-            // groupBoxReglas
-            // 
-            groupBoxReglas.Controls.Add(labelTiempoGracia);
-            groupBoxReglas.Controls.Add(numericUpDownTiempoGracia);
-            groupBoxReglas.Dock = DockStyle.Top;
-            groupBoxReglas.Font = new Font("Segoe UI", 9F);
-            groupBoxReglas.Location = new Point(0, 12);
-            groupBoxReglas.Name = "groupBoxReglas";
-            groupBoxReglas.Padding = new Padding(12);
-            groupBoxReglas.Size = new Size(1074, 122);
-            groupBoxReglas.TabIndex = 0;
-            groupBoxReglas.TabStop = false;
-            groupBoxReglas.Text = "Reglas de Estadía";
-            // 
-            // labelTiempoGracia
-            // 
-            labelTiempoGracia.AutoSize = true;
-            labelTiempoGracia.Location = new Point(16, 31);
-            labelTiempoGracia.Name = "labelTiempoGracia";
-            labelTiempoGracia.Size = new Size(102, 15);
-            labelTiempoGracia.TabIndex = 0;
-            labelTiempoGracia.Text = "Tiempo de gracia:";
-            // 
-            // numericUpDownTiempoGracia
-            // 
-            numericUpDownTiempoGracia.Location = new Point(153, 27);
-            numericUpDownTiempoGracia.Maximum = new decimal(new int[] { 1440, 0, 0, 0 });
-            numericUpDownTiempoGracia.Name = "numericUpDownTiempoGracia";
-            numericUpDownTiempoGracia.Size = new Size(90, 23);
-            numericUpDownTiempoGracia.TabIndex = 1;
-            numericUpDownTiempoGracia.Value = new decimal(new int[] { 15, 0, 0, 0 });
-            // 
-            // panelFooter
-            // 
-            panelFooter.Controls.Add(buttonCancelar);
-            panelFooter.Controls.Add(buttonGuardar);
-            panelFooter.Dock = DockStyle.Bottom;
-            panelFooter.Location = new Point(16, 706);
-            panelFooter.Name = "panelFooter";
-            panelFooter.Size = new Size(1088, 38);
-            panelFooter.TabIndex = 1;
-            // 
-            // buttonCancelar
-            // 
-            buttonCancelar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonCancelar.BackColor = Color.White;
-            buttonCancelar.FlatAppearance.BorderColor = Color.FromArgb(31, 118, 221);
-            buttonCancelar.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 237, 255);
-            buttonCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(238, 246, 255);
-            buttonCancelar.FlatStyle = FlatStyle.Flat;
-            buttonCancelar.ForeColor = Color.FromArgb(31, 118, 221);
-            buttonCancelar.Location = new Point(977, 1);
-            buttonCancelar.Name = "buttonCancelar";
-            buttonCancelar.Size = new Size(111, 32);
-            buttonCancelar.TabIndex = 1;
-            buttonCancelar.Text = "Cancelar";
-            buttonCancelar.UseVisualStyleBackColor = false;
-            buttonCancelar.Click += buttonCancelar_Click;
-            // 
-            // buttonGuardar
-            // 
-            buttonGuardar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonGuardar.BackColor = Color.FromArgb(31, 118, 221);
-            buttonGuardar.FlatAppearance.BorderColor = Color.FromArgb(31, 118, 221);
-            buttonGuardar.FlatAppearance.MouseDownBackColor = Color.FromArgb(22, 94, 180);
-            buttonGuardar.FlatAppearance.MouseOverBackColor = Color.FromArgb(45, 131, 232);
-            buttonGuardar.FlatStyle = FlatStyle.Flat;
-            buttonGuardar.ForeColor = Color.White;
-            buttonGuardar.Location = new Point(860, 1);
-            buttonGuardar.Name = "buttonGuardar";
-            buttonGuardar.Size = new Size(111, 32);
-            buttonGuardar.TabIndex = 0;
-            buttonGuardar.Text = "Guardar";
-            buttonGuardar.UseVisualStyleBackColor = false;
-            buttonGuardar.Click += buttonGuardar_Click;
+            panelTarifas.Controls.Add(dataGridViewTarifas);
+            panelTarifas.Controls.Add(buttonAgregarTarifa);
+            panelTarifas.Controls.Add(buttonEditarTarifa);
+            panelTarifas.Dock = DockStyle.Fill;
+            panelTarifas.Location = new Point(3, 4);
+            panelTarifas.Margin = new Padding(3, 4, 3, 4);
+            panelTarifas.Name = "panelTarifas";
+            panelTarifas.Padding = new Padding(0, 16, 0, 16);
+            panelTarifas.Size = new Size(942, 571);
+            panelTarifas.TabIndex = 0;
             // 
             // ConfiguracionForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(244, 247, 252);
-            ClientSize = new Size(1120, 760);
+            ClientSize = new Size(980, 680);
             Controls.Add(panelMain);
             Font = new Font("Segoe UI", 9F);
-            MinimumSize = new Size(1136, 799);
+            Margin = new Padding(3, 4, 3, 4);
+            MinimumSize = new Size(900, 620);
             Name = "ConfiguracionForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "SmartPark - Configuración";
@@ -487,12 +480,9 @@ namespace SmartPark.UI.Configuracion
             tableLayoutPanelEmpresa.ResumeLayout(false);
             tableLayoutPanelEmpresa.PerformLayout();
             tabPageTarifas.ResumeLayout(false);
-            panelTarifas.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridViewTarifas).EndInit();
-            groupBoxReglas.ResumeLayout(false);
-            groupBoxReglas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownTiempoGracia).EndInit();
             panelFooter.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTarifas).EndInit();
+            panelTarifas.ResumeLayout(false);
             ResumeLayout(false);
         }
 

@@ -71,6 +71,24 @@ namespace SmartPark.UI.Services
             return await _context.TiposVehiculos.AsNoTracking().ToListAsync();
         }
 
+        public async Task<TiposVehiculo?> GetOrCreateTipoVehiculoAsync(string nombre)
+        {
+            if (string.IsNullOrWhiteSpace(nombre))
+                return null;
+
+            var normalizado = nombre.Trim();
+            var existente = await _context.TiposVehiculos
+                .FirstOrDefaultAsync(t => t.Nombre.ToLower() == normalizado.ToLower());
+
+            if (existente != null)
+                return existente;
+
+            var nuevo = new TiposVehiculo { Nombre = normalizado };
+            await _context.TiposVehiculos.AddAsync(nuevo);
+            await _context.SaveChangesAsync();
+            return nuevo;
+        }
+
         public void Dispose()
         {
             if (_ownsContext)

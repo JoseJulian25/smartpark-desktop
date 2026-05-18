@@ -19,7 +19,7 @@ namespace SmartPark.UI.Configuracion
         {
             groupBoxTarifa = new GroupBox();
             labelTipo = new Label();
-            comboBoxTipo = new ComboBox();
+            textBoxTipo = new TextBox();
             labelPrecio = new Label();
             numericUpDownPrecio = new NumericUpDown();
             labelMinFraccion = new Label();
@@ -41,7 +41,7 @@ namespace SmartPark.UI.Configuracion
             // groupBoxTarifa
             // 
             groupBoxTarifa.Controls.Add(labelTipo);
-            groupBoxTarifa.Controls.Add(comboBoxTipo);
+            groupBoxTarifa.Controls.Add(textBoxTipo);
             groupBoxTarifa.Controls.Add(labelPrecio);
             groupBoxTarifa.Controls.Add(numericUpDownPrecio);
             groupBoxTarifa.Controls.Add(labelMinFraccion);
@@ -68,14 +68,12 @@ namespace SmartPark.UI.Configuracion
             labelTipo.TabIndex = 0;
             labelTipo.Text = "Tipo de vehículo:";
             // 
-            // comboBoxTipo
+            // textBoxTipo
             // 
-            comboBoxTipo.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxTipo.FormattingEnabled = true;
-            comboBoxTipo.Location = new Point(160, 28);
-            comboBoxTipo.Name = "comboBoxTipo";
-            comboBoxTipo.Size = new Size(380, 28);
-            comboBoxTipo.TabIndex = 1;
+            textBoxTipo.Location = new Point(160, 28);
+            textBoxTipo.Name = "textBoxTipo";
+            textBoxTipo.Size = new Size(380, 27);
+            textBoxTipo.TabIndex = 1;
             // 
             // labelPrecio
             // 
@@ -206,7 +204,7 @@ namespace SmartPark.UI.Configuracion
 
         private GroupBox groupBoxTarifa;
         private Label labelTipo;
-        private ComboBox comboBoxTipo;
+        private TextBox textBoxTipo;
         private Label labelPrecio;
         private NumericUpDown numericUpDownPrecio;
         private Label labelMinFraccion;

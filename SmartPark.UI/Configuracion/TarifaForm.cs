@@ -25,23 +25,7 @@ namespace SmartPark.UI.Configuracion
 
         private async void TarifaForm_Load(object sender, EventArgs e)
         {
-            if (_service is null)
-            {
-                return;
-            }
-
-            try
-            {
-                var tipos = await _service.GetTiposVehiculo();
-                comboBoxTipo.DataSource = tipos;
-                comboBoxTipo.DisplayMember = "Nombre";
-                comboBoxTipo.ValueMember = "Id";
-                comboBoxTipo.SelectedIndex = 0;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar tipos de vehículo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            await Task.CompletedTask;
         }
 
         public async Task Cargar(Tarifa? tarifa)
@@ -51,19 +35,16 @@ namespace SmartPark.UI.Configuracion
             if (_entidad == null)
             {
                 // Nueva tarifa: resetear el formulario
+                textBoxTipo.Text = string.Empty;
                 numericUpDownPrecio.Value = 0;
                 numericUpDownMinutosFraccion.Value = 15;
                 numericUpDownMinutosMinimo.Value = 0;
                 numericUpDownMinutosTolerancia.Value = 0;
-                if (comboBoxTipo.Items.Count > 0)
-                {
-                    comboBoxTipo.SelectedIndex = 0;
-                }
                 return;
             }
 
             // Editar tarifa existente
-            comboBoxTipo.SelectedValue = _entidad.TipoVehiculoId;
+            textBoxTipo.Text = _entidad.TipoVehiculo?.Nombre ?? string.Empty;
             numericUpDownPrecio.Value = _entidad.PrecioPorFraccion;
             numericUpDownMinutosFraccion.Value = _entidad.MinutosFraccion;
             numericUpDownMinutosMinimo.Value = _entidad.MinutosMinimo;
@@ -83,14 +64,21 @@ namespace SmartPark.UI.Configuracion
             {
                 buttonGuardar.Enabled = false;
 
+                var tipoNombre = textBoxTipo.Text.Trim();
+                var tipoVehiculo = await _service.GetOrCreateTipoVehiculoAsync(tipoNombre);
+                if (tipoVehiculo == null)
+                {
+                    MessageBox.Show("No se pudo guardar el tipo de vehículo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 var tarifa = _entidad ?? new Tarifa();
-                tarifa.TipoVehiculoId = Convert.ToInt32(comboBoxTipo.SelectedValue);
+                tarifa.TipoVehiculoId = tipoVehiculo.Id;
                 tarifa.PrecioPorFraccion = numericUpDownPrecio.Value;
                 tarifa.MinutosFraccion = Convert.ToInt32(numericUpDownMinutosFraccion.Value);
                 tarifa.MinutosMinimo = Convert.ToInt32(numericUpDownMinutosMinimo.Value);
                 tarifa.MinutosTolerancia = Convert.ToInt32(numericUpDownMinutosTolerancia.Value);
                 tarifa.ActualizadoEn = DateTime.Now;
-                tarifa.TipoVehiculoId = comboBoxTipo.SelectedIndex + 1;
 
                 bool ok = await _service.Guardar(tarifa);
                 if (ok)
@@ -121,9 +109,9 @@ namespace SmartPark.UI.Configuracion
 
         private bool ValidateForm()
         {
-            if (comboBoxTipo.SelectedItem == null)
+            if (string.IsNullOrWhiteSpace(textBoxTipo.Text))
             {
-                MessageBox.Show("Seleccione un tipo de vehículo.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ingrese un tipo de vehículo.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
