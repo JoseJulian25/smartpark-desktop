@@ -71,22 +71,6 @@ namespace SmartPark.UI.Espacios
                 await CargarAsync();
         }
 
-        private async void buttonEliminar_Click(object? sender, EventArgs e)
-        {
-            if (dataGridViewEspacios.CurrentRow == null) return;
-
-            if (!long.TryParse(Convert.ToString(dataGridViewEspacios.CurrentRow.Cells[0].Value), out var id))
-                return;
-
-            var confirmacion = MessageBox.Show("¿Deseas eliminar este espacio?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (confirmacion != DialogResult.Yes)
-                return;
-
-            if (await _service.Eliminar(id))
-                await CargarAsync();
-        }
-
         private void dataGridViewEspacios_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dataGridViewEspacios.Columns[e.ColumnIndex].Name != "columnEstado")
@@ -108,6 +92,28 @@ namespace SmartPark.UI.Espacios
                 e.CellStyle.BackColor = Color.FromArgb(255, 243, 205);
                 e.CellStyle.ForeColor = Color.FromArgb(102, 77, 3);
             }
+        }
+
+        private async void buttonEliminar_Click_1(object sender, EventArgs e)
+        {
+            if (dataGridViewEspacios.CurrentRow == null) return;
+
+            if (!long.TryParse(Convert.ToString(dataGridViewEspacios.CurrentRow.Cells[0].Value), out var id))
+                return;
+
+            if (await _service.TieneTicketsAsync(id))
+            {
+                MessageBox.Show("No se puede eliminar el espacio porque tiene tickets asociados.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var confirmacion = MessageBox.Show("¿Deseas eliminar este espacio?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmacion != DialogResult.Yes)
+                return;
+
+            if (await _service.Eliminar(id))
+                await CargarAsync();
         }
     }
 }

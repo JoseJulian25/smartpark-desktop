@@ -173,6 +173,7 @@ namespace SmartPark.UI.Espacios
             buttonEliminar.TabIndex = 2;
             buttonEliminar.Text = "Eliminar";
             buttonEliminar.UseVisualStyleBackColor = false;
+            buttonEliminar.Click += buttonEliminar_Click_1;
             // 
             // buttonEditar
             // 
@@ -277,7 +278,7 @@ namespace SmartPark.UI.Espacios
             panelResumenLibres.Controls.Add(labelLibresValue);
             panelResumenLibres.Controls.Add(labelLibresTitle);
             panelResumenLibres.Dock = DockStyle.Fill;
-            panelResumenLibres.Location = new Point(328, 3);
+            panelResumenLibres.Location = new Point(331, 3);
             panelResumenLibres.Name = "panelResumenLibres";
             panelResumenLibres.Padding = new Padding(10);
             panelResumenLibres.Size = new Size(322, 92);
@@ -310,7 +311,7 @@ namespace SmartPark.UI.Espacios
             panelResumenOcupados.Controls.Add(labelOcupadosValue);
             panelResumenOcupados.Controls.Add(labelOcupadosTitle);
             panelResumenOcupados.Dock = DockStyle.Fill;
-            panelResumenOcupados.Location = new Point(653, 3);
+            panelResumenOcupados.Location = new Point(659, 3);
             panelResumenOcupados.Name = "panelResumenOcupados";
             panelResumenOcupados.Padding = new Padding(10);
             panelResumenOcupados.Size = new Size(322, 92);
@@ -343,10 +344,10 @@ namespace SmartPark.UI.Espacios
             panelResumenReservados.Controls.Add(labelReservadosValue);
             panelResumenReservados.Controls.Add(labelReservadosTitle);
             panelResumenReservados.Dock = DockStyle.Fill;
-            panelResumenReservados.Location = new Point(978, 3);
+            panelResumenReservados.Location = new Point(987, 3);
             panelResumenReservados.Name = "panelResumenReservados";
             panelResumenReservados.Padding = new Padding(10);
-            panelResumenReservados.Size = new Size(331, 92);
+            panelResumenReservados.Size = new Size(322, 92);
             panelResumenReservados.TabIndex = 3;
             // 
             // labelReservadosValue

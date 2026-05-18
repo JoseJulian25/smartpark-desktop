@@ -65,6 +65,11 @@ namespace SmartPark.UI.Services
                 .ToListAsync();
         }
 
+        public async Task<bool> TieneTicketsAsync(long espacioId)
+        {
+            return await _context.Tickets.AsNoTracking().AnyAsync(t => t.EspacioId == espacioId);
+        }
+
         public async Task<int> MarcarReservadosHoyAsync()
         {
             var hoy = DateTime.Today;
