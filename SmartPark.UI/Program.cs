@@ -20,6 +20,11 @@ static class Program
     public static ServiceProvider ServiceProvider { get; private set; }
     public static Usuario? UsuarioActual { get; private set; }
 
+    public static void SetUsuarioActual(Usuario? usuario)
+    {
+        UsuarioActual = usuario;
+    }
+
     /// <summary>
     ///  The main entry point for the application.
     /// </summary>

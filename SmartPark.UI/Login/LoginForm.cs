@@ -1,7 +1,3 @@
-using System;
-using System.Drawing;
-using System.IO;
-using System.Windows.Forms;
 using SmartPark.Data.Modelos;
 using SmartPark.UI.Services;
 
@@ -64,6 +60,5 @@ namespace SmartPark.UI.Acceso
             textBoxPassword.Enabled = !loading;
             Cursor = loading ? Cursors.WaitCursor : Cursors.Default;
         }
-
     }
 }

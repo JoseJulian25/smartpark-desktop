@@ -6,6 +6,7 @@ using SmartPark.UI.Usuarios;
 using SmartPark.UI.Consultas;
 using SmartPark.UI.Reservas;
 using SmartPark.UI.Services;
+using SmartPark.UI.Acceso;
 
 namespace SmartPark.UI.Main
 {
@@ -79,9 +80,23 @@ namespace SmartPark.UI.Main
             form.ShowDialog();
         }
 
-        private void menuCerrarSesion_Click(object? sender, EventArgs e)
+        private async void menuCerrarSesion_Click(object? sender, EventArgs e)
         {
-            Close();
+            Hide();
+            Program.SetUsuarioActual(null);
+
+            using var loginForm = Program.ServiceProvider.GetRequiredService<LoginForm>();
+            if (loginForm.ShowDialog() == DialogResult.OK)
+            {
+                Program.SetUsuarioActual(loginForm.UsuarioAutenticado);
+                toolStripStatusUsuario.Text = $"Usuario: {Program.UsuarioActual?.Nombre ?? "Desconocido"}";
+                toolStripStatusFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy");
+                await CargarDashboardAsync();
+                Show();
+                return;
+            }
+
+            Application.Exit();
         }
 
         private void menuSalir_Click(object? sender, EventArgs e)
