@@ -17,12 +17,12 @@ namespace SmartPark.Tests.Services
             await using var context = TestDBContextFactory.CreateContext(databaseName);
             await SeedBaseEntities(context);
 
-            var espacio = CreateEspacio(2);
+            var espacio = CreateEspacio("OCUPADO");
             context.Espacios.Add(espacio);
             await context.SaveChangesAsync();
 
-            var ticket1 = CreateTicket(espacio.Id, 1);
-            var ticket2 = CreateTicket(espacio.Id, 1);
+            var ticket1 = CreateTicket(espacio.Id, "ACTIVO");
+            var ticket2 = CreateTicket(espacio.Id, "ACTIVO");
             context.Tickets.AddRange(ticket1, ticket2);
             await context.SaveChangesAsync();
 
@@ -50,12 +50,12 @@ namespace SmartPark.Tests.Services
             await using var context = TestDBContextFactory.CreateContext(databaseName);
             await SeedBaseEntities(context);
 
-            var espacio = CreateEspacio(2);
+            var espacio = CreateEspacio("OCUPADO");
             context.Espacios.Add(espacio);
             await context.SaveChangesAsync();
 
-            var ticket1 = CreateTicket(espacio.Id, 1);
-            var ticket2 = CreateTicket(espacio.Id, 1);
+            var ticket1 = CreateTicket(espacio.Id, "ACTIVO");
+            var ticket2 = CreateTicket(espacio.Id, "ACTIVO");
             context.Tickets.AddRange(ticket1, ticket2);
             await context.SaveChangesAsync();
 
@@ -87,12 +87,12 @@ namespace SmartPark.Tests.Services
             await using var context = TestDBContextFactory.CreateContext(databaseName);
             await SeedBaseEntities(context);
 
-            var espacio = CreateEspacio(2);
+            var espacio = CreateEspacio("OCUPADO");
             context.Espacios.Add(espacio);
             await context.SaveChangesAsync();
 
-            var ticket1 = CreateTicket(espacio.Id, 1);
-            var ticket2 = CreateTicket(espacio.Id, 1);
+            var ticket1 = CreateTicket(espacio.Id, "ACTIVO");
+            var ticket2 = CreateTicket(espacio.Id, "ACTIVO");
             context.Tickets.AddRange(ticket1, ticket2);
             await context.SaveChangesAsync();
 
@@ -124,12 +124,12 @@ namespace SmartPark.Tests.Services
             await using var context = TestDBContextFactory.CreateContext(databaseName);
             await SeedBaseEntities(context);
 
-            var espacio = CreateEspacio(2);
+            var espacio = CreateEspacio("OCUPADO");
             context.Espacios.Add(espacio);
             await context.SaveChangesAsync();
 
-            var ticket1 = CreateTicket(espacio.Id, 1);
-            var ticket2 = CreateTicket(espacio.Id, 1);
+            var ticket1 = CreateTicket(espacio.Id, "ACTIVO");
+            var ticket2 = CreateTicket(espacio.Id, "ACTIVO");
             context.Tickets.AddRange(ticket1, ticket2);
             await context.SaveChangesAsync();
 
@@ -171,11 +171,11 @@ namespace SmartPark.Tests.Services
             await using var context = TestDBContextFactory.CreateContext(databaseName);
             await SeedBaseEntities(context);
 
-            var espacio = CreateEspacio(2);
+            var espacio = CreateEspacio("OCUPADO");
             context.Espacios.Add(espacio);
             await context.SaveChangesAsync();
 
-            var ticket = CreateTicket(espacio.Id, 1);
+            var ticket = CreateTicket(espacio.Id, "ACTIVO");
             context.Tickets.Add(ticket);
             await context.SaveChangesAsync();
 
@@ -196,8 +196,8 @@ namespace SmartPark.Tests.Services
                 .FirstAsync(t => t.Id == ticket.Id);
 
             Assert.Equal(150m, ticketActualizado.MontoTotal);
-            Assert.Equal(2, ticketActualizado.EstadoId);
-            Assert.Equal(1, ticketActualizado.Espacio.EstadoId);
+            Assert.Equal("CERRADO", ticketActualizado.Estado);
+            Assert.Equal("LIBRE", ticketActualizado.Espacio.Estado);
             Assert.Equal(ticket.Id, pago.TicketId);
         }
 
@@ -220,11 +220,11 @@ namespace SmartPark.Tests.Services
             await using var context = TestDBContextFactory.CreateContext(databaseName);
             await SeedBaseEntities(context);
 
-            var espacio = CreateEspacio(2);
+            var espacio = CreateEspacio("OCUPADO");
             context.Espacios.Add(espacio);
             await context.SaveChangesAsync();
 
-            var ticket = CreateTicket(espacio.Id, 1);
+            var ticket = CreateTicket(espacio.Id, "ACTIVO");
             context.Tickets.Add(ticket);
             await context.SaveChangesAsync();
 
@@ -323,7 +323,7 @@ namespace SmartPark.Tests.Services
                 FechaCreacion = DateTime.UtcNow,
                 HoraEntrada = DateTime.UtcNow,
                 Placa = "B0002",
-                EstadoId = 1
+                Estado = "ACTIVO"
             };
             context.Tickets.Add(ticket);
             await context.SaveChangesAsync();
@@ -336,34 +336,148 @@ namespace SmartPark.Tests.Services
             Assert.False(resultado);
         }
 
+        [Fact]
+        public async Task RegistrarCobro_CuandoTicketTieneReserva_FinalizaReserva()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            await SeedBaseEntities(context);
+
+            var espacio = CreateEspacio("OCUPADO");
+            context.Espacios.Add(espacio);
+            await context.SaveChangesAsync();
+
+            var reserva = new Reserva
+            {
+                ClienteEmail = "demo@demo.com",
+                ClienteNombreCompleto = "Demo",
+                ClienteTelefono = "8090000000",
+                CodigoReserva = "R-200",
+                FechaCreacion = DateTime.UtcNow,
+                HoraInicio = DateTime.Today.AddHours(9),
+                Placa = "B0002",
+                EspacioId = espacio.Id,
+                TipoVehiculoId = 1,
+                Estado = "ACTIVA"
+            };
+            context.Reservas.Add(reserva);
+            await context.SaveChangesAsync();
+
+            var ticket = CreateTicket(espacio.Id, "ACTIVO");
+            ticket.ReservaId = reserva.Id;
+            context.Tickets.Add(ticket);
+            await context.SaveChangesAsync();
+
+            var service = new PagoService(context);
+            var pago = new Pago
+            {
+                MetodoPago = "Efectivo",
+                Monto = 150m,
+                MontoRecibido = 150m
+            };
+
+            var resultado = await service.RegistrarCobro(pago, ticket.Id);
+
+            Assert.True(resultado);
+            var reservaActualizada = await context.Reservas.AsNoTracking().FirstOrDefaultAsync(r => r.Id == reserva.Id);
+            Assert.Equal("FINALIZADA", reservaActualizada!.Estado);
+            Assert.NotNull(reservaActualizada.HoraFin);
+        }
+
+        [Fact]
+        public async Task AnularPago_CuandoExistePago_RestauraTicketYEspacio()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            await SeedBaseEntities(context);
+
+            var espacio = CreateEspacio("OCUPADO");
+            context.Espacios.Add(espacio);
+            await context.SaveChangesAsync();
+
+            var ticket = CreateTicket(espacio.Id, "CERRADO");
+            ticket.HoraSalida = DateTime.UtcNow;
+            ticket.MontoTotal = 100m;
+            context.Tickets.Add(ticket);
+            await context.SaveChangesAsync();
+
+            var pago = new Pago
+            {
+                HoraPago = DateTime.UtcNow,
+                MetodoPago = "Efectivo",
+                Monto = 100m,
+                MontoRecibido = 100m,
+                TicketId = ticket.Id
+            };
+            context.Pagos.Add(pago);
+            await context.SaveChangesAsync();
+
+            var service = new PagoService(context);
+            var resultado = await service.AnularPago(pago.Id);
+
+            Assert.True(resultado);
+            var ticketActualizado = await context.Tickets.AsNoTracking().FirstOrDefaultAsync(t => t.Id == ticket.Id);
+            var espacioActualizado = await context.Espacios.AsNoTracking().FirstOrDefaultAsync(e => e.Id == espacio.Id);
+            Assert.Null(ticketActualizado!.HoraSalida);
+            Assert.Null(ticketActualizado.MontoTotal);
+            Assert.Equal("ACTIVO", ticketActualizado.Estado);
+            Assert.Equal("OCUPADO", espacioActualizado!.Estado);
+        }
+
+        [Fact]
+        public async Task AnularPago_CuandoYaEstaAnulado_RetornaFalse()
+        {
+            var databaseName = TestDBContextFactory.NewDatabaseName();
+            await using var context = TestDBContextFactory.CreateContext(databaseName);
+            await SeedBaseEntities(context);
+
+            var espacio = CreateEspacio("OCUPADO");
+            context.Espacios.Add(espacio);
+            await context.SaveChangesAsync();
+
+            var ticket = CreateTicket(espacio.Id, "ACTIVO");
+            context.Tickets.Add(ticket);
+            await context.SaveChangesAsync();
+
+            var pago = new Pago
+            {
+                HoraPago = DateTime.UtcNow,
+                MetodoPago = "Efectivo",
+                Monto = 100m,
+                MontoRecibido = 100m,
+                TicketId = ticket.Id,
+                Anulado = true,
+                FechaAnulacion = DateTime.UtcNow
+            };
+            context.Pagos.Add(pago);
+            await context.SaveChangesAsync();
+
+            var service = new PagoService(context);
+            var resultado = await service.AnularPago(pago.Id);
+
+            Assert.False(resultado);
+        }
+
         private static async Task SeedBaseEntities(SmartparkContext context)
         {
-            context.EstadosEspacios.AddRange(
-                new EstadosEspacio { Id = 1, Nombre = "Disponible" },
-                new EstadosEspacio { Id = 2, Nombre = "Ocupado" });
-
-            context.EstadosTickets.AddRange(
-                new EstadosTicket { Id = 1, Nombre = "Activo" },
-                new EstadosTicket { Id = 2, Nombre = "Cerrado" });
-
             context.TiposVehiculos.Add(new TiposVehiculo { Id = 1, Nombre = "Carro" });
 
             await context.SaveChangesAsync();
         }
 
-        private static Espacio CreateEspacio(int estadoId)
+        private static Espacio CreateEspacio(string estado)
         {
             return new Espacio
             {
                 Activo = true,
                 CodigoEspacio = "E-200",
-                EstadoId = estadoId,
+                Estado = estado,
                 TipoVehiculoId = 1,
                 FechaCreacion = DateTime.UtcNow
             };
         }
 
-        private static Ticket CreateTicket(long espacioId, int estadoId)
+        private static Ticket CreateTicket(long espacioId, string estado)
         {
             return new Ticket
             {
@@ -372,7 +486,7 @@ namespace SmartPark.Tests.Services
                 HoraEntrada = DateTime.UtcNow,
                 Placa = "B0002",
                 EspacioId = espacioId,
-                EstadoId = estadoId
+                Estado = estado
             };
         }
     }
