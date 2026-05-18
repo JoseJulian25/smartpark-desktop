@@ -9,6 +9,7 @@ namespace SmartPark.UI.Reservas
         private Button buttonNuevaReserva;
         private Button buttonConfirmar;
         private Button buttonEditar;
+        private Button buttonCancelar;
         private GroupBox groupBoxFiltros;
         private ComboBox comboBoxEstado;
         private Label labelEstado;
@@ -28,7 +29,7 @@ namespace SmartPark.UI.Reservas
         private DataGridViewTextBoxColumn columnInicio;
         private DataGridViewTextBoxColumn columnFin;
         private DataGridViewTextBoxColumn columnEstado;
-        private DataGridViewTextBoxColumn columnAcciones;
+        private DataGridViewTextBoxColumn columnMotivoCancelacion;
 
         protected override void Dispose(bool disposing)
         {
@@ -56,7 +57,7 @@ namespace SmartPark.UI.Reservas
             columnInicio = new DataGridViewTextBoxColumn();
             columnFin = new DataGridViewTextBoxColumn();
             columnEstado = new DataGridViewTextBoxColumn();
-            columnAcciones = new DataGridViewTextBoxColumn();
+            columnMotivoCancelacion = new DataGridViewTextBoxColumn();
             groupBoxFiltros = new GroupBox();
             buttonBuscar = new Button();
             textBoxCliente = new TextBox();
@@ -69,6 +70,7 @@ namespace SmartPark.UI.Reservas
             buttonConfirmar = new Button();
             buttonEditar = new Button();
             buttonNuevaReserva = new Button();
+            buttonCancelar = new Button();
             panelMain.SuspendLayout();
             groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewReservas).BeginInit();
@@ -109,7 +111,7 @@ namespace SmartPark.UI.Reservas
             dataGridViewReservas.AllowUserToResizeRows = false;
             dataGridViewReservas.BackgroundColor = Color.White;
             dataGridViewReservas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewReservas.Columns.AddRange(new DataGridViewColumn[] { columnId, columnCliente, columnPlaca, columnTipo, columnEspacio, columnFecha, columnInicio, columnFin, columnEstado, columnAcciones });
+            dataGridViewReservas.Columns.AddRange(new DataGridViewColumn[] { columnId, columnCliente, columnPlaca, columnTipo, columnEspacio, columnFecha, columnInicio, columnFin, columnEstado, columnMotivoCancelacion });
             dataGridViewReservas.Dock = DockStyle.Fill;
             dataGridViewReservas.Location = new Point(10, 30);
             dataGridViewReservas.MultiSelect = false;
@@ -193,13 +195,13 @@ namespace SmartPark.UI.Reservas
             columnEstado.ReadOnly = true;
             columnEstado.Width = 110;
             // 
-            // columnAcciones
+            // columnMotivoCancelacion
             // 
-            columnAcciones.HeaderText = "Acciones";
-            columnAcciones.MinimumWidth = 6;
-            columnAcciones.Name = "columnAcciones";
-            columnAcciones.ReadOnly = true;
-            columnAcciones.Width = 180;
+            columnMotivoCancelacion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            columnMotivoCancelacion.HeaderText = "Motivo cancelacion";
+            columnMotivoCancelacion.MinimumWidth = 6;
+            columnMotivoCancelacion.Name = "columnMotivoCancelacion";
+            columnMotivoCancelacion.ReadOnly = true;
             // 
             // groupBoxFiltros
             // 
@@ -290,6 +292,7 @@ namespace SmartPark.UI.Reservas
             // 
             // panelToolbar
             // 
+            panelToolbar.Controls.Add(buttonCancelar);
             panelToolbar.Controls.Add(buttonConfirmar);
             panelToolbar.Controls.Add(buttonEditar);
             panelToolbar.Controls.Add(buttonNuevaReserva);
@@ -315,6 +318,22 @@ namespace SmartPark.UI.Reservas
             buttonConfirmar.Text = "Confirmar";
             buttonConfirmar.UseVisualStyleBackColor = false;
             buttonConfirmar.Click += buttonConfirmar_Click;
+            // 
+            // buttonCancelar
+            // 
+            buttonCancelar.BackColor = Color.White;
+            buttonCancelar.FlatAppearance.BorderColor = Color.FromArgb(220, 53, 69);
+            buttonCancelar.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 228, 230);
+            buttonCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 239, 241);
+            buttonCancelar.FlatStyle = FlatStyle.Flat;
+            buttonCancelar.ForeColor = Color.FromArgb(220, 53, 69);
+            buttonCancelar.Location = new Point(390, 18);
+            buttonCancelar.Name = "buttonCancelar";
+            buttonCancelar.Size = new Size(130, 36);
+            buttonCancelar.TabIndex = 3;
+            buttonCancelar.Text = "Cancelar reserva";
+            buttonCancelar.UseVisualStyleBackColor = false;
+            buttonCancelar.Click += buttonCancelar_Click;
             // 
             // buttonEditar
             // 

@@ -143,6 +143,25 @@ namespace SmartPark.UI.Services
             return await _context.SaveChangesAsync() > 0;
         }
 
+        public async Task<bool> CancelarReserva(long reservaId, string motivo, long? canceladoPorId = null)
+        {
+            if (string.IsNullOrWhiteSpace(motivo))
+                return false;
+
+            var reserva = await _context.Reservas.FirstOrDefaultAsync(r => r.Id == reservaId);
+            if (reserva == null)
+                return false;
+
+            if (!string.Equals(reserva.Estado, "PENDIENTE", StringComparison.OrdinalIgnoreCase))
+                return false;
+
+            reserva.Estado = "CANCELADA";
+            reserva.MotivoCancelacion = motivo.Trim();
+            reserva.CanceladoPor = canceladoPorId;
+            _context.Reservas.Update(reserva);
+            return await _context.SaveChangesAsync() > 0;
+        }
+
         public void Dispose()
         {
             if (_ownsContext)

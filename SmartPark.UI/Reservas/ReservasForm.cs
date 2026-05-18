@@ -85,6 +85,37 @@ namespace SmartPark.UI.Reservas
             MessageBox.Show("No se pudo confirmar la reserva.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private async void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewReservas.CurrentRow == null)
+                return;
+
+            if (!long.TryParse(Convert.ToString(dataGridViewReservas.CurrentRow.Cells[0].Value), out var id))
+                return;
+
+            var estado = Convert.ToString(dataGridViewReservas.CurrentRow.Cells["columnEstado"].Value) ?? string.Empty;
+            if (!string.Equals(estado, "PENDIENTE", StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show("Solo se pueden cancelar reservas pendientes.", "Validacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using var form = new CancelarReservaForm();
+            if (form.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            var motivo = form.MotivoSeleccionado;
+
+            var canceladoPor = Program.UsuarioActual?.Id;
+            if (await _service.CancelarReserva(id, motivo, canceladoPor))
+            {
+                await CargarAsync();
+                return;
+            }
+
+            MessageBox.Show("No se pudo cancelar la reserva.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         private async Task CargarAsync()
         {
             var estado = comboBoxEstado.SelectedItem?.ToString() ?? "Todos";
@@ -106,7 +137,7 @@ namespace SmartPark.UI.Reservas
                     item.HoraInicio.ToString("HH:mm"),
                     item.HoraFin?.ToString("HH:mm") ?? string.Empty,
                     item.Estado,
-                    string.Empty);
+                    item.MotivoCancelacion ?? string.Empty);
             }
         }
 
