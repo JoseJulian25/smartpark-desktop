@@ -104,6 +104,7 @@ namespace SmartPark.UI.Services
             var ticket = await _context.Tickets
                 .Include(t => t.Espacio)
                 .Include(t => t.Pago)
+                .Include(t => t.Reserva)
                 .FirstOrDefaultAsync(t => t.Id == ticketId);
 
             if (ticket == null || ticket.Espacio == null)
@@ -121,6 +122,9 @@ namespace SmartPark.UI.Services
             ticket.HoraSalida = null;
             ticket.MontoTotal = null;
             ticket.Espacio.Estado = "LIBRE";
+
+            if (ticket.Reserva != null)
+                ticket.Reserva.Estado = "PENDIENTE";
 
             return await _context.SaveChangesAsync() > 0;
         }
