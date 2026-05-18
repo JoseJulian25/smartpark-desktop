@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using SmartPark.UI.Services;
@@ -26,11 +27,13 @@ namespace SmartPark.UI.Espacios
 
         private async Task CargarAsync()
         {
+            await _service.MarcarReservadosHoyAsync();
             var espacios = await _service.GetList(_ => true);
 
             labelTotalValue.Text = espacios.Count.ToString();
             labelLibresValue.Text = espacios.Count(x => x.Estado == "LIBRE").ToString();
             labelOcupadosValue.Text = espacios.Count(x => x.Estado == "OCUPADO").ToString();
+            labelReservadosValue.Text = espacios.Count(x => x.Estado == "RESERVADO").ToString();
 
             dataGridViewEspacios.Rows.Clear();
 

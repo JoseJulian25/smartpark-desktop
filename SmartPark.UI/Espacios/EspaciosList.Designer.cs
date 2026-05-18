@@ -41,6 +41,9 @@ namespace SmartPark.UI.Espacios
             panelResumenOcupados = new Panel();
             labelOcupadosValue = new Label();
             labelOcupadosTitle = new Label();
+            panelResumenReservados = new Panel();
+            labelReservadosValue = new Label();
+            labelReservadosTitle = new Label();
             statusStripMain = new StatusStrip();
             toolStripStatusUsuario = new ToolStripStatusLabel();
             toolStripStatusSep = new ToolStripStatusLabel();
@@ -54,6 +57,7 @@ namespace SmartPark.UI.Espacios
             panelResumenTotal.SuspendLayout();
             panelResumenLibres.SuspendLayout();
             panelResumenOcupados.SuspendLayout();
+            panelResumenReservados.SuspendLayout();
             statusStripMain.SuspendLayout();
             SuspendLayout();
             // 
@@ -216,14 +220,15 @@ namespace SmartPark.UI.Espacios
             // 
             // tableLayoutPanelResumen
             // 
-            tableLayoutPanelResumen.ColumnCount = 3;
-            tableLayoutPanelResumen.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanelResumen.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanelResumen.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanelResumen.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanelResumen.ColumnCount = 4;
+            tableLayoutPanelResumen.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanelResumen.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanelResumen.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanelResumen.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanelResumen.Controls.Add(panelResumenTotal, 0, 0);
             tableLayoutPanelResumen.Controls.Add(panelResumenLibres, 1, 0);
             tableLayoutPanelResumen.Controls.Add(panelResumenOcupados, 2, 0);
+            tableLayoutPanelResumen.Controls.Add(panelResumenReservados, 3, 0);
             tableLayoutPanelResumen.Dock = DockStyle.Fill;
             tableLayoutPanelResumen.Location = new Point(10, 30);
             tableLayoutPanelResumen.Name = "tableLayoutPanelResumen";
@@ -242,7 +247,7 @@ namespace SmartPark.UI.Espacios
             panelResumenTotal.Location = new Point(3, 3);
             panelResumenTotal.Name = "panelResumenTotal";
             panelResumenTotal.Padding = new Padding(10);
-            panelResumenTotal.Size = new Size(431, 92);
+            panelResumenTotal.Size = new Size(322, 92);
             panelResumenTotal.TabIndex = 0;
             // 
             // labelTotalValue
@@ -271,10 +276,10 @@ namespace SmartPark.UI.Espacios
             panelResumenLibres.Controls.Add(labelLibresValue);
             panelResumenLibres.Controls.Add(labelLibresTitle);
             panelResumenLibres.Dock = DockStyle.Fill;
-            panelResumenLibres.Location = new Point(440, 3);
+            panelResumenLibres.Location = new Point(328, 3);
             panelResumenLibres.Name = "panelResumenLibres";
             panelResumenLibres.Padding = new Padding(10);
-            panelResumenLibres.Size = new Size(431, 92);
+            panelResumenLibres.Size = new Size(322, 92);
             panelResumenLibres.TabIndex = 1;
             // 
             // labelLibresValue
@@ -304,10 +309,10 @@ namespace SmartPark.UI.Espacios
             panelResumenOcupados.Controls.Add(labelOcupadosValue);
             panelResumenOcupados.Controls.Add(labelOcupadosTitle);
             panelResumenOcupados.Dock = DockStyle.Fill;
-            panelResumenOcupados.Location = new Point(877, 3);
+            panelResumenOcupados.Location = new Point(653, 3);
             panelResumenOcupados.Name = "panelResumenOcupados";
             panelResumenOcupados.Padding = new Padding(10);
-            panelResumenOcupados.Size = new Size(432, 92);
+            panelResumenOcupados.Size = new Size(322, 92);
             panelResumenOcupados.TabIndex = 2;
             // 
             // labelOcupadosValue
@@ -329,6 +334,39 @@ namespace SmartPark.UI.Espacios
             labelOcupadosTitle.Size = new Size(76, 20);
             labelOcupadosTitle.TabIndex = 0;
             labelOcupadosTitle.Text = "Ocupados";
+            // 
+            // panelResumenReservados
+            // 
+            panelResumenReservados.BackColor = Color.White;
+            panelResumenReservados.BorderStyle = BorderStyle.FixedSingle;
+            panelResumenReservados.Controls.Add(labelReservadosValue);
+            panelResumenReservados.Controls.Add(labelReservadosTitle);
+            panelResumenReservados.Dock = DockStyle.Fill;
+            panelResumenReservados.Location = new Point(978, 3);
+            panelResumenReservados.Name = "panelResumenReservados";
+            panelResumenReservados.Padding = new Padding(10);
+            panelResumenReservados.Size = new Size(331, 92);
+            panelResumenReservados.TabIndex = 3;
+            // 
+            // labelReservadosValue
+            // 
+            labelReservadosValue.AutoSize = true;
+            labelReservadosValue.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            labelReservadosValue.ForeColor = Color.FromArgb(255, 140, 0);
+            labelReservadosValue.Location = new Point(12, 36);
+            labelReservadosValue.Name = "labelReservadosValue";
+            labelReservadosValue.Size = new Size(35, 41);
+            labelReservadosValue.TabIndex = 1;
+            labelReservadosValue.Text = "0";
+            // 
+            // labelReservadosTitle
+            // 
+            labelReservadosTitle.AutoSize = true;
+            labelReservadosTitle.Location = new Point(12, 12);
+            labelReservadosTitle.Name = "labelReservadosTitle";
+            labelReservadosTitle.Size = new Size(84, 20);
+            labelReservadosTitle.TabIndex = 0;
+            labelReservadosTitle.Text = "Reservados";
             // 
             // statusStripMain
             // 
@@ -385,6 +423,8 @@ namespace SmartPark.UI.Espacios
             panelResumenLibres.PerformLayout();
             panelResumenOcupados.ResumeLayout(false);
             panelResumenOcupados.PerformLayout();
+            panelResumenReservados.ResumeLayout(false);
+            panelResumenReservados.PerformLayout();
             statusStripMain.ResumeLayout(false);
             statusStripMain.PerformLayout();
             ResumeLayout(false);

@@ -65,6 +65,33 @@ namespace SmartPark.UI.Services
                 .ToListAsync();
         }
 
+        public async Task<int> MarcarReservadosHoyAsync()
+        {
+            var hoy = DateTime.Today;
+            var reservados = await _context.Reservas
+                .Where(r => r.HoraInicio.Date == hoy && (r.Estado == "PENDIENTE" || r.Estado == "ACTIVA"))
+                .Select(r => r.EspacioId)
+                .Distinct()
+                .ToListAsync();
+
+            if (reservados.Count == 0)
+                return 0;
+
+            var espacios = await _context.Espacios
+                .Where(e => reservados.Contains(e.Id) && e.Estado == "LIBRE")
+                .ToListAsync();
+
+            if (espacios.Count == 0)
+                return 0;
+
+            foreach (var espacio in espacios)
+            {
+                espacio.Estado = "RESERVADO";
+            }
+
+            return await _context.SaveChangesAsync();
+        }
+
         public void Dispose()
         {
             if (_ownsContext)

@@ -33,6 +33,16 @@ namespace SmartPark.UI.Services
         {
             if (entidad == null) return false;
 
+            if (entidad.HoraInicio.Date == DateTime.Today
+                && string.Equals(entidad.Estado, "PENDIENTE", StringComparison.OrdinalIgnoreCase))
+            {
+                var espacio = await _context.Espacios.FirstOrDefaultAsync(e => e.Id == entidad.EspacioId);
+                if (espacio != null && string.Equals(espacio.Estado, "LIBRE", StringComparison.OrdinalIgnoreCase))
+                {
+                    espacio.Estado = "RESERVADO";
+                }
+            }
+
             if (entidad.Id == 0)
             {
                 await _context.Reservas.AddAsync(entidad);

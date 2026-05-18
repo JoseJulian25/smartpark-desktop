@@ -10,6 +10,7 @@ namespace SmartPark.UI.EntradasSalidas
         private readonly EspaciosService? _espaciosService;
         private readonly TicketService? _ticketService;
         private readonly TarifaService? _tarifaService;
+        private readonly ReservaService? _reservaService;
         private bool _loading;
 
         public EntradasSalidasForm()
@@ -17,12 +18,13 @@ namespace SmartPark.UI.EntradasSalidas
             InitializeComponent();
         }
 
-        public EntradasSalidasForm(EspaciosService espaciosService, TicketService ticketService, TarifaService tarifaService)
+        public EntradasSalidasForm(EspaciosService espaciosService, TicketService ticketService, TarifaService tarifaService, ReservaService reservaService)
             : this()
         {
             _espaciosService = espaciosService;
             _ticketService = ticketService;
             _tarifaService = tarifaService;
+            _reservaService = reservaService;
         }
 
         private async void EntradasSalidasForm_Load(object sender, EventArgs e)
@@ -137,7 +139,15 @@ namespace SmartPark.UI.EntradasSalidas
                 ? (int?)null
                 : Convert.ToInt32(comboBoxTipoVehiculo.SelectedValue);
 
-            var espacios = await _espaciosService!.GetList(e => e.Estado == "LIBRE" && e.Activo && (!tipoId.HasValue || e.TipoVehiculoId == tipoId.Value));
+            var fecha = DateTime.Today;
+            var reservados = _reservaService == null
+                ? new List<long>()
+                : await _reservaService.GetEspaciosReservados(fecha);
+
+            var espacios = await _espaciosService!.GetList(e => e.Estado == "LIBRE"
+                && e.Activo
+                && (!tipoId.HasValue || e.TipoVehiculoId == tipoId.Value)
+                && !reservados.Contains(e.Id));
             comboBoxEspacioAsignado.DataSource = null;
             comboBoxEspacioAsignado.DisplayMember = "CodigoEspacio";
             comboBoxEspacioAsignado.ValueMember = "Id";
