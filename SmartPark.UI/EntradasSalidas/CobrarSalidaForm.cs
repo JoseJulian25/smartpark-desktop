@@ -1,3 +1,4 @@
+using System.Globalization;
 using SmartPark.Data.Modelos;
 using SmartPark.UI.Services;
 
@@ -47,6 +48,8 @@ namespace SmartPark.UI.EntradasSalidas
             textBoxTiempoTranscurrido.Text = CalcularTiempoTranscurrido(_ticket.HoraEntrada);
             _montoCalculado = await CalcularMontoTotal();
             textBoxMontoACobrar.Text = _montoCalculado.ToString("0.00");
+            textBoxMontoRecibido.Text = string.Empty;
+            textBoxCambio.Text = "0.00";
 
             return true;
         }
@@ -58,6 +61,18 @@ namespace SmartPark.UI.EntradasSalidas
                 return;
             }
 
+            if (!TryGetMontoRecibido(out var montoRecibido))
+            {
+                MessageBox.Show("Ingrese un monto recibido válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (montoRecibido < _montoCalculado)
+            {
+                MessageBox.Show("El monto recibido debe ser igual o mayor al total a cobrar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             buttonRegistrarCobro.Enabled = false;
 
             try
@@ -66,7 +81,7 @@ namespace SmartPark.UI.EntradasSalidas
                 {
                     MetodoPago = "Efectivo",
                     Monto = _montoCalculado,
-                    MontoRecibido = _montoCalculado
+                    MontoRecibido = montoRecibido
                 };
 
                 var guardado = await _pagoService.RegistrarCobro(pago, _ticket.Id);
@@ -85,6 +100,24 @@ namespace SmartPark.UI.EntradasSalidas
             {
                 buttonRegistrarCobro.Enabled = true;
             }
+        }
+
+        private void textBoxMontoRecibido_TextChanged(object sender, EventArgs e)
+        {
+            if (TryGetMontoRecibido(out var montoRecibido))
+            {
+                var cambio = Math.Max(0m, montoRecibido - _montoCalculado);
+                textBoxCambio.Text = cambio.ToString("0.00");
+                return;
+            }
+
+            textBoxCambio.Text = "0.00";
+        }
+
+        private bool TryGetMontoRecibido(out decimal montoRecibido)
+        {
+            var texto = textBoxMontoRecibido.Text.Trim();
+            return decimal.TryParse(texto, NumberStyles.Number, CultureInfo.CurrentCulture, out montoRecibido);
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)

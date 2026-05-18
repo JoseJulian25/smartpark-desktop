@@ -36,6 +36,10 @@ namespace SmartPark.UI.EntradasSalidas
             textBoxTiempoTranscurrido = new TextBox();
             labelMontoACobrar = new Label();
             textBoxMontoACobrar = new TextBox();
+            labelMontoRecibido = new Label();
+            textBoxMontoRecibido = new TextBox();
+            labelCambio = new Label();
+            textBoxCambio = new TextBox();
             panelBotones = new Panel();
             buttonRegistrarCobro = new Button();
             buttonCancelar = new Button();
@@ -91,10 +95,16 @@ namespace SmartPark.UI.EntradasSalidas
             tableLayoutPanel.Controls.Add(textBoxTiempoTranscurrido, 1, 6);
             tableLayoutPanel.Controls.Add(labelMontoACobrar, 0, 7);
             tableLayoutPanel.Controls.Add(textBoxMontoACobrar, 1, 7);
+            tableLayoutPanel.Controls.Add(labelMontoRecibido, 0, 8);
+            tableLayoutPanel.Controls.Add(textBoxMontoRecibido, 1, 8);
+            tableLayoutPanel.Controls.Add(labelCambio, 0, 9);
+            tableLayoutPanel.Controls.Add(textBoxCambio, 1, 9);
             tableLayoutPanel.Dock = DockStyle.Fill;
             tableLayoutPanel.Location = new Point(12, 28);
             tableLayoutPanel.Name = "tableLayoutPanel";
-            tableLayoutPanel.RowCount = 8;
+            tableLayoutPanel.RowCount = 10;
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
             tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
             tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
             tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
@@ -261,6 +271,45 @@ namespace SmartPark.UI.EntradasSalidas
             textBoxMontoACobrar.Size = new Size(398, 27);
             textBoxMontoACobrar.TabIndex = 15;
             // 
+            // labelMontoRecibido
+            // 
+            labelMontoRecibido.Anchor = AnchorStyles.Left;
+            labelMontoRecibido.AutoSize = true;
+            labelMontoRecibido.Location = new Point(3, 240);
+            labelMontoRecibido.Name = "labelMontoRecibido";
+            labelMontoRecibido.Size = new Size(97, 15);
+            labelMontoRecibido.TabIndex = 16;
+            labelMontoRecibido.Text = "Monto recibido:";
+            // 
+            // textBoxMontoRecibido
+            // 
+            textBoxMontoRecibido.Anchor = AnchorStyles.None;
+            textBoxMontoRecibido.Location = new Point(143, 236);
+            textBoxMontoRecibido.Name = "textBoxMontoRecibido";
+            textBoxMontoRecibido.Size = new Size(398, 23);
+            textBoxMontoRecibido.TabIndex = 17;
+            textBoxMontoRecibido.TextChanged += textBoxMontoRecibido_TextChanged;
+            // 
+            // labelCambio
+            // 
+            labelCambio.Anchor = AnchorStyles.Left;
+            labelCambio.AutoSize = true;
+            labelCambio.Location = new Point(3, 306);
+            labelCambio.Name = "labelCambio";
+            labelCambio.Size = new Size(118, 15);
+            labelCambio.TabIndex = 18;
+            labelCambio.Text = "Restante a devolver:";
+            // 
+            // textBoxCambio
+            // 
+            textBoxCambio.Anchor = AnchorStyles.None;
+            textBoxCambio.Enabled = false;
+            textBoxCambio.Location = new Point(143, 302);
+            textBoxCambio.Name = "textBoxCambio";
+            textBoxCambio.ReadOnly = true;
+            textBoxCambio.Size = new Size(398, 23);
+            textBoxCambio.TabIndex = 19;
+            // 
             // panelBotones
             // 
             panelBotones.Controls.Add(buttonRegistrarCobro);
@@ -346,6 +395,10 @@ namespace SmartPark.UI.EntradasSalidas
         private TextBox textBoxTiempoTranscurrido;
         private Label labelMontoACobrar;
         private TextBox textBoxMontoACobrar;
+        private Label labelMontoRecibido;
+        private TextBox textBoxMontoRecibido;
+        private Label labelCambio;
+        private TextBox textBoxCambio;
         private Panel panelBotones;
         private Button buttonRegistrarCobro;
         private Button buttonCancelar;
