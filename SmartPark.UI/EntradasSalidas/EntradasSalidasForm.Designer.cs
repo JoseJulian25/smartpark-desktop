@@ -61,7 +61,7 @@ namespace SmartPark.UI.EntradasSalidas
             panelMain.Dock = DockStyle.Fill;
             panelMain.Location = new Point(0, 0);
             panelMain.Name = "panelMain";
-            panelMain.Padding = new Padding(16, 16, 16, 16);
+            panelMain.Padding = new Padding(16);
             panelMain.Size = new Size(1207, 800);
             panelMain.TabIndex = 0;
             // 
@@ -290,6 +290,7 @@ namespace SmartPark.UI.EntradasSalidas
             comboBoxTipoVehiculo.Name = "comboBoxTipoVehiculo";
             comboBoxTipoVehiculo.Size = new Size(977, 28);
             comboBoxTipoVehiculo.TabIndex = 3;
+            comboBoxTipoVehiculo.SelectedIndexChanged += comboBoxTipoVehiculo_SelectedIndexChanged;
             // 
             // labelEspacioAsignado
             // 

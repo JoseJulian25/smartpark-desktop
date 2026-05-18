@@ -10,6 +10,7 @@ namespace SmartPark.UI.EntradasSalidas
         private readonly EspaciosService? _espaciosService;
         private readonly TicketService? _ticketService;
         private readonly TarifaService? _tarifaService;
+        private bool _loading;
 
         public EntradasSalidasForm()
         {
@@ -28,14 +29,17 @@ namespace SmartPark.UI.EntradasSalidas
         {
             textBoxHoraEntrada.Text = DateTime.Now.ToString("HH:mm");
 
-            if (_espaciosService is null || _ticketService is null || _tarifaService is null)
+            _loading = true;
+            try
             {
-                return;
+                await CargarTiposVehiculo();
+                await CargarEspaciosDisponibles();
+                await CargarVehiculosActivos();
             }
-
-            await CargarTiposVehiculo();
-            await CargarEspaciosDisponibles();
-            await CargarVehiculosActivos();
+            finally
+            {
+                _loading = false;
+            }
         }
 
         private async void buttonGuardarEntrada_Click(object sender, EventArgs e)
@@ -99,10 +103,10 @@ namespace SmartPark.UI.EntradasSalidas
 
             var form = Program.ServiceProvider.GetRequiredService<CobrarSalidaForm>();
             var cargado = await form.CargarVehiculo(id);
+
             if (!cargado)
-            {
                 return;
-            }
+            
 
             if (form.ShowDialog() == DialogResult.OK)
             {
@@ -113,11 +117,6 @@ namespace SmartPark.UI.EntradasSalidas
 
         private async void buttonActualizar_Click(object sender, EventArgs e)
         {
-            if (_espaciosService is null || _ticketService is null || _tarifaService is null)
-            {
-                return;
-            }
-
             await CargarTiposVehiculo();
             await CargarEspaciosDisponibles();
             await CargarVehiculosActivos();
@@ -167,6 +166,15 @@ namespace SmartPark.UI.EntradasSalidas
                     tiempo
                 );
             }
+        }
+
+        private async void comboBoxTipoVehiculo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_loading)
+                return;
+            
+
+            await CargarEspaciosDisponibles();
         }
     }
 }

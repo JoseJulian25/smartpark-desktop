@@ -14,7 +14,7 @@ namespace SmartPark.UI.Main
         private readonly EspaciosService _espaciosService;
         private readonly TicketService _ticketService;
         private readonly ReservaService _reservaService;
-2
+
         public MainForm(EspaciosService espaciosService, TicketService ticketService, ReservaService reservaService)
         {
             InitializeComponent();
