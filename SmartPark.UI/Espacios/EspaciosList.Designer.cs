@@ -105,6 +105,7 @@ namespace SmartPark.UI.Espacios
             dataGridViewEspacios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewEspacios.Size = new Size(1312, 481);
             dataGridViewEspacios.TabIndex = 0;
+            dataGridViewEspacios.CellFormatting += dataGridViewEspacios_CellFormatting;
             // 
             // columnId
             // 

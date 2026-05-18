@@ -86,5 +86,28 @@ namespace SmartPark.UI.Espacios
             if (await _service.Eliminar(id))
                 await CargarAsync();
         }
+
+        private void dataGridViewEspacios_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dataGridViewEspacios.Columns[e.ColumnIndex].Name != "columnEstado")
+                return;
+
+            var estado = e.Value?.ToString() ?? string.Empty;
+            if (string.Equals(estado, "OCUPADO", StringComparison.OrdinalIgnoreCase))
+            {
+                e.CellStyle.BackColor = Color.FromArgb(248, 215, 218);
+                e.CellStyle.ForeColor = Color.FromArgb(114, 28, 36);
+            }
+            else if (string.Equals(estado, "LIBRE", StringComparison.OrdinalIgnoreCase))
+            {
+                e.CellStyle.BackColor = Color.FromArgb(212, 237, 218);
+                e.CellStyle.ForeColor = Color.FromArgb(21, 87, 36);
+            }
+            else if (string.Equals(estado, "RESERVADO", StringComparison.OrdinalIgnoreCase))
+            {
+                e.CellStyle.BackColor = Color.FromArgb(255, 243, 205);
+                e.CellStyle.ForeColor = Color.FromArgb(102, 77, 3);
+            }
+        }
     }
 }

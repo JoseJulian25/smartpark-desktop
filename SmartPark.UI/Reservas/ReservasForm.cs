@@ -141,6 +141,29 @@ namespace SmartPark.UI.Reservas
             }
         }
 
+        private void dataGridViewReservas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dataGridViewReservas.Columns[e.ColumnIndex].Name != "columnEstado")
+                return;
+
+            var estado = e.Value?.ToString() ?? string.Empty;
+            if (string.Equals(estado, "PENDIENTE", StringComparison.OrdinalIgnoreCase))
+            {
+                e.CellStyle.BackColor = Color.FromArgb(255, 243, 205);
+                e.CellStyle.ForeColor = Color.FromArgb(102, 77, 3);
+            }
+            else if (string.Equals(estado, "ACTIVA", StringComparison.OrdinalIgnoreCase))
+            {
+                e.CellStyle.BackColor = Color.FromArgb(212, 231, 252);
+                e.CellStyle.ForeColor = Color.FromArgb(13, 60, 120);
+            }
+            else if (string.Equals(estado, "CANCELADA", StringComparison.OrdinalIgnoreCase))
+            {
+                e.CellStyle.BackColor = Color.FromArgb(248, 215, 218);
+                e.CellStyle.ForeColor = Color.FromArgb(114, 28, 36);
+            }
+        }
+
        
     }
 }

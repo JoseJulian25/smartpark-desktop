@@ -122,6 +122,7 @@ namespace SmartPark.UI.Reservas
             dataGridViewReservas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewReservas.Size = new Size(1228, 564);
             dataGridViewReservas.TabIndex = 0;
+            dataGridViewReservas.CellFormatting += dataGridViewReservas_CellFormatting;
             // 
             // columnId
             // 
