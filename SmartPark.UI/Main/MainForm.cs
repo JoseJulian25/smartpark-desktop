@@ -62,8 +62,9 @@ namespace SmartPark.UI.Main
 
         private void buttonTarifas_Click(object? sender, EventArgs e)
         {
-            var tarifaForm = Program.ServiceProvider.GetRequiredService<TarifaForm>();
-            tarifaForm.ShowDialog();
+            var configuracionForm = Program.ServiceProvider.GetRequiredService<ConfiguracionForm>();
+            configuracionForm.SeleccionarTarifas();
+            configuracionForm.ShowDialog();
         }
 
         private void buttonReservas_Click(object? sender, EventArgs e)

@@ -38,20 +38,20 @@ namespace SmartPark.UI.Configuracion
             labelEmail = new Label();
             textBoxEmail = new TextBox();
             tabPageTarifas = new TabPage();
+            panelTarifas = new Panel();
+            dataGridViewTarifas = new DataGridView();
+            buttonAgregarTarifa = new Button();
+            buttonEditarTarifa = new Button();
             panelFooter = new Panel();
             buttonCancelar = new Button();
             buttonGuardar = new Button();
-            buttonEditarTarifa = new Button();
-            buttonAgregarTarifa = new Button();
-            dataGridViewTarifas = new DataGridView();
-            columnActualizadoEn = new DataGridViewTextBoxColumn();
-            columnMinutosTolerancia = new DataGridViewTextBoxColumn();
-            columnMinutosMinimo = new DataGridViewTextBoxColumn();
-            columnFraccion = new DataGridViewTextBoxColumn();
-            columnTarifaHora = new DataGridViewTextBoxColumn();
-            columnTipo = new DataGridViewTextBoxColumn();
             columnId = new DataGridViewTextBoxColumn();
-            panelTarifas = new Panel();
+            columnTipo = new DataGridViewTextBoxColumn();
+            columnTarifaHora = new DataGridViewTextBoxColumn();
+            columnFraccion = new DataGridViewTextBoxColumn();
+            columnMinutosMinimo = new DataGridViewTextBoxColumn();
+            columnMinutosTolerancia = new DataGridViewTextBoxColumn();
+            columnActualizadoEn = new DataGridViewTextBoxColumn();
             panelMain.SuspendLayout();
             tabControlConfiguracion.SuspendLayout();
             tabPageEmpresa.SuspendLayout();
@@ -59,9 +59,9 @@ namespace SmartPark.UI.Configuracion
             groupBoxEmpresa.SuspendLayout();
             tableLayoutPanelEmpresa.SuspendLayout();
             tabPageTarifas.SuspendLayout();
-            panelFooter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewTarifas).BeginInit();
             panelTarifas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTarifas).BeginInit();
+            panelFooter.SuspendLayout();
             SuspendLayout();
             // 
             // panelMain
@@ -151,7 +151,7 @@ namespace SmartPark.UI.Configuracion
             tableLayoutPanelEmpresa.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
             tableLayoutPanelEmpresa.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
             tableLayoutPanelEmpresa.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
-            tableLayoutPanelEmpresa.Size = new Size(914, 220);
+            tableLayoutPanelEmpresa.Size = new Size(914, 208);
             tableLayoutPanelEmpresa.TabIndex = 0;
             // 
             // labelNombreEmpresa
@@ -170,7 +170,7 @@ namespace SmartPark.UI.Configuracion
             textBoxNombreEmpresa.Location = new Point(197, 4);
             textBoxNombreEmpresa.Margin = new Padding(3, 4, 3, 4);
             textBoxNombreEmpresa.Name = "textBoxNombreEmpresa";
-            textBoxNombreEmpresa.Size = new Size(1000, 27);
+            textBoxNombreEmpresa.Size = new Size(714, 27);
             textBoxNombreEmpresa.TabIndex = 1;
             // 
             // labelRnc
@@ -208,7 +208,7 @@ namespace SmartPark.UI.Configuracion
             textBoxDireccion.Location = new Point(197, 92);
             textBoxDireccion.Margin = new Padding(3, 4, 3, 4);
             textBoxDireccion.Name = "textBoxDireccion";
-            textBoxDireccion.Size = new Size(1000, 27);
+            textBoxDireccion.Size = new Size(714, 27);
             textBoxDireccion.TabIndex = 5;
             // 
             // labelTelefono
@@ -234,7 +234,7 @@ namespace SmartPark.UI.Configuracion
             // 
             labelEmail.Anchor = AnchorStyles.Left;
             labelEmail.AutoSize = true;
-            labelEmail.Location = new Point(3, 191);
+            labelEmail.Location = new Point(3, 188);
             labelEmail.Name = "labelEmail";
             labelEmail.Size = new Size(49, 20);
             labelEmail.TabIndex = 8;
@@ -246,7 +246,7 @@ namespace SmartPark.UI.Configuracion
             textBoxEmail.Location = new Point(197, 180);
             textBoxEmail.Margin = new Padding(3, 4, 3, 4);
             textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new Size(1000, 27);
+            textBoxEmail.Size = new Size(714, 27);
             textBoxEmail.TabIndex = 9;
             // 
             // tabPageTarifas
@@ -260,6 +260,99 @@ namespace SmartPark.UI.Configuracion
             tabPageTarifas.Size = new Size(948, 579);
             tabPageTarifas.TabIndex = 1;
             tabPageTarifas.Text = "Tarifas";
+            // 
+            // panelTarifas
+            // 
+            panelTarifas.Controls.Add(dataGridViewTarifas);
+            panelTarifas.Controls.Add(buttonAgregarTarifa);
+            panelTarifas.Controls.Add(buttonEditarTarifa);
+            panelTarifas.Dock = DockStyle.Fill;
+            panelTarifas.Location = new Point(3, 4);
+            panelTarifas.Margin = new Padding(3, 4, 3, 4);
+            panelTarifas.Name = "panelTarifas";
+            panelTarifas.Padding = new Padding(0, 16, 0, 16);
+            panelTarifas.Size = new Size(942, 571);
+            panelTarifas.TabIndex = 0;
+            // 
+            // dataGridViewTarifas
+            // 
+            dataGridViewTarifas.AllowUserToAddRows = false;
+            dataGridViewTarifas.AllowUserToDeleteRows = false;
+            dataGridViewTarifas.AllowUserToResizeRows = false;
+            dataGridViewTarifas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewTarifas.BackgroundColor = Color.White;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewTarifas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewTarifas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewTarifas.Columns.AddRange(new DataGridViewColumn[] { columnId, columnTipo, columnTarifaHora, columnFraccion, columnMinutosMinimo, columnMinutosTolerancia, columnActualizadoEn });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridViewTarifas.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewTarifas.Location = new Point(0, 68);
+            dataGridViewTarifas.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewTarifas.MultiSelect = false;
+            dataGridViewTarifas.Name = "dataGridViewTarifas";
+            dataGridViewTarifas.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewTarifas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewTarifas.RowHeadersVisible = false;
+            dataGridViewTarifas.RowHeadersWidth = 51;
+            dataGridViewTarifas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewTarifas.Size = new Size(942, 467);
+            dataGridViewTarifas.TabIndex = 0;
+            // 
+            // buttonAgregarTarifa
+            // 
+            buttonAgregarTarifa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonAgregarTarifa.BackColor = Color.FromArgb(31, 118, 221);
+            buttonAgregarTarifa.FlatAppearance.BorderColor = Color.FromArgb(31, 118, 221);
+            buttonAgregarTarifa.FlatAppearance.MouseDownBackColor = Color.FromArgb(22, 94, 180);
+            buttonAgregarTarifa.FlatAppearance.MouseOverBackColor = Color.FromArgb(45, 131, 232);
+            buttonAgregarTarifa.FlatStyle = FlatStyle.Flat;
+            buttonAgregarTarifa.ForeColor = Color.White;
+            buttonAgregarTarifa.Location = new Point(708, 4);
+            buttonAgregarTarifa.Margin = new Padding(3, 4, 3, 4);
+            buttonAgregarTarifa.Name = "buttonAgregarTarifa";
+            buttonAgregarTarifa.Size = new Size(114, 43);
+            buttonAgregarTarifa.TabIndex = 2;
+            buttonAgregarTarifa.Text = "Agregar";
+            buttonAgregarTarifa.UseVisualStyleBackColor = false;
+            buttonAgregarTarifa.Click += buttonAgregarTarifa_Click;
+            // 
+            // buttonEditarTarifa
+            // 
+            buttonEditarTarifa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonEditarTarifa.BackColor = Color.FromArgb(31, 118, 221);
+            buttonEditarTarifa.FlatAppearance.BorderColor = Color.FromArgb(31, 118, 221);
+            buttonEditarTarifa.FlatAppearance.MouseDownBackColor = Color.FromArgb(22, 94, 180);
+            buttonEditarTarifa.FlatAppearance.MouseOverBackColor = Color.FromArgb(45, 131, 232);
+            buttonEditarTarifa.FlatStyle = FlatStyle.Flat;
+            buttonEditarTarifa.ForeColor = Color.White;
+            buttonEditarTarifa.Location = new Point(828, 4);
+            buttonEditarTarifa.Margin = new Padding(3, 4, 3, 4);
+            buttonEditarTarifa.Name = "buttonEditarTarifa";
+            buttonEditarTarifa.Size = new Size(114, 43);
+            buttonEditarTarifa.TabIndex = 1;
+            buttonEditarTarifa.Text = "Editar";
+            buttonEditarTarifa.UseVisualStyleBackColor = false;
+            buttonEditarTarifa.Click += buttonEditarTarifa_Click;
             // 
             // panelFooter
             // 
@@ -308,134 +401,6 @@ namespace SmartPark.UI.Configuracion
             buttonGuardar.UseVisualStyleBackColor = false;
             buttonGuardar.Click += buttonGuardar_Click;
             // 
-            // buttonEditarTarifa
-            // 
-            buttonEditarTarifa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonEditarTarifa.BackColor = Color.FromArgb(31, 118, 221);
-            buttonEditarTarifa.FlatAppearance.BorderColor = Color.FromArgb(31, 118, 221);
-            buttonEditarTarifa.FlatAppearance.MouseDownBackColor = Color.FromArgb(22, 94, 180);
-            buttonEditarTarifa.FlatAppearance.MouseOverBackColor = Color.FromArgb(45, 131, 232);
-            buttonEditarTarifa.FlatStyle = FlatStyle.Flat;
-            buttonEditarTarifa.ForeColor = Color.White;
-            buttonEditarTarifa.Location = new Point(828, 4);
-            buttonEditarTarifa.Margin = new Padding(3, 4, 3, 4);
-            buttonEditarTarifa.Name = "buttonEditarTarifa";
-            buttonEditarTarifa.Size = new Size(114, 43);
-            buttonEditarTarifa.TabIndex = 1;
-            buttonEditarTarifa.Text = "Editar";
-            buttonEditarTarifa.UseVisualStyleBackColor = false;
-            buttonEditarTarifa.Click += buttonEditarTarifa_Click;
-            // 
-            // buttonAgregarTarifa
-            // 
-            buttonAgregarTarifa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonAgregarTarifa.BackColor = Color.FromArgb(31, 118, 221);
-            buttonAgregarTarifa.FlatAppearance.BorderColor = Color.FromArgb(31, 118, 221);
-            buttonAgregarTarifa.FlatAppearance.MouseDownBackColor = Color.FromArgb(22, 94, 180);
-            buttonAgregarTarifa.FlatAppearance.MouseOverBackColor = Color.FromArgb(45, 131, 232);
-            buttonAgregarTarifa.FlatStyle = FlatStyle.Flat;
-            buttonAgregarTarifa.ForeColor = Color.White;
-            buttonAgregarTarifa.Location = new Point(708, 4);
-            buttonAgregarTarifa.Margin = new Padding(3, 4, 3, 4);
-            buttonAgregarTarifa.Name = "buttonAgregarTarifa";
-            buttonAgregarTarifa.Size = new Size(114, 43);
-            buttonAgregarTarifa.TabIndex = 2;
-            buttonAgregarTarifa.Text = "Agregar";
-            buttonAgregarTarifa.UseVisualStyleBackColor = false;
-            buttonAgregarTarifa.Click += buttonAgregarTarifa_Click;
-            // 
-            // dataGridViewTarifas
-            // 
-            dataGridViewTarifas.AllowUserToAddRows = false;
-            dataGridViewTarifas.AllowUserToDeleteRows = false;
-            dataGridViewTarifas.AllowUserToResizeRows = false;
-            dataGridViewTarifas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridViewTarifas.BackgroundColor = Color.White;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewTarifas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewTarifas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTarifas.Columns.AddRange(new DataGridViewColumn[] { columnId, columnTipo, columnTarifaHora, columnFraccion, columnMinutosMinimo, columnMinutosTolerancia, columnActualizadoEn });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridViewTarifas.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewTarifas.Location = new Point(0, 68);
-            dataGridViewTarifas.Margin = new Padding(3, 4, 3, 4);
-            dataGridViewTarifas.MultiSelect = false;
-            dataGridViewTarifas.Name = "dataGridViewTarifas";
-            dataGridViewTarifas.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridViewTarifas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewTarifas.RowHeadersVisible = false;
-            dataGridViewTarifas.RowHeadersWidth = 51;
-            dataGridViewTarifas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTarifas.Size = new Size(942, 467);
-            dataGridViewTarifas.TabIndex = 0;
-            // 
-            // columnActualizadoEn
-            // 
-            columnActualizadoEn.HeaderText = "Actualizado";
-            columnActualizadoEn.MinimumWidth = 6;
-            columnActualizadoEn.Name = "columnActualizadoEn";
-            columnActualizadoEn.ReadOnly = true;
-            columnActualizadoEn.Width = 140;
-            // 
-            // columnMinutosTolerancia
-            // 
-            columnMinutosTolerancia.HeaderText = "Tolerancia";
-            columnMinutosTolerancia.MinimumWidth = 6;
-            columnMinutosTolerancia.Name = "columnMinutosTolerancia";
-            columnMinutosTolerancia.ReadOnly = true;
-            columnMinutosTolerancia.Width = 125;
-            // 
-            // columnMinutosMinimo
-            // 
-            columnMinutosMinimo.HeaderText = "Mín. Minutos";
-            columnMinutosMinimo.MinimumWidth = 6;
-            columnMinutosMinimo.Name = "columnMinutosMinimo";
-            columnMinutosMinimo.ReadOnly = true;
-            columnMinutosMinimo.Width = 125;
-            // 
-            // columnFraccion
-            // 
-            columnFraccion.HeaderText = "Fracción (min)";
-            columnFraccion.MinimumWidth = 6;
-            columnFraccion.Name = "columnFraccion";
-            columnFraccion.ReadOnly = true;
-            columnFraccion.Width = 130;
-            // 
-            // columnTarifaHora
-            // 
-            columnTarifaHora.HeaderText = "Tarifa por Hora";
-            columnTarifaHora.MinimumWidth = 6;
-            columnTarifaHora.Name = "columnTarifaHora";
-            columnTarifaHora.ReadOnly = true;
-            columnTarifaHora.Width = 140;
-            // 
-            // columnTipo
-            // 
-            columnTipo.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            columnTipo.HeaderText = "Tipo de Vehículo";
-            columnTipo.MinimumWidth = 6;
-            columnTipo.Name = "columnTipo";
-            columnTipo.ReadOnly = true;
-            // 
             // columnId
             // 
             columnId.HeaderText = "ID";
@@ -445,18 +410,53 @@ namespace SmartPark.UI.Configuracion
             columnId.Visible = false;
             columnId.Width = 50;
             // 
-            // panelTarifas
+            // columnTipo
             // 
-            panelTarifas.Controls.Add(dataGridViewTarifas);
-            panelTarifas.Controls.Add(buttonAgregarTarifa);
-            panelTarifas.Controls.Add(buttonEditarTarifa);
-            panelTarifas.Dock = DockStyle.Fill;
-            panelTarifas.Location = new Point(3, 4);
-            panelTarifas.Margin = new Padding(3, 4, 3, 4);
-            panelTarifas.Name = "panelTarifas";
-            panelTarifas.Padding = new Padding(0, 16, 0, 16);
-            panelTarifas.Size = new Size(942, 571);
-            panelTarifas.TabIndex = 0;
+            columnTipo.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            columnTipo.HeaderText = "Tipo de Vehículo";
+            columnTipo.MinimumWidth = 6;
+            columnTipo.Name = "columnTipo";
+            columnTipo.ReadOnly = true;
+            // 
+            // columnTarifaHora
+            // 
+            columnTarifaHora.HeaderText = "Precio Tarifa";
+            columnTarifaHora.MinimumWidth = 6;
+            columnTarifaHora.Name = "columnTarifaHora";
+            columnTarifaHora.ReadOnly = true;
+            columnTarifaHora.Width = 140;
+            // 
+            // columnFraccion
+            // 
+            columnFraccion.HeaderText = "Fracción (min)";
+            columnFraccion.MinimumWidth = 6;
+            columnFraccion.Name = "columnFraccion";
+            columnFraccion.ReadOnly = true;
+            columnFraccion.Width = 130;
+            // 
+            // columnMinutosMinimo
+            // 
+            columnMinutosMinimo.HeaderText = "Mín. Minutos";
+            columnMinutosMinimo.MinimumWidth = 6;
+            columnMinutosMinimo.Name = "columnMinutosMinimo";
+            columnMinutosMinimo.ReadOnly = true;
+            columnMinutosMinimo.Width = 125;
+            // 
+            // columnMinutosTolerancia
+            // 
+            columnMinutosTolerancia.HeaderText = "Tolerancia";
+            columnMinutosTolerancia.MinimumWidth = 6;
+            columnMinutosTolerancia.Name = "columnMinutosTolerancia";
+            columnMinutosTolerancia.ReadOnly = true;
+            columnMinutosTolerancia.Width = 125;
+            // 
+            // columnActualizadoEn
+            // 
+            columnActualizadoEn.HeaderText = "Actualizado";
+            columnActualizadoEn.MinimumWidth = 6;
+            columnActualizadoEn.Name = "columnActualizadoEn";
+            columnActualizadoEn.ReadOnly = true;
+            columnActualizadoEn.Width = 140;
             // 
             // ConfiguracionForm
             // 
@@ -480,9 +480,9 @@ namespace SmartPark.UI.Configuracion
             tableLayoutPanelEmpresa.ResumeLayout(false);
             tableLayoutPanelEmpresa.PerformLayout();
             tabPageTarifas.ResumeLayout(false);
-            panelFooter.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridViewTarifas).EndInit();
             panelTarifas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTarifas).EndInit();
+            panelFooter.ResumeLayout(false);
             ResumeLayout(false);
         }
 

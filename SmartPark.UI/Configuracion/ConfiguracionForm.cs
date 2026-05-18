@@ -22,6 +22,11 @@ namespace SmartPark.UI.Configuracion
             _tarifaService = tarifaService;
         }
 
+        public void SeleccionarTarifas()
+        {
+            tabControlConfiguracion.SelectedTab = tabPageTarifas;
+        }
+
         private async void ConfiguracionForm_Load(object sender, EventArgs e)
         {
             await CargarEmpresa();
