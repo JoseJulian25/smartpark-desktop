@@ -126,11 +126,15 @@ namespace SmartPark.UI.EntradasSalidas
 
         private async Task CargarTiposVehiculo()
         {
+            _loading = true;
+
             var tipos = await _tarifaService!.GetTiposVehiculo();
             comboBoxTipoVehiculo.DataSource = null;
             comboBoxTipoVehiculo.DisplayMember = "Nombre";
             comboBoxTipoVehiculo.ValueMember = "Id";
             comboBoxTipoVehiculo.DataSource = tipos;
+            
+            _loading = false;
         }
 
         private async Task CargarEspaciosDisponibles()

@@ -194,7 +194,6 @@ namespace SmartPark.UI.Acceso
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SmartPark - Inicio de sesion";
-            Load += LoginForm_Load;
             panelRoot.ResumeLayout(false);
             panelRight.ResumeLayout(false);
             panelRight.PerformLayout();
