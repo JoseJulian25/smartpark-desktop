@@ -146,16 +146,25 @@ namespace SmartPark.UI.Main
                 alertas.Add(("Estadia larga", detalle, ticket.HoraEntrada));
             }
 
-            var reservasHoy = reservasPendientes
-                .Where(r => r.HoraInicio.Date == now.Date)
-                .ToList();
-
-            foreach (var reserva in reservasHoy)
+            foreach (var reserva in reservasPendientes)
             {
-                var diff = reserva.HoraInicio - now;
-                var minutos = (int)Math.Floor(diff.TotalMinutes);
                 var espacio = reserva.Espacio?.CodigoEspacio ?? "N/A";
                 var detalle = $"{reserva.ClienteNombreCompleto} | Espacio {espacio} | {reserva.HoraInicio:HH:mm}";
+
+                if (reserva.HoraInicio.Date < now.Date)
+                {
+                    var tardeMin = (int)Math.Floor((now - reserva.HoraInicio).TotalMinutes);
+                    alertas.Add(("Reserva vencida", $"{detalle} | {tardeMin} min tarde", reserva.HoraInicio));
+                    continue;
+                }
+
+                if (reserva.HoraInicio.Date > now.Date)
+                {
+                    continue;
+                }
+
+                var diff = reserva.HoraInicio - now;
+                var minutos = (int)Math.Floor(diff.TotalMinutes);
 
                 if (minutos > 0 && minutos <= 60)
                 {
