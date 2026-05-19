@@ -15,3 +15,17 @@ El proyecto está organizado en tres capas principales, cada una con una respons
 ## Diagrama de la Base de Datos
 
 ![Diagrama de la base de datos](assets/db-diagram.png)
+
+## Capturas del Sistema
+
+### MainForm
+
+![MainForm](./assets/mainForm.png)
+
+### ConsultaTickets
+
+![ConsultaTickets](./assets/ConsultaTickets.png)
+
+### EntradaSalidas
+
+![EntradaSalidas](./assets/entradaSalidas.png)
