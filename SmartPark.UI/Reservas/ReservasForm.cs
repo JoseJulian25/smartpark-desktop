@@ -14,7 +14,6 @@ namespace SmartPark.UI.Reservas
 
         private async void ReservasForm_Load_1(object sender, EventArgs e)
         {
-            dateTimeFecha.Value = DateTime.Today;
             comboBoxEstado.SelectedItem ??= "Todos";
             await CargarAsync();
         }
@@ -120,9 +119,7 @@ namespace SmartPark.UI.Reservas
         {
             var estado = comboBoxEstado.SelectedItem?.ToString() ?? "Todos";
             var cliente = textBoxCliente.Text.Trim();
-            var fecha = dateTimeFecha.Value;
-
-            var items = await _service.GetReservas(fecha, estado, cliente);
+            var items = await _service.GetReservas(null, estado, cliente);
             dataGridViewReservas.Rows.Clear();
 
             foreach (var item in items)

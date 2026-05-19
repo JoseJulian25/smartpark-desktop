@@ -13,8 +13,6 @@ namespace SmartPark.UI.Reservas
         private GroupBox groupBoxFiltros;
         private ComboBox comboBoxEstado;
         private Label labelEstado;
-        private DateTimePicker dateTimeFecha;
-        private Label labelFecha;
         private TextBox textBoxCliente;
         private Label labelCliente;
         private Button buttonBuscar;
@@ -62,8 +60,6 @@ namespace SmartPark.UI.Reservas
             buttonBuscar = new Button();
             textBoxCliente = new TextBox();
             labelCliente = new Label();
-            dateTimeFecha = new DateTimePicker();
-            labelFecha = new Label();
             comboBoxEstado = new ComboBox();
             labelEstado = new Label();
             panelToolbar = new Panel();
@@ -209,8 +205,6 @@ namespace SmartPark.UI.Reservas
             groupBoxFiltros.Controls.Add(buttonBuscar);
             groupBoxFiltros.Controls.Add(textBoxCliente);
             groupBoxFiltros.Controls.Add(labelCliente);
-            groupBoxFiltros.Controls.Add(dateTimeFecha);
-            groupBoxFiltros.Controls.Add(labelFecha);
             groupBoxFiltros.Controls.Add(comboBoxEstado);
             groupBoxFiltros.Controls.Add(labelEstado);
             groupBoxFiltros.Dock = DockStyle.Top;
@@ -256,21 +250,6 @@ namespace SmartPark.UI.Reservas
             labelCliente.Text = "Cliente:";
             // 
             // dateTimeFecha
-            // 
-            dateTimeFecha.Format = DateTimePickerFormat.Short;
-            dateTimeFecha.Location = new Point(282, 54);
-            dateTimeFecha.Name = "dateTimeFecha";
-            dateTimeFecha.Size = new Size(170, 27);
-            dateTimeFecha.TabIndex = 3;
-            // 
-            // labelFecha
-            // 
-            labelFecha.AutoSize = true;
-            labelFecha.Location = new Point(282, 30);
-            labelFecha.Name = "labelFecha";
-            labelFecha.Size = new Size(50, 20);
-            labelFecha.TabIndex = 2;
-            labelFecha.Text = "Fecha:";
             // 
             // comboBoxEstado
             // 
