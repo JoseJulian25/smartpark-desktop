@@ -159,6 +159,11 @@ namespace SmartPark.UI.Reservas
                 e.CellStyle.BackColor = Color.FromArgb(248, 215, 218);
                 e.CellStyle.ForeColor = Color.FromArgb(114, 28, 36);
             }
+            else if (string.Equals(estado, "FINALIZADA", StringComparison.OrdinalIgnoreCase))
+            {
+                e.CellStyle.BackColor = Color.FromArgb(212, 237, 218);
+                e.CellStyle.ForeColor = Color.FromArgb(25, 94, 41);
+            }
         }
 
        
