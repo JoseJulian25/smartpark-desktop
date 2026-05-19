@@ -92,7 +92,8 @@ namespace SmartPark.UI.Consultas
                     item.FechaAnulacion?.ToString("yyyy-MM-dd HH:mm") ?? string.Empty);
 
                 AplicarEstiloAnulado(dataGridViewPagos.Rows[rowIndex], "columnPagoAnulado", item.Anulado);
-                totalMonto += item.Monto;
+                if (!item.Anulado)
+                    totalMonto += item.Monto;
             }
 
             labelPagoTotalValue.Text = totalMonto.ToString("N2");
