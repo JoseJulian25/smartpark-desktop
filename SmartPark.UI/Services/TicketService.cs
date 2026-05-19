@@ -81,7 +81,7 @@ namespace SmartPark.UI.Services
 
             var now = DateTime.Now;
             ticket.CodigoTicket = string.IsNullOrWhiteSpace(ticket.CodigoTicket)
-                ? $"T-{now:yyyyMMddHHmmssfff}"
+                ? $"T-{now:HHmmss}-{Random.Shared.Next(0, 1000):000}"
                 : ticket.CodigoTicket;
             ticket.FechaCreacion = now;
             ticket.HoraEntrada = now;
