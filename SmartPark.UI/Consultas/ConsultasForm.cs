@@ -75,6 +75,7 @@ namespace SmartPark.UI.Consultas
                 textBoxPagoTicket.Text.Trim().ToUpperInvariant());
 
             dataGridViewPagos.Rows.Clear();
+            decimal totalMonto = 0m;
 
             foreach (var item in items)
             {
@@ -91,7 +92,10 @@ namespace SmartPark.UI.Consultas
                     item.FechaAnulacion?.ToString("yyyy-MM-dd HH:mm") ?? string.Empty);
 
                 AplicarEstiloAnulado(dataGridViewPagos.Rows[rowIndex], "columnPagoAnulado", item.Anulado);
+                totalMonto += item.Monto;
             }
+
+            labelPagoTotalValue.Text = totalMonto.ToString("N2");
         }
 
         private static void AplicarEstiloAnulado(DataGridViewRow row, string columnName, bool anulado)

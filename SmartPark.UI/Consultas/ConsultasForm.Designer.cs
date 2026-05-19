@@ -23,6 +23,18 @@ namespace SmartPark.UI.Consultas
             tabHistorial = new TabPage();
             groupBoxHistorialResultados = new GroupBox();
             dataGridViewHistorial = new DataGridView();
+            columnHistId = new DataGridViewTextBoxColumn();
+            columnHistTicket = new DataGridViewTextBoxColumn();
+            columnHistPlaca = new DataGridViewTextBoxColumn();
+            columnHistTipo = new DataGridViewTextBoxColumn();
+            columnHistEspacio = new DataGridViewTextBoxColumn();
+            columnHistEntrada = new DataGridViewTextBoxColumn();
+            columnHistSalida = new DataGridViewTextBoxColumn();
+            columnHistTiempo = new DataGridViewTextBoxColumn();
+            columnHistMonto = new DataGridViewTextBoxColumn();
+            columnHistCreadoPor = new DataGridViewTextBoxColumn();
+            columnHistAnulado = new DataGridViewTextBoxColumn();
+            columnHistFechaAnulacion = new DataGridViewTextBoxColumn();
             groupBoxHistorialFiltros = new GroupBox();
             buttonHistorialAnular = new Button();
             buttonHistorialLimpiar = new Button();
@@ -38,6 +50,15 @@ namespace SmartPark.UI.Consultas
             tabPagos = new TabPage();
             groupBoxPagosResultados = new GroupBox();
             dataGridViewPagos = new DataGridView();
+            columnPagoId = new DataGridViewTextBoxColumn();
+            columnPagoTicket = new DataGridViewTextBoxColumn();
+            columnPagoMetodo = new DataGridViewTextBoxColumn();
+            columnPagoMonto = new DataGridViewTextBoxColumn();
+            columnPagoRecibido = new DataGridViewTextBoxColumn();
+            columnPagoFecha = new DataGridViewTextBoxColumn();
+            columnPagoProcesadoPor = new DataGridViewTextBoxColumn();
+            columnPagoAnulado = new DataGridViewTextBoxColumn();
+            columnPagoFechaAnulacion = new DataGridViewTextBoxColumn();
             groupBoxPagosFiltros = new GroupBox();
             buttonPagosAnular = new Button();
             buttonPagosLimpiar = new Button();
@@ -50,27 +71,9 @@ namespace SmartPark.UI.Consultas
             labelPagoFin = new Label();
             dateTimePagoInicio = new DateTimePicker();
             labelPagoInicio = new Label();
-            columnPagoId = new DataGridViewTextBoxColumn();
-            columnPagoTicket = new DataGridViewTextBoxColumn();
-            columnPagoMetodo = new DataGridViewTextBoxColumn();
-            columnPagoMonto = new DataGridViewTextBoxColumn();
-            columnPagoRecibido = new DataGridViewTextBoxColumn();
-            columnPagoFecha = new DataGridViewTextBoxColumn();
-            columnPagoProcesadoPor = new DataGridViewTextBoxColumn();
-            columnPagoAnulado = new DataGridViewTextBoxColumn();
-            columnPagoFechaAnulacion = new DataGridViewTextBoxColumn();
-            columnHistId = new DataGridViewTextBoxColumn();
-            columnHistTicket = new DataGridViewTextBoxColumn();
-            columnHistPlaca = new DataGridViewTextBoxColumn();
-            columnHistTipo = new DataGridViewTextBoxColumn();
-            columnHistEspacio = new DataGridViewTextBoxColumn();
-            columnHistEntrada = new DataGridViewTextBoxColumn();
-            columnHistSalida = new DataGridViewTextBoxColumn();
-            columnHistTiempo = new DataGridViewTextBoxColumn();
-            columnHistMonto = new DataGridViewTextBoxColumn();
-            columnHistCreadoPor = new DataGridViewTextBoxColumn();
-            columnHistAnulado = new DataGridViewTextBoxColumn();
-            columnHistFechaAnulacion = new DataGridViewTextBoxColumn();
+            panelPagoTotal = new Panel();
+            labelPagoTotalValue = new Label();
+            labelPagoTotalTitle = new Label();
             panelMain.SuspendLayout();
             tabControlConsultas.SuspendLayout();
             tabHistorial.SuspendLayout();
@@ -81,6 +84,7 @@ namespace SmartPark.UI.Consultas
             groupBoxPagosResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPagos).BeginInit();
             groupBoxPagosFiltros.SuspendLayout();
+            panelPagoTotal.SuspendLayout();
             SuspendLayout();
             // 
             // panelMain
@@ -148,6 +152,102 @@ namespace SmartPark.UI.Consultas
             dataGridViewHistorial.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewHistorial.Size = new Size(1204, 587);
             dataGridViewHistorial.TabIndex = 0;
+            // 
+            // columnHistId
+            // 
+            columnHistId.HeaderText = "ID";
+            columnHistId.MinimumWidth = 6;
+            columnHistId.Name = "columnHistId";
+            columnHistId.ReadOnly = true;
+            columnHistId.Width = 60;
+            // 
+            // columnHistTicket
+            // 
+            columnHistTicket.HeaderText = "Ticket";
+            columnHistTicket.MinimumWidth = 6;
+            columnHistTicket.Name = "columnHistTicket";
+            columnHistTicket.ReadOnly = true;
+            columnHistTicket.Width = 200;
+            // 
+            // columnHistPlaca
+            // 
+            columnHistPlaca.HeaderText = "Placa";
+            columnHistPlaca.MinimumWidth = 6;
+            columnHistPlaca.Name = "columnHistPlaca";
+            columnHistPlaca.ReadOnly = true;
+            columnHistPlaca.Width = 110;
+            // 
+            // columnHistTipo
+            // 
+            columnHistTipo.HeaderText = "Tipo";
+            columnHistTipo.MinimumWidth = 6;
+            columnHistTipo.Name = "columnHistTipo";
+            columnHistTipo.ReadOnly = true;
+            columnHistTipo.Width = 120;
+            // 
+            // columnHistEspacio
+            // 
+            columnHistEspacio.HeaderText = "Espacio";
+            columnHistEspacio.MinimumWidth = 6;
+            columnHistEspacio.Name = "columnHistEspacio";
+            columnHistEspacio.ReadOnly = true;
+            columnHistEspacio.Width = 90;
+            // 
+            // columnHistEntrada
+            // 
+            columnHistEntrada.HeaderText = "Entrada";
+            columnHistEntrada.MinimumWidth = 6;
+            columnHistEntrada.Name = "columnHistEntrada";
+            columnHistEntrada.ReadOnly = true;
+            columnHistEntrada.Width = 140;
+            // 
+            // columnHistSalida
+            // 
+            columnHistSalida.HeaderText = "Salida";
+            columnHistSalida.MinimumWidth = 6;
+            columnHistSalida.Name = "columnHistSalida";
+            columnHistSalida.ReadOnly = true;
+            columnHistSalida.Width = 140;
+            // 
+            // columnHistTiempo
+            // 
+            columnHistTiempo.HeaderText = "Tiempo";
+            columnHistTiempo.MinimumWidth = 6;
+            columnHistTiempo.Name = "columnHistTiempo";
+            columnHistTiempo.ReadOnly = true;
+            columnHistTiempo.Width = 110;
+            // 
+            // columnHistMonto
+            // 
+            columnHistMonto.HeaderText = "Monto";
+            columnHistMonto.MinimumWidth = 6;
+            columnHistMonto.Name = "columnHistMonto";
+            columnHistMonto.ReadOnly = true;
+            columnHistMonto.Width = 110;
+            // 
+            // columnHistCreadoPor
+            // 
+            columnHistCreadoPor.HeaderText = "Creado Por";
+            columnHistCreadoPor.MinimumWidth = 6;
+            columnHistCreadoPor.Name = "columnHistCreadoPor";
+            columnHistCreadoPor.ReadOnly = true;
+            columnHistCreadoPor.Width = 160;
+            // 
+            // columnHistAnulado
+            // 
+            columnHistAnulado.HeaderText = "Anulado";
+            columnHistAnulado.MinimumWidth = 6;
+            columnHistAnulado.Name = "columnHistAnulado";
+            columnHistAnulado.ReadOnly = true;
+            columnHistAnulado.Width = 90;
+            // 
+            // columnHistFechaAnulacion
+            // 
+            columnHistFechaAnulacion.HeaderText = "Fecha Anulacion";
+            columnHistFechaAnulacion.MinimumWidth = 6;
+            columnHistFechaAnulacion.Name = "columnHistFechaAnulacion";
+            columnHistFechaAnulacion.ReadOnly = true;
+            columnHistFechaAnulacion.Width = 160;
             // 
             // groupBoxHistorialFiltros
             // 
@@ -330,6 +430,78 @@ namespace SmartPark.UI.Consultas
             dataGridViewPagos.Size = new Size(1204, 587);
             dataGridViewPagos.TabIndex = 0;
             // 
+            // columnPagoId
+            // 
+            columnPagoId.HeaderText = "ID";
+            columnPagoId.MinimumWidth = 6;
+            columnPagoId.Name = "columnPagoId";
+            columnPagoId.ReadOnly = true;
+            columnPagoId.Width = 125;
+            // 
+            // columnPagoTicket
+            // 
+            columnPagoTicket.HeaderText = "Ticket";
+            columnPagoTicket.MinimumWidth = 6;
+            columnPagoTicket.Name = "columnPagoTicket";
+            columnPagoTicket.ReadOnly = true;
+            columnPagoTicket.Width = 250;
+            // 
+            // columnPagoMetodo
+            // 
+            columnPagoMetodo.HeaderText = "Metodo";
+            columnPagoMetodo.MinimumWidth = 6;
+            columnPagoMetodo.Name = "columnPagoMetodo";
+            columnPagoMetodo.ReadOnly = true;
+            columnPagoMetodo.Width = 200;
+            // 
+            // columnPagoMonto
+            // 
+            columnPagoMonto.HeaderText = "Monto";
+            columnPagoMonto.MinimumWidth = 6;
+            columnPagoMonto.Name = "columnPagoMonto";
+            columnPagoMonto.ReadOnly = true;
+            columnPagoMonto.Width = 120;
+            // 
+            // columnPagoRecibido
+            // 
+            columnPagoRecibido.HeaderText = "Recibido";
+            columnPagoRecibido.MinimumWidth = 6;
+            columnPagoRecibido.Name = "columnPagoRecibido";
+            columnPagoRecibido.ReadOnly = true;
+            columnPagoRecibido.Width = 200;
+            // 
+            // columnPagoFecha
+            // 
+            columnPagoFecha.HeaderText = "Fecha Pago";
+            columnPagoFecha.MinimumWidth = 6;
+            columnPagoFecha.Name = "columnPagoFecha";
+            columnPagoFecha.ReadOnly = true;
+            columnPagoFecha.Width = 160;
+            // 
+            // columnPagoProcesadoPor
+            // 
+            columnPagoProcesadoPor.HeaderText = "Procesado Por";
+            columnPagoProcesadoPor.MinimumWidth = 6;
+            columnPagoProcesadoPor.Name = "columnPagoProcesadoPor";
+            columnPagoProcesadoPor.ReadOnly = true;
+            columnPagoProcesadoPor.Width = 160;
+            // 
+            // columnPagoAnulado
+            // 
+            columnPagoAnulado.HeaderText = "Anulado";
+            columnPagoAnulado.MinimumWidth = 6;
+            columnPagoAnulado.Name = "columnPagoAnulado";
+            columnPagoAnulado.ReadOnly = true;
+            columnPagoAnulado.Width = 90;
+            // 
+            // columnPagoFechaAnulacion
+            // 
+            columnPagoFechaAnulacion.HeaderText = "Fecha Anulacion";
+            columnPagoFechaAnulacion.MinimumWidth = 6;
+            columnPagoFechaAnulacion.Name = "columnPagoFechaAnulacion";
+            columnPagoFechaAnulacion.ReadOnly = true;
+            columnPagoFechaAnulacion.Width = 160;
+            // 
             // groupBoxPagosFiltros
             // 
             groupBoxPagosFiltros.Controls.Add(buttonPagosAnular);
@@ -343,6 +515,7 @@ namespace SmartPark.UI.Consultas
             groupBoxPagosFiltros.Controls.Add(labelPagoFin);
             groupBoxPagosFiltros.Controls.Add(dateTimePagoInicio);
             groupBoxPagosFiltros.Controls.Add(labelPagoInicio);
+            groupBoxPagosFiltros.Controls.Add(panelPagoTotal);
             groupBoxPagosFiltros.Dock = DockStyle.Top;
             groupBoxPagosFiltros.Font = new Font("Segoe UI", 9F);
             groupBoxPagosFiltros.Location = new Point(8, 8);
@@ -470,172 +643,39 @@ namespace SmartPark.UI.Consultas
             labelPagoInicio.TabIndex = 0;
             labelPagoInicio.Text = "Fecha inicio:";
             // 
-            // columnPagoId
+            // panelPagoTotal
             // 
-            columnPagoId.HeaderText = "ID";
-            columnPagoId.MinimumWidth = 6;
-            columnPagoId.Name = "columnPagoId";
-            columnPagoId.ReadOnly = true;
+            panelPagoTotal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            panelPagoTotal.BackColor = Color.White;
+            panelPagoTotal.BorderStyle = BorderStyle.FixedSingle;
+            panelPagoTotal.Controls.Add(labelPagoTotalValue);
+            panelPagoTotal.Controls.Add(labelPagoTotalTitle);
+            panelPagoTotal.Location = new Point(992, 28);
+            panelPagoTotal.Name = "panelPagoTotal";
+            panelPagoTotal.Size = new Size(210, 60);
+            panelPagoTotal.TabIndex = 11;
             // 
-            // columnPagoTicket
+            // labelPagoTotalValue
             // 
-            columnPagoTicket.HeaderText = "Ticket";
-            columnPagoTicket.MinimumWidth = 6;
-            columnPagoTicket.Name = "columnPagoTicket";
-            columnPagoTicket.ReadOnly = true;
-            columnPagoTicket.Width = 250;
+            labelPagoTotalValue.AutoSize = true;
+            labelPagoTotalValue.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            labelPagoTotalValue.ForeColor = Color.FromArgb(31, 118, 221);
+            labelPagoTotalValue.Location = new Point(12, 28);
+            labelPagoTotalValue.Name = "labelPagoTotalValue";
+            labelPagoTotalValue.Size = new Size(50, 25);
+            labelPagoTotalValue.TabIndex = 1;
+            labelPagoTotalValue.Text = "0.00";
             // 
-            // columnPagoMetodo
+            // labelPagoTotalTitle
             // 
-            columnPagoMetodo.HeaderText = "Metodo";
-            columnPagoMetodo.MinimumWidth = 6;
-            columnPagoMetodo.Name = "columnPagoMetodo";
-            columnPagoMetodo.ReadOnly = true;
-            columnPagoMetodo.Width = 200;
-            // 
-            // columnPagoMonto
-            // 
-            columnPagoMonto.HeaderText = "Monto";
-            columnPagoMonto.MinimumWidth = 6;
-            columnPagoMonto.Name = "columnPagoMonto";
-            columnPagoMonto.ReadOnly = true;
-            columnPagoMonto.Width = 120;
-            // 
-            // columnPagoRecibido
-            // 
-            columnPagoRecibido.HeaderText = "Recibido";
-            columnPagoRecibido.MinimumWidth = 6;
-            columnPagoRecibido.Name = "columnPagoRecibido";
-            columnPagoRecibido.ReadOnly = true;
-            columnPagoRecibido.Width = 200;
-            // 
-            // columnPagoFecha
-            // 
-            columnPagoFecha.HeaderText = "Fecha Pago";
-            columnPagoFecha.MinimumWidth = 6;
-            columnPagoFecha.Name = "columnPagoFecha";
-            columnPagoFecha.ReadOnly = true;
-            columnPagoFecha.Width = 160;
-            // 
-            // columnPagoProcesadoPor
-            // 
-            columnPagoProcesadoPor.HeaderText = "Procesado Por";
-            columnPagoProcesadoPor.MinimumWidth = 6;
-            columnPagoProcesadoPor.Name = "columnPagoProcesadoPor";
-            columnPagoProcesadoPor.ReadOnly = true;
-            columnPagoProcesadoPor.Width = 160;
-            // 
-            // columnPagoAnulado
-            // 
-            columnPagoAnulado.HeaderText = "Anulado";
-            columnPagoAnulado.MinimumWidth = 6;
-            columnPagoAnulado.Name = "columnPagoAnulado";
-            columnPagoAnulado.ReadOnly = true;
-            columnPagoAnulado.Width = 90;
-            // 
-            // columnPagoFechaAnulacion
-            // 
-            columnPagoFechaAnulacion.HeaderText = "Fecha Anulacion";
-            columnPagoFechaAnulacion.MinimumWidth = 6;
-            columnPagoFechaAnulacion.Name = "columnPagoFechaAnulacion";
-            columnPagoFechaAnulacion.ReadOnly = true;
-            columnPagoFechaAnulacion.Width = 160;
-            // 
-            // columnHistId
-            // 
-            columnHistId.HeaderText = "ID";
-            columnHistId.MinimumWidth = 6;
-            columnHistId.Name = "columnHistId";
-            columnHistId.ReadOnly = true;
-            columnHistId.Width = 60;
-            // 
-            // columnHistTicket
-            // 
-            columnHistTicket.HeaderText = "Ticket";
-            columnHistTicket.MinimumWidth = 6;
-            columnHistTicket.Name = "columnHistTicket";
-            columnHistTicket.ReadOnly = true;
-            columnHistTicket.Width = 200;
-            // 
-            // columnHistPlaca
-            // 
-            columnHistPlaca.HeaderText = "Placa";
-            columnHistPlaca.MinimumWidth = 6;
-            columnHistPlaca.Name = "columnHistPlaca";
-            columnHistPlaca.ReadOnly = true;
-            columnHistPlaca.Width = 110;
-            // 
-            // columnHistTipo
-            // 
-            columnHistTipo.HeaderText = "Tipo";
-            columnHistTipo.MinimumWidth = 6;
-            columnHistTipo.Name = "columnHistTipo";
-            columnHistTipo.ReadOnly = true;
-            columnHistTipo.Width = 120;
-            // 
-            // columnHistEspacio
-            // 
-            columnHistEspacio.HeaderText = "Espacio";
-            columnHistEspacio.MinimumWidth = 6;
-            columnHistEspacio.Name = "columnHistEspacio";
-            columnHistEspacio.ReadOnly = true;
-            columnHistEspacio.Width = 90;
-            // 
-            // columnHistEntrada
-            // 
-            columnHistEntrada.HeaderText = "Entrada";
-            columnHistEntrada.MinimumWidth = 6;
-            columnHistEntrada.Name = "columnHistEntrada";
-            columnHistEntrada.ReadOnly = true;
-            columnHistEntrada.Width = 140;
-            // 
-            // columnHistSalida
-            // 
-            columnHistSalida.HeaderText = "Salida";
-            columnHistSalida.MinimumWidth = 6;
-            columnHistSalida.Name = "columnHistSalida";
-            columnHistSalida.ReadOnly = true;
-            columnHistSalida.Width = 140;
-            // 
-            // columnHistTiempo
-            // 
-            columnHistTiempo.HeaderText = "Tiempo";
-            columnHistTiempo.MinimumWidth = 6;
-            columnHistTiempo.Name = "columnHistTiempo";
-            columnHistTiempo.ReadOnly = true;
-            columnHistTiempo.Width = 110;
-            // 
-            // columnHistMonto
-            // 
-            columnHistMonto.HeaderText = "Monto";
-            columnHistMonto.MinimumWidth = 6;
-            columnHistMonto.Name = "columnHistMonto";
-            columnHistMonto.ReadOnly = true;
-            columnHistMonto.Width = 110;
-            // 
-            // columnHistCreadoPor
-            // 
-            columnHistCreadoPor.HeaderText = "Creado Por";
-            columnHistCreadoPor.MinimumWidth = 6;
-            columnHistCreadoPor.Name = "columnHistCreadoPor";
-            columnHistCreadoPor.ReadOnly = true;
-            columnHistCreadoPor.Width = 160;
-            // 
-            // columnHistAnulado
-            // 
-            columnHistAnulado.HeaderText = "Anulado";
-            columnHistAnulado.MinimumWidth = 6;
-            columnHistAnulado.Name = "columnHistAnulado";
-            columnHistAnulado.ReadOnly = true;
-            columnHistAnulado.Width = 90;
-            // 
-            // columnHistFechaAnulacion
-            // 
-            columnHistFechaAnulacion.HeaderText = "Fecha Anulacion";
-            columnHistFechaAnulacion.MinimumWidth = 6;
-            columnHistFechaAnulacion.Name = "columnHistFechaAnulacion";
-            columnHistFechaAnulacion.ReadOnly = true;
-            columnHistFechaAnulacion.Width = 160;
+            labelPagoTotalTitle.AutoSize = true;
+            labelPagoTotalTitle.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelPagoTotalTitle.ForeColor = Color.FromArgb(85, 95, 110);
+            labelPagoTotalTitle.Location = new Point(12, 3);
+            labelPagoTotalTitle.Name = "labelPagoTotalTitle";
+            labelPagoTotalTitle.Size = new Size(107, 23);
+            labelPagoTotalTitle.TabIndex = 0;
+            labelPagoTotalTitle.Text = "Total monto";
             // 
             // ConsultasForm
             // 
@@ -662,6 +702,8 @@ namespace SmartPark.UI.Consultas
             ((System.ComponentModel.ISupportInitialize)dataGridViewPagos).EndInit();
             groupBoxPagosFiltros.ResumeLayout(false);
             groupBoxPagosFiltros.PerformLayout();
+            panelPagoTotal.ResumeLayout(false);
+            panelPagoTotal.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -699,6 +741,9 @@ namespace SmartPark.UI.Consultas
         private Label labelPagoFin;
         private DateTimePicker dateTimePagoInicio;
         private Label labelPagoInicio;
+        private Panel panelPagoTotal;
+        private Label labelPagoTotalValue;
+        private Label labelPagoTotalTitle;
         private DataGridViewTextBoxColumn columnHistId;
         private DataGridViewTextBoxColumn columnHistTicket;
         private DataGridViewTextBoxColumn columnHistPlaca;
