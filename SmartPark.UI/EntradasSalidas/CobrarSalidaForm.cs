@@ -179,7 +179,7 @@ namespace SmartPark.UI.EntradasSalidas
             }
 
             var minutosCobro = Math.Max(minutosTranscurridos, tarifa.MinutosMinimo);
-            var fracciones = (int)Math.Ceiling((decimal)minutosCobro / tarifa.MinutosFraccion);
+            var fracciones = minutosCobro / tarifa.MinutosFraccion;
             return fracciones * tarifa.PrecioPorFraccion;
         }
     }
