@@ -12,6 +12,7 @@ using SmartPark.UI.Consultas;
 using SmartPark.UI.Acceso;
 using SmartPark.UI.Reservas;
 using SmartPark.Data.Modelos;
+using QuestPDF.Infrastructure;
 
 namespace SmartPark.UI;
 
@@ -31,6 +32,8 @@ static class Program
     [STAThread]
     static void Main()
     {
+        QuestPDF.Settings.License = LicenseType.Community;
+        QuestPDF.Settings.CheckIfAllTextGlyphsAreAvailable = false;
         // To customize application configuration such as set high DPI settings or default font,
         // see https://aka.ms/applicationconfiguration.
         ApplicationConfiguration.Initialize();
@@ -69,6 +72,7 @@ static class Program
         services.AddTransient<Services.ConsultasService>();
         services.AddTransient<Services.UsuarioService>();
         services.AddTransient<Services.ReservaService>();
+        services.AddTransient<Services.TicketPdfService>();
         services.AddTransient<EntradasSalidasForm>();
         services.AddTransient<CobrarSalidaForm>();
         services.AddTransient<UsuariosForm>();

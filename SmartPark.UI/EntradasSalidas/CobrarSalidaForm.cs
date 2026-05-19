@@ -9,6 +9,7 @@ namespace SmartPark.UI.EntradasSalidas
         private readonly TicketService? _ticketService;
         private readonly PagoService? _pagoService;
         private readonly TarifaService? _tarifaService;
+        private readonly TicketPdfService? _ticketPdfService;
         private Ticket? _ticket;
         private decimal _montoCalculado;
 
@@ -17,12 +18,13 @@ namespace SmartPark.UI.EntradasSalidas
             InitializeComponent();
         }
 
-        public CobrarSalidaForm(TicketService ticketService, PagoService pagoService, TarifaService tarifaService)
+        public CobrarSalidaForm(TicketService ticketService, PagoService pagoService, TarifaService tarifaService, TicketPdfService ticketPdfService)
             : this()
         {
             _ticketService = ticketService;
             _pagoService = pagoService;
             _tarifaService = tarifaService;
+            _ticketPdfService = ticketPdfService;
         }
 
         public async Task<bool> CargarVehiculo(long vehiculoId)
@@ -87,6 +89,21 @@ namespace SmartPark.UI.EntradasSalidas
                 var guardado = await _pagoService.RegistrarCobro(pago, _ticket.Id);
                 if (guardado)
                 {
+                    try
+                    {
+                        var ticketActualizado = await _ticketService.Buscar(_ticket.Id);
+                        if (ticketActualizado != null)
+                        {
+                            var filePath = _ticketPdfService.CrearPagoPdf(ticketActualizado, pago);
+                            _ticketPdfService.AbrirPdf(filePath);
+                        }
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"El cobro se registro, pero no se pudo generar el PDF de la factura.\n{ex.Message}", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
                     MessageBox.Show("Cobro registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     DialogResult = DialogResult.OK;
                     Close();

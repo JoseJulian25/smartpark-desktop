@@ -11,6 +11,7 @@ namespace SmartPark.UI.EntradasSalidas
         private readonly TicketService? _ticketService;
         private readonly TarifaService? _tarifaService;
         private readonly ReservaService? _reservaService;
+        private readonly TicketPdfService? _ticketPdfService;
         private bool _loading;
 
         public EntradasSalidasForm()
@@ -18,13 +19,14 @@ namespace SmartPark.UI.EntradasSalidas
             InitializeComponent();
         }
 
-        public EntradasSalidasForm(EspaciosService espaciosService, TicketService ticketService, TarifaService tarifaService, ReservaService reservaService)
+        public EntradasSalidasForm(EspaciosService espaciosService, TicketService ticketService, TarifaService tarifaService, ReservaService reservaService, TicketPdfService ticketPdfService)
             : this()
         {
             _espaciosService = espaciosService;
             _ticketService = ticketService;
             _tarifaService = tarifaService;
             _reservaService = reservaService;
+            _ticketPdfService = ticketPdfService;
         }
 
         private async void EntradasSalidasForm_Load(object sender, EventArgs e)
@@ -77,6 +79,21 @@ namespace SmartPark.UI.EntradasSalidas
             var guardado = await _ticketService.RegistrarEntrada(ticket, espacioId);
             if (guardado)
             {
+                try
+                {
+                    var ticketCompleto = await _ticketService.Buscar(ticket.Id);
+                    if (ticketCompleto != null)
+                    {
+                        var filePath = _ticketPdfService.CrearTicketPdf(ticketCompleto);
+                        _ticketPdfService.AbrirPdf(filePath);
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"La entrada se guardo, pero no se pudo generar el PDF del ticket.\n{ex.Message}", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
                 MessageBox.Show("Entrada registrada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBoxPlaca.Clear();
                 textBoxHoraEntrada.Text = DateTime.Now.ToString("HH:mm");
