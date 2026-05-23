@@ -29,3 +29,6 @@ El proyecto está organizado en tres capas principales, cada una con una respons
 ### EntradaSalidas
 
 ![EntradaSalidas](./assets/entradaSalidas.png)
+
+## Pruebas Unitarias
+<img width="703" height="580" alt="image" src="https://github.com/user-attachments/assets/5d4f4f2d-68db-4df9-aa30-15137276d333" />
